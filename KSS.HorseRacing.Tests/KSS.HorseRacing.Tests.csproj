@@ -104,9 +104,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KSS.HorseRacing\KSS.HorseRacing.csproj">
+    <ProjectReference Include="..\KSS.HorseRacing\KSS.HorseRacing.WebUI.csproj">
       <Project>{D51F1120-5A3A-4967-8CE5-AF1D7A7A3369}</Project>
-      <Name>KSS.HorseRacing</Name>
+      <Name>KSS.HorseRacing.WebUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

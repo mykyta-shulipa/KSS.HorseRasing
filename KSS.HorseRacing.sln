@@ -1,9 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSS.HorseRacing", "KSS.HorseRacing\KSS.HorseRacing.csproj", "{D51F1120-5A3A-4967-8CE5-AF1D7A7A3369}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSS.HorseRacing.WebUI", "KSS.HorseRacing\KSS.HorseRacing.WebUI.csproj", "{D51F1120-5A3A-4967-8CE5-AF1D7A7A3369}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSS.HorseRacing.Tests", "KSS.HorseRacing.Tests\KSS.HorseRacing.Tests.csproj", "{D2ABD36F-E966-482C-B6A2-073ECDF0DF57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{239D04C7-6A76-4736-B54E-AEA116F35A3C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSS.HorseRacing.Infrastucture", "KSS.HorseRacing.Infrastucture\KSS.HorseRacing.Infrastucture.csproj", "{990CDAA9-85DE-4749-BCF1-7BFE23DF1381}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +28,10 @@ Global
 		{D2ABD36F-E966-482C-B6A2-073ECDF0DF57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2ABD36F-E966-482C-B6A2-073ECDF0DF57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2ABD36F-E966-482C-B6A2-073ECDF0DF57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{990CDAA9-85DE-4749-BCF1-7BFE23DF1381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{990CDAA9-85DE-4749-BCF1-7BFE23DF1381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{990CDAA9-85DE-4749-BCF1-7BFE23DF1381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{990CDAA9-85DE-4749-BCF1-7BFE23DF1381}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
