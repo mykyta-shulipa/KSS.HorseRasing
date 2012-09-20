@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\DatabaseInitializer.cs" />
+    <Compile Include="DataAccess\EfContext.cs" />
     <Compile Include="DataModels\BaseEntity.cs" />
     <Compile Include="DataModels\Horse.cs" />
     <Compile Include="DataModels\Jockey.cs" />
