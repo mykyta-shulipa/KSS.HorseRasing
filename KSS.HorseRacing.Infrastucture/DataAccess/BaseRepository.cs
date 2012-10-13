@@ -7,7 +7,7 @@
 
     public abstract class BaseRepository
     {
-         /// <summary>
+        /// <summary>
         /// The database context.
         /// </summary>
         private EfContext _context;
@@ -46,7 +46,7 @@
         /// </typeparam>
         protected void save<T>(T entity) where T : BaseEntity
         {
-                save(entity, getContext());
+            save(entity, getContext());
         }
 
         /// <summary>
@@ -102,7 +102,7 @@
         /// </typeparam>
         private void modify<T>(T entity, EfContext context) where T : BaseEntity
         {
-            context.Entry(entity).State = EntityState.Modified;            
+            context.Entry(entity).State = EntityState.Modified;
             context.SaveChanges();
         }
 
@@ -123,6 +123,5 @@
             context.Set<T>().Add(entity);
             context.SaveChanges();
         }
-    }
     }
 }

@@ -8,11 +8,4 @@
 
         public virtual Role UserRole { get; set; }
     }
-
-    public class SecureCredentials
-    {
-        public string Salt { get; set; }
-
-        public string Value { get; set; }
-    }
 }

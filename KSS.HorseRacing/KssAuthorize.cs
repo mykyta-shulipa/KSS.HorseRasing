@@ -6,7 +6,7 @@
 
     public class KssAuthorize : AuthorizeAttribute
     {
-            /// <summary>
+        /// <summary>
         /// The on authorization act.
         /// </summary>
         /// <param name="filterContext">
@@ -74,5 +74,4 @@
         }
     }
 
-    }
 }
