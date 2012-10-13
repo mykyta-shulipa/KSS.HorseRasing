@@ -14,8 +14,18 @@
 
         public IDbSet<Participant> Participants { get; set; }
 
+        public IDbSet<User> Users { get; set; }
+
+        public IDbSet<Role> Roles { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+//#if DEBUG
+            Database.SetInitializer(new DatabaseInitializer());
+//#endif
+            //Database.SetInitializer(
+            //    new MigrateDatabaseToLatestVersion<EfContext, Configuration>());
+
             modelBuilder.Entity<Participant>().HasMany(x => x.Races).WithMany(x => x.Participants);
         }
     }

@@ -1,0 +1,33 @@
+﻿@using KSS.HorseRacing
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery",
+        "~/bundles/bootstrapJs",
+        "~/bundles/jqueryval",
+        "~/bundles/jqueryval-unob",
+        "~/bundles/modernizr",
+        "~/bundles/custom")
+    @Styles.Render("~/css/bootstrapCss", "~/css/custom")
+</head>
+<body>
+    <div class="container">
+        <div class="row inline">
+                        
+            <dl id="public_navbar" class="nav nav-pills vertical-centered pull-right">               
+                @Html.ActionMenuItem("Home", "Home", "Index")
+                @Html.ActionMenuItem("Service", "Home", "Service")
+                @Html.ActionMenuItem("Tour", "Home", "Tour")
+                @Html.ActionMenuItem("About", "Home", "About")
+                @Html.ActionMenuItem("Contact", "Home", "Contact")
+                @Html.ActionMenuItem("Login", "Account", "Login")
+            </dl>
+        </div>
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
