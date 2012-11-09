@@ -14,21 +14,25 @@
         /// </param>
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            base.OnAuthorization(filterContext);
-
             // user does not authenticated
             if (!filterContext.HttpContext.User.Identity.IsAuthenticated)
             {
+                if (filterContext.HttpContext.Session != null)
+                {
+                    filterContext.HttpContext.Session.Add("key", "Please login to view that page.");
+                }
+
                 filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
-                    {
-                        { "message", "Please login to view that page." },
+                    {                        
                         { "controller", "Account" },
                         { "action", "Login" },
                         { "ReturnUrl", filterContext.HttpContext.Request.RawUrl }
                     });
                 return;
             }
+
+            base.OnAuthorization(filterContext);
 
             // user already authenticated, but have not permissions to make action
             if (filterContext.Result is HttpUnauthorizedResult)
@@ -54,23 +58,15 @@
         /// </returns>
         protected override bool AuthorizeCore(System.Web.HttpContextBase httpContext)
         {
-            var roles = Roles.Split(',');
+            base.AuthorizeCore(httpContext);
 
-            var isAuthorized = base.AuthorizeCore(httpContext);
-
-            var isAuthenticated = httpContext.User.Identity.IsAuthenticated;
-
-            if (isAuthenticated)
+            if (string.IsNullOrWhiteSpace(Roles))
             {
-                if (string.IsNullOrWhiteSpace(Roles))
-                {
-                    return true;
-                }
-
-                return roles.Any(role => httpContext.User.IsInRole(role));
+                return true;
             }
 
-            return false;
+            var roles = Roles.Split(',');
+            return roles.Any(role => httpContext.User.IsInRole(role));
         }
     }
 
