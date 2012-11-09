@@ -12,17 +12,6 @@
     {
         private static IContainer _container;
 
-        private static void build()
-        {
-
-            var builder = new ContainerBuilder();
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());
-            builder.Register(c => new CryptoProviderMd5()).As<ICryptoProvider>().InstancePerHttpRequest();            
-            builder.RegisterFilterProvider();
-            _container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(_container));
-        }
-
         public static T Resolve<T>()
         {
             if (_container == null)
@@ -33,6 +22,15 @@
             return _container.Resolve<T>();
         }
 
+        private static void build()
+        {
 
+            var builder = new ContainerBuilder();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.Register(c => new CryptoProviderMd5()).As<ICryptoProvider>().InstancePerHttpRequest();            
+            builder.RegisterFilterProvider();
+            _container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(_container));
+        }
     }
 }

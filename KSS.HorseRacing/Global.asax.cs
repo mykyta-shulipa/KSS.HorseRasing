@@ -3,11 +3,13 @@
     using System.Reflection;
     using System.Web.Http;
     using System.Web.Mvc;
+    using System.Web.Optimization;
     using System.Web.Routing;
 
     using Autofac;
     using Autofac.Integration.Mvc;
 
+    using KSS.HorseRacing.App_Start;
     using KSS.HorseRacing.Infrastucture.DataModels;
 
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -21,6 +23,7 @@
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundlesConfig.RegisterBundles(BundleTable.Bundles);
 
             SetDependencyResolver();
         }
