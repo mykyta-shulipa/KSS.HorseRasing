@@ -11,26 +11,21 @@
         /// </summary>
         private readonly EfContext _context;
 
-        private IUserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UnitOfWork()
+        public UnitOfWork(IUserRepository userRepository)
         {
-            _context = IoC.Resolve<EfContext>();
+            _userRepository = userRepository;
+            _context = new EfContext();
         }
 
         public IUserRepository User
         {
             get
             {
-                if (_userRepository == null)
-                {
-                    _userRepository = IoC.Resolve<IUserRepository>();
-                    _userRepository.SetContext(_context);
-                }
-
+                _userRepository.SetContext(_context);
                 return _userRepository;
             }
-            
         }
 
         /// <summary>

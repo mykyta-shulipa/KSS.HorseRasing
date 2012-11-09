@@ -7,7 +7,7 @@ namespace KSS.HorseRacing.Rules
     {
         public User GetUserByUsername(string username)
         {
-            using (var unit = new UnitOfWork())
+            using (var unit = IoC.Resolve<UnitOfWork>())
             {
                 return unit.User.GetUserByUsername(username);
             }

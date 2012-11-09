@@ -33,7 +33,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
                                 {
                                     Salt = salt,
                                     PasswordHash = cryptoProvider.CreateCryptoPassword("password", salt)
-                                },                                
+                                },
                 UserRole = context.Roles.FirstOrDefault(x => x.Name == Role.ADMIN)
             };
             context.Users.Add(admin);
@@ -74,10 +74,10 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
 
         private void addJockeys(EfContext context)
         {
-            addOneJockey(context, "Hero", "Alexandr", "Sergeevich", "Tvidov", "01-02-1979");
-            addOneJockey(context, "Moonlight", "Maria", "Olegovna", "Kurilo", "26-04-1990");
-            addOneJockey(context, "Warrior", "Nikolay", "Mikhailovitch", "Ivanov", "21-02-1988");
-            addOneJockey(context, "Stone", "Eugeniy", "Alexandrovich", "Seleznev", "27-10-1987");
+            addOneJockey(context, "Hero", "Alexandr", "Sergeevich", "Tvidov", DateTime.Now.AddYears(-5));
+            addOneJockey(context, "Moonlight", "Maria", "Olegovna", "Kurilo", DateTime.Now.AddYears(-5));
+            addOneJockey(context, "Warrior", "Nikolay", "Mikhailovitch", "Ivanov", DateTime.Now.AddYears(-5));
+            addOneJockey(context, "Stone", "Eugeniy", "Alexandrovich", "Seleznev", DateTime.Now.AddYears(-5));
             context.SaveChanges();
         }
 
@@ -101,7 +101,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
             context.Horses.Add(new Horse { DateBirth = DateTime.Now.AddYears(-years), Nickname = nickname });
         }
 
-        private void addOneJockey(EfContext context, string alias, string firstName, string middleName, string lastName, string dateTime)
+        private void addOneJockey(EfContext context, string alias, string firstName, string middleName, string lastName, DateTime dateTime)
         {
             context.Jockeys.Add(
                 new Jockey
@@ -110,7 +110,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
                     FirstName = firstName,
                     LastName = lastName,
                     MiddleName = middleName,
-                    DateBirth = DateTime.Parse(dateTime)
+                    DateBirth = dateTime
                 });
         }
     }

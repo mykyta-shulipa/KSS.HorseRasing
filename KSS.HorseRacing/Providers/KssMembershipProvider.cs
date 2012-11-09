@@ -2,7 +2,6 @@
 {
     using System.Web.Security;
 
-    using KSS.HorseRacing.Infrastucture;
     using KSS.HorseRacing.Services;
 
     public class KssMembershipProvider : MembershipProvider
