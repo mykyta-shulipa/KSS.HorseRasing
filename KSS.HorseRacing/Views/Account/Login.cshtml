@@ -5,7 +5,9 @@
 @{
     Html.EnableClientValidation(true);
 }
-<div class="offset3 span5">
+
+<div class="page-header"></div>
+<div class="offset5 span5">
     @if (!string.IsNullOrWhiteSpace(Model.MessageToShowAbove))
     {
         <div class="alert alert-info">
@@ -31,16 +33,16 @@
             <h2 class="page-header">Login
             </h2>
             <p>
-                If you already have a username (email) and password, please login below.            
+                If you already have a username and password, please login below.            
             </p>
             <br />
             <div id="control" class="control-group pull-right">
-                @Html.LabelFor(x => x.Email, "Email", new { @class = "control-label" })
+                @Html.LabelFor(x => x.Username, "Username", new { @class = "control-label" })
                 <div class="controls">
-                    @Html.EditorFor(x => x.Email)
+                    @Html.EditorFor(x => x.Username)
                 </div>
                 <span class="help-block validation-message pull-right">
-                    @Html.ValidationMessageFor(x => x.Email)
+                    @Html.ValidationMessageFor(x => x.Username)
                 </span>
             </div>
             <div class="control-group pull-right">

@@ -5,10 +5,10 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
     using System.Linq;
 
     using KSS.HorseRacing.Infrastucture.DataModels;
+    using KSS.HorseRacing.Infrastucture.Security;
 
     public class DatabaseInitializer : DropCreateDatabaseAlways<EfContext>
     {
-
         protected override void Seed(EfContext context)
         {
             addJockeys(context);
@@ -24,7 +24,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
 
         private void addUsers(EfContext context)
         {
-            var cryptoProvider = IoC.Resolve<ICryptoProvider>();
+            var cryptoProvider = new CryptoProviderMd5();
             var salt = cryptoProvider.CreateSalt();
             var admin = new User
             {
@@ -33,7 +33,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
                                 {
                                     Salt = salt,
                                     PasswordHash = cryptoProvider.CreateCryptoPassword("password", salt)
-                                },
+                                },                                
                 UserRole = context.Roles.FirstOrDefault(x => x.Name == Role.ADMIN)
             };
             context.Users.Add(admin);

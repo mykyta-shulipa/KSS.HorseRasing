@@ -2,8 +2,18 @@
 {
     using System.Web.Security;
 
+    using KSS.HorseRacing.Infrastucture;
+    using KSS.HorseRacing.Services;
+
     public class KssMembershipProvider : MembershipProvider
     {
+        private readonly AccountService _accountService;
+
+        public KssMembershipProvider()
+        {
+            _accountService = IoC.Resolve<AccountService>();
+        }
+
         /// <summary>
         /// Adds a new membership user to the data source.
         /// </summary>
@@ -82,7 +92,7 @@
         /// <param name="username">The name of the user to validate. </param><param name="password">The password for the specified user. </param>
         public override bool ValidateUser(string username, string password)
         {
-            throw new System.NotImplementedException();
+            return _accountService.ValidateUser(username, password);
         }
 
         /// <summary>

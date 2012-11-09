@@ -6,6 +6,9 @@ namespace KSS.HorseRacing.App_Start
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        "~/Scripts/jquery-1.8.1.*"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrapJs").Include(
                         "~/Scripts/bootstrap*"));
 

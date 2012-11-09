@@ -1,7 +1,7 @@
 ﻿namespace KSS.HorseRacing.Services
 {
     using KSS.HorseRacing.Infrastucture;
-    using KSS.HorseRacing.Infrastucture.DataModels;
+    using KSS.HorseRacing.Rules;
 
     public class AccountService
     {
@@ -15,29 +15,16 @@
             _cryptoProvider = cryptoProvider;
         }
 
-        public bool ValidateUser(string email, string password)
+        public bool ValidateUser(string username, string password)
         {
-            var user = _accountRule.GetUserByEmail(email);
+            var user = _accountRule.GetUserByUsername(username);
 
-            if (user == null)
-            {
-                return false;
-            }
-
-            if (!_cryptoProvider.ComparePassword(user, password))
+            if (user == null || !_cryptoProvider.ComparePassword(user, password))
             {
                 return false;
             }
 
             return true;
-        }
-    }
-
-    public class AccountRule
-    {
-        public User GetUserByEmail(string email)
-        {
-            return new User();
         }
     }
 }

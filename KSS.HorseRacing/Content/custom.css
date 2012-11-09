@@ -1,0 +1,200 @@
+.vertical-centered {
+    vertical-align: bottom;
+}
+
+.bottom-valign {
+    vertical-align: baseline;
+}
+
+.validation-message {
+    color: red;
+}
+
+.none-resize {
+    resize: none;
+}
+
+.scrollable {
+    overflow: auto;
+}
+
+.clear-margin {
+    margin: 0px !important;
+}
+
+table thead tr .headerSortUp {
+    background-image: url(images\\asc.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+table thead tr .headerSortDown {
+    background-image: url(images\\desc.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+table thead tr .header {
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+table thead tr .headerSortDown, table thead tr .headerSortUp {
+    background-color: #8dbdd8;
+}
+
+.cursor-hand {
+    cursor: pointer;
+}
+
+.logo {
+    height: 20px;
+}
+
+.min-width-60 {
+    min-width: 60px;
+}
+
+.min-width-75 {
+    min-width: 75px;
+}
+
+.min-width-105 {
+    min-width: 105px;
+}
+
+.min-width-170 {
+    min-width: 170px;
+}
+
+.min-width-270 {
+    min-width: 270px;
+}
+
+.min-width-for-audio {
+    min-width: 305px;
+}
+
+.min-width-370 {
+    min-width: 370px;
+}
+
+.min-width-390 {
+    min-width: 390px;
+}
+
+.min-width-450 {
+    min-width: 450px;
+}
+
+.min-width-525 {
+    min-width: 520px;
+}
+
+.text-blue {
+    color: blue;
+}
+
+.text-green {
+    color: green;
+}
+
+.text-yellow {
+    color: gold;
+}
+
+.text-red {
+    color: red;
+}
+
+.table-without-border {
+    border-left: 0px !important;
+}
+
+.table-without-border th {
+    border-left: 0px !important;
+}
+
+.with-left-border {
+    border-left: 1px solid #DDD !important;
+}
+
+    .with-left-border td {
+        border-left: 1px solid #DDD !important;
+    }
+
+table .scorecard-questions {
+    width: 60% !important;
+}
+
+    table .scorecard-questions th {
+        width: 60% !important;
+    }
+
+table .scorecard-comment {
+    width: 40% !important;
+}
+
+    table .scorecard-comment th {
+        width: 40% !important;
+    }
+
+table .scorecard-right-part-in-table {
+    width: 100% !important;
+}
+
+.input-error {
+    border: 1px solid #b94a48;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.input-success {
+    border: 1px solid #468847;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.linkable {
+}
+
+.text-for-toogle-checkbox {
+    font-size: large;
+}
+
+.overflow-visible {
+    overflow: visible !important;
+}
+
+.without-left-margin {
+    margin-left: 0px !important;
+}
+
+
+/* Utility classes table
+------------------------- */
+.responsive-utilities th small {
+    display: block;
+    font-weight: normal;
+    color: #999;
+}
+
+.responsive-utilities tbody th {
+    font-weight: normal;
+}
+
+.responsive-utilities td {
+    text-align: center;
+}
+
+    .responsive-utilities td.is-visible {
+        color: #468847;
+        background-color: #dff0d8 !important;
+    }
+
+    .responsive-utilities td.is-hidden {
+        color: #ccc;
+        background-color: #f9f9f9 !important;
+    }

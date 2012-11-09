@@ -1,6 +1,5 @@
-﻿namespace KSS.HorseRacing.Infrastucture.DataAccess
+namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
 {
-    using System;
     using System.Data;
 
     using KSS.HorseRacing.Infrastucture.DataModels;
@@ -30,8 +29,7 @@
         /// The current database context.
         /// </returns>
         protected EfContext getContext()
-        {
-            //return _context ?? UnityResolver.Resolve<IContext>();
+        {            
             return _context;
         }
 

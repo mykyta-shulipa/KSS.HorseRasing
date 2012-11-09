@@ -1,18 +1,19 @@
-﻿using System.Web.Mvc;
-
-namespace KSS.HorseRacing.Controllers
+﻿namespace KSS.HorseRacing.Controllers
 {
+    using System.Web.Mvc;
     using System.Web.Security;
 
     using KSS.HorseRacing.Models;
 
     public class AccountController : Controller
     {
-        public ActionResult Index()
+        private readonly SessionStorage _sessionStorage;
+
+        public AccountController(/*SessionStorage sessionStorage*/)
         {
-            return View();
+            _sessionStorage = new SessionStorage();
         }
-        
+
         /// <summary>
         /// The login.
         /// </summary>
@@ -38,9 +39,9 @@ namespace KSS.HorseRacing.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(model.Email, model.Password))
+                if (Membership.ValidateUser(model.Username, model.Password))
                 {
-                    FormsAuthentication.SetAuthCookie(model.Email, false);
+                    FormsAuthentication.SetAuthCookie(model.Username, false);
 
                     if (Url.IsLocalUrl(returnUrl)
                         && returnUrl.Length > 1
@@ -51,7 +52,7 @@ namespace KSS.HorseRacing.Controllers
                         return Redirect(returnUrl);
                     }
 
-                    return RedirectToAction("Dashboard", "Coach");
+                    return RedirectToAction("Index", "Horses");
                 }
             }
 
@@ -63,6 +64,13 @@ namespace KSS.HorseRacing.Controllers
         public ActionResult PermissionsError()
         {
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            _sessionStorage.AddValueWithKey("key", "Please login to view that page.");
+            return RedirectToAction("Login");
         }
     }
 }
