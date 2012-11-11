@@ -149,11 +149,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\KssMembershipProvider.cs" />
     <Compile Include="Providers\KssRoleProvider.cs" />
-    <Compile Include="Providers\RoleService.cs" />
     <Compile Include="Rules\AccountRule.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\HorseService.cs" />
     <Compile Include="Services\JokeyService.cs" />
+    <Compile Include="Services\RoleService.cs" />
     <Compile Include="SessionStorage.cs" />
   </ItemGroup>
   <ItemGroup>

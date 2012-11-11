@@ -1,13 +1,14 @@
 ﻿<div class="btn-group pull-right">
     @if (Request.IsAuthenticated)
     {
-        <div class="btn-group pull-right">
+        <div class="pull-right">
             <div class="btn dropdown-toggle btn-info" data-toggle="dropdown">
                 <i class="icon-user"></i>
                 <span class="label label-info">
                     @User.Identity.Name
                 </span><span class="caret"></span>
-            </div>
+            </div>         
+            <br/>            
             <ul class="dropdown-menu">                
                 <li>
                     @Html.ActionLink("LogOff", "Logout", "Account")

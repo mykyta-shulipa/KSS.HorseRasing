@@ -1,23 +1,22 @@
 ﻿@using KSS.HorseRacing.Infrastucture.DataModels
 @model IEnumerable<Jockey>
-                         @{
+@{
     ViewBag.Title = "List Jockeys";
 }
 <div class="page-header"></div>
 <div class="page-header">
-    <h2>
-        Jockeys List
+    <h2>Jockeys List
     </h2>
 </div>
 @if (User.IsInRole(Role.ADMIN))
 {
     <p>
-        @Html.ActionLink("Create New", "Create",null, new {@class="btn btn-primary btn-large pull-right"})
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-large pull-right" })
     </p>
-<br/>
-<br/>
-<br/>    
-}                                               
+    <br />
+    <br />
+    <br />    
+}
 <table id="sorting-table" class="table table-bordered table-striped table-hover tablesorter">
     <thead>
         <tr>
@@ -47,9 +46,10 @@
             }
         </tr>
     </thead>
-    @foreach (var item in Model)
-    {
-        <tbody>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Alias)
@@ -82,6 +82,6 @@
                     </td>
                 }
             </tr>
-        </tbody>        
-    }
+        }
+    </tbody>
 </table>

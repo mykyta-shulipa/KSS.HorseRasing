@@ -2,6 +2,8 @@
 {
     using System.Web.Security;
 
+    using KSS.HorseRacing.Services;
+
     public class KssRoleProvider : RoleProvider
     {
         private RoleService _roleService;
@@ -36,6 +38,10 @@
             if (userRole != null)
             {
                 rolesForUser[0] = userRole.Name;
+            }
+            else
+            {
+                rolesForUser[0] = string.Empty;
             }
 
             return rolesForUser;

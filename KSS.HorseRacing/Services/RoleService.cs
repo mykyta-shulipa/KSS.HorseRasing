@@ -1,4 +1,4 @@
-﻿namespace KSS.HorseRacing.Providers
+namespace KSS.HorseRacing.Services
 {
     using KSS.HorseRacing.Infrastucture.DataAccess;
     using KSS.HorseRacing.Infrastucture.DataModels;

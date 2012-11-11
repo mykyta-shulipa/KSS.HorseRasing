@@ -3,6 +3,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
     <title>@ViewBag.Title</title>
     @Scripts.Render("~/bundles/jquery",
         "~/bundles/bootstrapJs",
@@ -12,7 +14,6 @@
     @Styles.Render("~/css/bootstrapCss", "~/css/custom")
 </head>
 <body>
-
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -29,8 +30,8 @@
         <section id="main" class="container-fluid">
             @RenderBody()
         </section>
-        <footer>
-        </footer>
+        @*<footer>              
+        </footer>*@
     </div>
 
 </body>
