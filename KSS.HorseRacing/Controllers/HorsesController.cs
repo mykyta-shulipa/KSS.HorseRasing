@@ -1,6 +1,4 @@
-﻿
-
-namespace KSS.HorseRacing.Controllers
+﻿namespace KSS.HorseRacing.Controllers
 {
     using System.Web.Mvc;
 

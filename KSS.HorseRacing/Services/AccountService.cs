@@ -1,6 +1,7 @@
 ﻿namespace KSS.HorseRacing.Services
 {
     using KSS.HorseRacing.Infrastucture;
+    using KSS.HorseRacing.Infrastucture.Security;
     using KSS.HorseRacing.Rules;
 
     public class AccountService

@@ -1,4 +1,4 @@
-namespace KSS.HorseRacing.Infrastucture
+namespace KSS.HorseRacing.Infrastucture.Security
 {
     using KSS.HorseRacing.Infrastucture.DataModels;
 

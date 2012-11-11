@@ -9,9 +9,9 @@
     {
         private readonly SessionStorage _sessionStorage;
 
-        public AccountController(/*SessionStorage sessionStorage*/)
+        public AccountController(SessionStorage sessionStorage)
         {
-            _sessionStorage = new SessionStorage();
+            _sessionStorage = sessionStorage;
         }
 
         /// <summary>

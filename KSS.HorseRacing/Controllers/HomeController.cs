@@ -4,13 +4,12 @@
 
     using KSS.HorseRacing.Infrastucture.DataAccess;
     using KSS.HorseRacing.Infrastucture.DataAccess.Filters;
-    using KSS.HorseRacing.Infrastucture.DataAccess.Repositories;
 
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            using (var unit = new UnitOfWork(new UserRepository()))
+            using (var unit = new UnitOfWork())
             {
                 unit.User.LoadUsers(new UserFilter());
             }

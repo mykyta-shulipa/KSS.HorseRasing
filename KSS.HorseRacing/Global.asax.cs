@@ -6,7 +6,7 @@
     using System.Web.Routing;
 
     using KSS.HorseRacing.App_Start;
-    using KSS.HorseRacing.Infrastucture;
+    using KSS.HorseRacing.Configuration;
 
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
@@ -21,12 +21,13 @@
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundlesConfig.RegisterBundles(BundleTable.Bundles);
 
-            SetDependencyResolver();
+            setDependencyResolver();
         }
 
-        private void SetDependencyResolver()
+        private void setDependencyResolver()
         {
-            IoC.Build();
+            WebDiConfig.Register();
+            ControllerBuilder.Current.SetControllerFactory(typeof(UnityControllerFactory));            
         }
     }
 }
