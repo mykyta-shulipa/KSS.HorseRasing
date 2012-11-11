@@ -2,15 +2,22 @@
 {
     using System.Web.Mvc;
 
+    using KSS.HorseRacing.Services;
+
     [KssAuthorize]
     public class JokeyController : Controller
     {
-        //
-        // GET: /Jokey/
+        private readonly JokeyService _jokeyService;
+
+        public JokeyController(JokeyService jokeyService)
+        {
+            _jokeyService = jokeyService;
+        }
 
         public ActionResult Index()
         {
-            return View();
+            var model = _jokeyService.GetListJokeys();
+            return View(model);
         }
 
         //

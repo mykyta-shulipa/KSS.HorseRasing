@@ -2,13 +2,22 @@
 {
     using System.Web.Mvc;
 
+    using KSS.HorseRacing.Services;
+
     [KssAuthorize]
     public class HorsesController : Controller
     {
+        private readonly HorseService _horseService;
+
+        public HorsesController(HorseService horseService)
+        {
+            _horseService = horseService;
+        }
 
         public ActionResult Index()
         {
-            return View();
+            var model = _horseService.GetListHorses();
+            return View(model);
         }
 
         public ActionResult Details(int id)

@@ -1,6 +1,4 @@
 ﻿@using System.Web.Optimization
-@using KSS.HorseRacing
-@using KSS.HorseRacing.Infrastucture.DataModels
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,19 +22,6 @@
                 <div id="logindisplay">
                     @Html.Partial("_LogOnPartial")
                 </div>
-                @{if (User.Identity.IsAuthenticated)
-                  {
-                    <div class="nav-collapse">
-                        <dl class="nav">
-
-                            @if (Roles.IsUserInRole(Role.ADMIN))
-                            {
-                                @: You login as Admin
-                            }
-                        </dl>
-                    </div>
-                  }
-                }
             </div>
         </div>
     </div>

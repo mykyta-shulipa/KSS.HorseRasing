@@ -1,5 +1,4 @@
-﻿@using KSS.HorseRacing
-<div class="btn-group pull-right">
+﻿<div class="btn-group pull-right">
     @if (Request.IsAuthenticated)
     {
         <div class="btn-group pull-right">
@@ -9,10 +8,9 @@
                     @User.Identity.Name
                 </span><span class="caret"></span>
             </div>
-            <ul class="dropdown-menu">
-                <li class="divider"></li>
+            <ul class="dropdown-menu">                
                 <li>
-                    @Html.ActionLink("LogOff", "Login", "Account")
+                    @Html.ActionLink("LogOff", "Logout", "Account")
                 </li>
             </ul>
         </div>

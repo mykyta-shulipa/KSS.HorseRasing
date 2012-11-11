@@ -1,0 +1,87 @@
+﻿@using KSS.HorseRacing.Infrastucture.DataModels
+@model IEnumerable<Jockey>
+                         @{
+    ViewBag.Title = "List Jockeys";
+}
+<div class="page-header"></div>
+<div class="page-header">
+    <h2>
+        Jockeys List
+    </h2>
+</div>
+@if (User.IsInRole(Role.ADMIN))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create",null, new {@class="btn btn-primary btn-large pull-right"})
+    </p>
+<br/>
+<br/>
+<br/>    
+}                                               
+<table id="sorting-table" class="table table-bordered table-striped table-hover tablesorter">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Alias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateBirth)
+            </th>
+            <td></td>
+            @if (User.IsInRole(Role.ADMIN) || User.IsInRole(Role.JUDGE))
+            {
+                <td></td>                                                             
+            }
+            @if (User.IsInRole(Role.ADMIN))
+            {
+                <td></td>                                                             
+            }
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alias)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateBirth)
+                </td>
+                @if (User.IsInRole(Role.ADMIN) || User.IsInRole(Role.JUDGE))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn" })
+                    </td>                                                   
+                }
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn" })
+                </td>
+                @if (User.IsInRole(Role.ADMIN))
+                {
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn" })
+                    </td>
+                }
+            </tr>
+        </tbody>        
+    }
+</table>

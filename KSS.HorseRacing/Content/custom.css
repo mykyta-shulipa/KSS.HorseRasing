@@ -21,15 +21,16 @@
 .clear-margin {
     margin: 0px !important;
 }
+/*
 
 table thead tr .headerSortUp {
-    background-image: url(images\\asc.gif);
+    background-image: url(images\\asc.png);
     background-repeat: no-repeat;
     background-position: center right;
 }
 
 table thead tr .headerSortDown {
-    background-image: url(images\\desc.gif);
+    background-image: url(images\\desc.png);
     background-repeat: no-repeat;
     background-position: center right;
 }
@@ -42,6 +43,7 @@ table thead tr .header {
 table thead tr .headerSortDown, table thead tr .headerSortUp {
     background-color: #8dbdd8;
 }
+*/
 
 .cursor-hand {
     cursor: pointer;
@@ -111,9 +113,9 @@ table thead tr .headerSortDown, table thead tr .headerSortUp {
     border-left: 0px !important;
 }
 
-.table-without-border th {
-    border-left: 0px !important;
-}
+    .table-without-border th {
+        border-left: 0px !important;
+    }
 
 .with-left-border {
     border-left: 1px solid #DDD !important;
@@ -122,26 +124,6 @@ table thead tr .headerSortDown, table thead tr .headerSortUp {
     .with-left-border td {
         border-left: 1px solid #DDD !important;
     }
-
-table .scorecard-questions {
-    width: 60% !important;
-}
-
-    table .scorecard-questions th {
-        width: 60% !important;
-    }
-
-table .scorecard-comment {
-    width: 40% !important;
-}
-
-    table .scorecard-comment th {
-        width: 40% !important;
-    }
-
-table .scorecard-right-part-in-table {
-    width: 100% !important;
-}
 
 .input-error {
     border: 1px solid #b94a48;
@@ -197,4 +179,52 @@ table .scorecard-right-part-in-table {
     .responsive-utilities td.is-hidden {
         color: #ccc;
         background-color: #f9f9f9 !important;
+    }
+
+
+/* tables */
+table.tablesorter {
+    font-family: arial;
+    background-color: #CDCDCD;
+    margin: 10px 0pt 15px;
+    font-size: 8pt;
+    width: 100%;
+    text-align: left;
+}
+
+    table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+        background-color: #e6EEEE;
+        border: 1px solid #FFF;
+        font-size: 8pt;
+        padding: 4px;
+    }
+
+    table.tablesorter thead tr .header {
+        background-image: url(images\\bg.gif);
+        background-repeat: no-repeat;
+        background-position: center right;
+        cursor: pointer;
+    }
+
+    table.tablesorter tbody td {
+        color: #3D3D3D;
+        padding: 4px;
+        background-color: #FFF;
+        vertical-align: top;
+    }
+
+    table.tablesorter tbody tr.odd td {
+        background-color: #F0F0F6;
+    }
+
+    table.tablesorter thead tr .headerSortUp {
+        background-image: url(images\\asc.gif);
+    }
+
+    table.tablesorter thead tr .headerSortDown {
+        background-image: url(images\\desc.gif);
+    }
+
+    table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+        background-color: #8dbdd8;
     }

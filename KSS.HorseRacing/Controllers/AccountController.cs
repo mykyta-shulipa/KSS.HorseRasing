@@ -17,15 +17,13 @@
         /// <summary>
         /// The login.
         /// </summary>
-        /// <param name="message">
-        /// The message to show on Login page above form.
-        /// </param>
         /// <returns>
         /// The System.Web.Mvc.ActionResult.
         /// </returns>
-        public ActionResult Login(string message)
+        public ActionResult Login()
         {
             var model = new LoginModel();
+            var message = _sessionStorage.GetValueAndClearAfter(SessionStorage.LOGIN_MESSAGE);
             if (!string.IsNullOrWhiteSpace(message))
             {
                 model.MessageToShowAbove = message;
@@ -69,7 +67,7 @@
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            _sessionStorage.AddValueWithKey("key", "Please login to view that page.");
+            _sessionStorage.AddValueWithKey(SessionStorage.LOGIN_MESSAGE, "Please login to view that page.");
             return RedirectToAction("Login");
         }
     }

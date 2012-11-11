@@ -196,4 +196,5 @@
         })();
     }
 
+    $("#sorting-table").tablesorter();
 });

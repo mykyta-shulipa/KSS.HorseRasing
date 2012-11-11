@@ -19,6 +19,7 @@ namespace KSS.HorseRacing.App_Start
                 "~/Scripts/jquery.validate.unobtrusive*"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                        "~/Scripts/jquery.tablesorter.*",
                         "~/Scripts/custom.js"));
 
             bundles.Add(new StyleBundle("~/css/bootstrapCss").Include(

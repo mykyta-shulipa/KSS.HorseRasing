@@ -4,6 +4,12 @@
 
     public class KssRoleProvider : RoleProvider
     {
+        private RoleService _roleService;
+
+        public KssRoleProvider()
+        {
+            _roleService = IoC.Resolve<RoleService>();
+        }
         /// <summary>
         /// Gets a value indicating whether the specified user is in the specified role for the configured applicationName.
         /// </summary>
@@ -13,7 +19,7 @@
         /// <param name="username">The user name to search for.</param><param name="roleName">The role to search in.</param>
         public override bool IsUserInRole(string username, string roleName)
         {
-            throw new System.NotImplementedException();
+            return _roleService.IsUserInRole(username, roleName);
         }
 
         /// <summary>
@@ -25,7 +31,14 @@
         /// <param name="username">The user to return a list of roles for.</param>
         public override string[] GetRolesForUser(string username)
         {
-            throw new System.NotImplementedException();
+            var userRole = _roleService.GetUserRole(username);
+            var rolesForUser = new string[1];
+            if (userRole != null)
+            {
+                rolesForUser[0] = userRole.Name;
+            }
+
+            return rolesForUser;
         }
 
         /// <summary>
