@@ -1,0 +1,41 @@
+﻿@model KSS.HorseRacing.Models.HorseViewModel
+
+@{
+    ViewBag.Title = "Add new Horse";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Add new horse</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HorseId)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nickname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nickname)
+            @Html.ValidationMessageFor(model => model.Nickname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateBirth)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateBirth)
+            @Html.ValidationMessageFor(model => model.DateBirth)
+        </div>
+
+        <p>
+            <input type="submit" class="btn btn-primary" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new {@class="btn"})
+</div>

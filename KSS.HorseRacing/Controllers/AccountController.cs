@@ -40,7 +40,6 @@
                 if (Membership.ValidateUser(model.Username, model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.Username, false);
-
                     if (Url.IsLocalUrl(returnUrl)
                         && returnUrl.Length > 1
                         && returnUrl.StartsWith("/")

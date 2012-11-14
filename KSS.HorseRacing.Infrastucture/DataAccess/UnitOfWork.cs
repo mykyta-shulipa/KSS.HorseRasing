@@ -13,8 +13,12 @@
 
         private IUserRepository _userRepository;
 
+        private IHorseRepository _horseRepository;
+
+        private IJockeyRepository _jockeyRepository;
+
         public UnitOfWork()
-        {            
+        {
             _context = IoC.Resolve<EfContext>();
         }
 
@@ -25,6 +29,26 @@
                 _userRepository = IoC.Resolve<IUserRepository>();
                 _userRepository.SetContext(_context);
                 return _userRepository;
+            }
+        }
+
+        public IHorseRepository Horse
+        {
+            get
+            {
+                _horseRepository = IoC.Resolve<IHorseRepository>();
+                _horseRepository.SetContext(_context);
+                return _horseRepository;
+            }
+        }
+
+        public IJockeyRepository Jockey
+        {
+            get
+            {
+                _jockeyRepository = IoC.Resolve<IJockeyRepository>();
+                _jockeyRepository.SetContext(_context);
+                return _jockeyRepository;
             }
         }
 

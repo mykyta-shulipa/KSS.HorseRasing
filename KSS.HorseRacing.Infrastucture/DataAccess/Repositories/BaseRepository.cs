@@ -1,10 +1,12 @@
 namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
 {
     using System.Data;
+    using System.Data.Entity;
 
+    using KSS.HorseRacing.Infrastucture.DataAccess.Interfaces;
     using KSS.HorseRacing.Infrastucture.DataModels;
 
-    public abstract class BaseRepository
+    public abstract class BaseRepository : IBaseRepository
     {
         /// <summary>
         /// The database context.
@@ -20,6 +22,25 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         public void SetContext(EfContext context)
         {
             _context = context;
+        }
+
+        /// <summary>
+        /// The set commit mode.
+        /// </summary>
+        /// <param name="isDeferred">
+        /// The is deferred.
+        /// </param>
+        public void SetCommitMode(bool isDeferred)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// The commit.
+        /// </summary>
+        public void Commit()
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -98,7 +119,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         /// <typeparam name="T">
         /// The general type T.
         /// </typeparam>
-        private void modify<T>(T entity, EfContext context) where T : BaseEntity
+        private void modify<T>(T entity, DbContext context) where T : BaseEntity
         {
             context.Entry(entity).State = EntityState.Modified;
             context.SaveChanges();
@@ -116,7 +137,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         /// <typeparam name="T">
         /// The general type T.
         /// </typeparam>
-        private void create<T>(T entity, EfContext context) where T : BaseEntity
+        private void create<T>(T entity, DbContext context) where T : BaseEntity
         {
             context.Set<T>().Add(entity);
             context.SaveChanges();

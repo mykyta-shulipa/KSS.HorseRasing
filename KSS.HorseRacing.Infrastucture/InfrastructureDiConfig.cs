@@ -12,6 +12,8 @@ namespace KSS.HorseRacing.Infrastucture
             IoC.Register<ICryptoProvider, CryptoProviderMd5>("crypto");
             IoC.Register<ICryptoProvider, CryptoProviderMd5>();
             IoC.Register<IUserRepository, UserRepository>();
+            IoC.Register<IHorseRepository, HorseRepository>();
+            IoC.Register<IJockeyRepository, JockeyRepository>();
             IoC.RegisterType(typeof(EfContext));
         }
     }

@@ -145,6 +145,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="KssAuthorize.cs" />
+    <Compile Include="Models\HorseViewModel.cs" />
+    <Compile Include="Models\JockeyViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\KssMembershipProvider.cs" />
@@ -206,6 +208,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Jokey\Index.cshtml" />
+    <Content Include="Views\Horses\Details.cshtml" />
+    <Content Include="Views\Horses\Create.cshtml" />
+    <Content Include="Views\Horses\Edit.cshtml" />
+    <Content Include="Views\Horses\Delete.cshtml" />
+    <Content Include="Views\Jokey\Details.cshtml" />
+    <Content Include="Views\Jokey\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,44 @@
+﻿@model KSS.HorseRacing.Models.JockeyViewModel
+
+<fieldset>
+    <legend>Jockey Details</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Alias)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Alias)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.MiddleName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MiddleName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.DateBirth)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateBirth)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.JockeyId }, new { @class = "btn" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+</p>

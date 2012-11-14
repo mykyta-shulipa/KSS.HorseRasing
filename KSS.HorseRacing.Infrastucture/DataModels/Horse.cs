@@ -7,5 +7,7 @@
         public string Nickname { get; set; }
 
         public DateTime DateBirth { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

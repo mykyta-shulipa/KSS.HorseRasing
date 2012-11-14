@@ -1,0 +1,42 @@
+﻿@model KSS.HorseRacing.Models.HorseViewModel
+@{
+    ViewBag.Title = "Edit Horse";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Edit Horse</legend>
+
+        @Html.HiddenFor(x => x.HorseId)
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HorseId)
+            @Html.ValidationMessageFor(model => model.HorseId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nickname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nickname)
+            @Html.ValidationMessageFor(model => model.Nickname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateBirth)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateBirth)
+            @Html.ValidationMessageFor(model => model.DateBirth)
+        </div>
+
+        <p>
+            <input type="submit" class="btn btn-primary" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new {@class="btn"})
+</div>

@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
 
+    using KSS.HorseRacing.Models;
     using KSS.HorseRacing.Services;
 
     [KssAuthorize]
@@ -22,26 +23,24 @@
 
         public ActionResult Details(int id)
         {
-            return View();
+            var model = _jokeyService.GetJockeyDetails(id);
+            return View(model);
         }
 
-        //
-        // GET: /Jokey/Create
-
         public ActionResult Create()
-        {
-            return View();
+        {            
+            return View(new JockeyViewModel());
         }
 
         //
         // POST: /Jokey/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(JockeyViewModel model)
         {
             try
             {
-                // TODO: Add insert logic here
+                _jokeyService.AddNewJockey(model);
 
                 return RedirectToAction("Index");
             }

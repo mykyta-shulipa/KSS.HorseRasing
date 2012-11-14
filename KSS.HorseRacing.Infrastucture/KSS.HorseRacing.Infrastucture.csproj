@@ -64,8 +64,12 @@
     <Compile Include="DataAccess\Filters\BaseFilter.cs" />
     <Compile Include="DataAccess\Filters\UserFilter.cs" />
     <Compile Include="DataAccess\Interfaces\IBaseRepository.cs" />
+    <Compile Include="DataAccess\Interfaces\IHorseRepository.cs" />
+    <Compile Include="DataAccess\Interfaces\IJockeyRepository.cs" />
     <Compile Include="DataAccess\Interfaces\IUserRepository.cs" />
     <Compile Include="DataAccess\Repositories\BaseRepository.cs" />
+    <Compile Include="DataAccess\Repositories\HorseRepository.cs" />
+    <Compile Include="DataAccess\Repositories\JockeyRepository.cs" />
     <Compile Include="DataAccess\Repositories\UserRepository.cs" />
     <Compile Include="DataAccess\UnitOfWork.cs" />
     <Compile Include="DataModels\BaseEntity.cs" />
@@ -73,6 +77,7 @@
     <Compile Include="DataModels\Jockey.cs" />
     <Compile Include="DataModels\Participant.cs" />
     <Compile Include="DataModels\Race.cs" />
+    <Compile Include="DataModels\Racer.cs" />
     <Compile Include="DataModels\Role.cs" />
     <Compile Include="DataModels\SecureCredentials.cs" />
     <Compile Include="DataModels\User.cs" />

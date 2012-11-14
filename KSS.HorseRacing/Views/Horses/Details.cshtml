@@ -1,0 +1,25 @@
+﻿@model KSS.HorseRacing.Models.HorseViewModel
+@{
+    ViewBag.Title = "Horse Details";
+}
+<fieldset>
+    <legend>Horse Details</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Nickname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nickname)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.DateBirth)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateBirth)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HorseId }, new { @class = "btn" })
+    @Html.ActionLink("Back to List", "Index")
+</p>

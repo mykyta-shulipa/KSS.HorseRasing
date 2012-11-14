@@ -6,6 +6,6 @@
 
         public SecureCredentials Password { get; set; }
 
-        public virtual Role UserRole { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
                                     Salt = salt,
                                     PasswordHash = cryptoProvider.CreateCryptoPassword("password", salt)
                                 },
-                UserRole = context.Roles.FirstOrDefault(x => x.Name == Role.ADMIN)
+                Role = context.Roles.FirstOrDefault(x => x.Name == Role.ADMIN)
             };
             context.Users.Add(admin);
 

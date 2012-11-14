@@ -53,7 +53,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
             var source = getContext().Users
                 .WhereIf(filter.Id.HasValue, x => x.Id == filter.Id)
                 .WhereIf(!string.IsNullOrWhiteSpace(filter.Username), x => x.Username.ToUpper() == filter.Username.ToUpper())
-                .WhereIf(!string.IsNullOrWhiteSpace(filter.UserTypeName), x => x.UserRole.Name == filter.UserTypeName);
+                .WhereIf(!string.IsNullOrWhiteSpace(filter.UserTypeName), x => x.Role.Name == filter.UserTypeName);
 
             var list = source.ToList();
             return list;

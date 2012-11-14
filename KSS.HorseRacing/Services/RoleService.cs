@@ -10,7 +10,7 @@ namespace KSS.HorseRacing.Services
             using (var unit = new UnitOfWork())
             {
                 var user = unit.User.GetUserByUsername(username);
-                return user.UserRole;
+                return user.Role;
             }
         }
 
@@ -19,7 +19,7 @@ namespace KSS.HorseRacing.Services
             using (var unit = new UnitOfWork())
             {
                 var user = unit.User.GetUserByUsername(username);
-                var isUserInRole = user.UserRole.Name.ToUpperInvariant() == roleName.ToUpperInvariant();
+                var isUserInRole = user.Role.Name.ToUpperInvariant() == roleName.ToUpperInvariant();
                 return isUserInRole;
             }
         }

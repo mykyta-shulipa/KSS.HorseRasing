@@ -2,6 +2,8 @@
 {
     using System.Web.Mvc;
 
+    using KSS.HorseRacing.Infrastucture.DataModels;
+    using KSS.HorseRacing.Models;
     using KSS.HorseRacing.Services;
 
     [KssAuthorize]
@@ -22,84 +24,74 @@
 
         public ActionResult Details(int id)
         {
-            return View();
+            var model = _horseService.GetHorseDetails(id);
+            return View(model);
         }
 
-        //
-        // GET: /Horses/Create
-
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Create()
         {
-            return View();
+            return View(new HorseViewModel());
         }
 
-        //
-        // POST: /Horses/Create
-
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [KssAuthorize(Roles = Role.ADMIN)]
+        public ActionResult Create(HorseViewModel model)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                _horseService.AddNewHorse(model);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
-        //
-        // GET: /Horses/Edit/5
-
+        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
         public ActionResult Edit(int id)
         {
-            return View();
+            var model = _horseService.GetHorseDetails(id);
+            return View(model);
         }
 
-        //
-        // POST: /Horses/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
+        public ActionResult Edit(HorseViewModel model)
         {
             try
             {
-                // TODO: Add update logic here
+                _horseService.EditHorse(model);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
-        //
-        // GET: /Horses/Delete/5
-
+        [KssAuthorize(Roles = Role.ADMIN)]
+        [HttpGet]
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = _horseService.GetHorseDetails(id);
+            return View(model);
         }
 
-        //
-        // POST: /Horses/Delete/5
-
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [KssAuthorize(Roles = Role.ADMIN)]
+        public ActionResult DeleteHorse(int id)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                _horseService.DeleteHorse(id);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("Index");
             }
         }
     }
