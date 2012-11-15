@@ -11,5 +11,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
         Jockey Get(int id);
 
         void Save(Jockey jockey);
+
+        void Delete(Jockey jockey);
     }
 }

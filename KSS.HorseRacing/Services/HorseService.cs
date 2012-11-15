@@ -7,7 +7,6 @@ namespace KSS.HorseRacing.Services
     using KSS.HorseRacing.Infrastucture.DataAccess;
     using KSS.HorseRacing.Infrastucture.DataModels;
     using KSS.HorseRacing.Models;
-
     
     public class HorseService
     {

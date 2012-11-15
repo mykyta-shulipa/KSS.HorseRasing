@@ -17,6 +17,8 @@
 
         private IJockeyRepository _jockeyRepository;
 
+        private IRaceRepository _raceRepository;
+
         public UnitOfWork()
         {
             _context = IoC.Resolve<EfContext>();
@@ -49,6 +51,20 @@
                 _jockeyRepository = IoC.Resolve<IJockeyRepository>();
                 _jockeyRepository.SetContext(_context);
                 return _jockeyRepository;
+            }
+        }
+
+        public IRaceRepository Race
+        {
+            get
+            {
+                _raceRepository = IoC.Resolve<IRaceRepository>();
+                _raceRepository.SetContext(_context);
+                return _raceRepository;
+            }
+            set
+            {
+                _raceRepository = value;
             }
         }
 

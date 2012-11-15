@@ -51,5 +51,29 @@ namespace KSS.HorseRacing.Services
                 unit.Jockey.Save(jockey);
             }
         }
+
+        public void EditJockey(JockeyViewModel model)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var jockey = unit.Jockey.Get(model.JockeyId);
+                jockey.Alias = model.Alias;
+                jockey.DateBirth = DateTime.Parse(model.DateBirth);
+                jockey.FirstName = model.FirstName;
+                jockey.LastName = model.LastName;
+                jockey.MiddleName = model.LastName;
+                unit.Jockey.Save(jockey);
+            }
+        }
+
+        public void DeleteJockey(int id)
+        {
+
+            using (var unit = new UnitOfWork())
+            {
+                var jockey = unit.Jockey.Get(id);
+                unit.Jockey.Delete(jockey);
+            }
+        }
     }
 }

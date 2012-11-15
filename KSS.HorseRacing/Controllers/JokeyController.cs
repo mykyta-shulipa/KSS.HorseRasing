@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
 
+    using KSS.HorseRacing.Infrastucture.DataModels;
     using KSS.HorseRacing.Models;
     using KSS.HorseRacing.Services;
 
@@ -27,15 +28,14 @@
             return View(model);
         }
 
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Create()
-        {            
+        {
             return View(new JockeyViewModel());
         }
 
-        //
-        // POST: /Jokey/Create
-
         [HttpPost]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Create(JockeyViewModel model)
         {
             try
@@ -46,59 +46,52 @@
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
-        //
-        // GET: /Jokey/Edit/5
-
+        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
         public ActionResult Edit(int id)
         {
-            return View();
+            var model = _jokeyService.GetJockeyDetails(id);
+            return View(model);
         }
 
-        //
-        // POST: /Jokey/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
+        public ActionResult Edit(JockeyViewModel model)
         {
             try
             {
-                // TODO: Add update logic here
-
+                _jokeyService.EditJockey(model);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
-        //
-        // GET: /Jokey/Delete/5
-
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = _jokeyService.GetJockeyDetails(id);
+            return View(model);
         }
 
-        //
-        // POST: /Jokey/Delete/5
-
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [KssAuthorize(Roles = Role.ADMIN)]
+        public ActionResult DeleteJockey(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                _jokeyService.DeleteJockey(id);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("Index");
             }
         }
     }

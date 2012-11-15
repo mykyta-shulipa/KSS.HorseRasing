@@ -24,5 +24,10 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         {
             save(jockey);
         }
+
+        public void Delete(Jockey jockey)
+        {
+            delete(jockey);
+        }
     }
 }

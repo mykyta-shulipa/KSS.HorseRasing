@@ -4,9 +4,17 @@
 <div class="page-header">
 </div>
 <div class="page-header">
-    Index page
+    <h3>Home page</h3>
+
 </div>
-@Html.ActionLink("Horses", "Index", "Horses")
-<br/>
-<br/>
-@Html.ActionLink("Jokeys", "Index", "Jokey")
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.ActionLink("Horses", "Index", "Horses")
+    <br />
+    <br />
+    @Html.ActionLink("Jokeys", "Index", "Jokey")
+    <br />
+    <br />
+    @Html.ActionLink("Races", "Index", "Race")
+}
+

@@ -1,12 +1,19 @@
 ﻿@model KSS.HorseRacing.Models.JockeyViewModel
 @{
-    ViewBag.Title = "Add New Jockey";
+    ViewBag.Title = "Edit Jockey";
 }
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Add New Jockey</legend>
+        <legend>JockeyViewModel</legend>
+
+        @Html.HiddenFor(x => x.JockeyId)
+        <div class="editor-field">
+            @Html.EditorFor(model => model.JockeyId)
+            @Html.ValidationMessageFor(model => model.JockeyId)
+        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Alias)
@@ -49,11 +56,11 @@
         </div>
 
         <p>
-            <input type="submit" class="btn btn-primary" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", null, new {@class="btn"})
+    @Html.ActionLink("Back to List", "Index")
 </div>
