@@ -1,8 +1,11 @@
 ﻿namespace KSS.HorseRacing.Controllers
 {
+    using System;
     using System.Web.Mvc;
+    using System.Web.Security;
 
     using KSS.HorseRacing.Infrastucture.DataModels;
+    using KSS.HorseRacing.Models;
     using KSS.HorseRacing.Services;
 
     [KssAuthorize(Roles = Role.ADMIN)]
@@ -21,64 +24,36 @@
             return View(lIst);
         }
 
-        //
-        // GET: /User/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
-        // GET: /User/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /User/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /User/Edit/5
-
         public ActionResult Edit(int id)
         {
-            return View();
+            var model = _userService.GetUserEditModel(id);
+            return View(model);
         }
 
-        //
-        // POST: /User/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(UserEditViewModel model)
         {
             try
             {
-                // TODO: Add update logic here
+                var exist = _userService.CheckIfUserWithUsernameExist(model.Username);
+                if (!exist)
+                {
+                    var editedUserUsernameOld = _userService.EditUser(model);
+                    if (string.Equals(User.Identity.Name, editedUserUsernameOld) && !string.Equals(model.Username, editedUserUsernameOld))
+                    {
+                        FormsAuthentication.SignOut();
+                        FormsAuthentication.SetAuthCookie(editedUserUsernameOld, false);
+                    }
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
-                return View();
+                return View(model);
             }
+
+            return View(model);
         }
 
         //
@@ -86,18 +61,19 @@
 
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = _userService.GetUserDetailsModel(id);
+            return View(model);
         }
 
         //
         // POST: /User/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult DeleteUser(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                _userService.DeleteUser(id);
 
                 return RedirectToAction("Index");
             }

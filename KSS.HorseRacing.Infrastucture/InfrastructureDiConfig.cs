@@ -14,6 +14,7 @@ namespace KSS.HorseRacing.Infrastucture
             IoC.Register<IUserRepository, UserRepository>();
             IoC.Register<IHorseRepository, HorseRepository>();
             IoC.Register<IJockeyRepository, JockeyRepository>();
+            IoC.Register<IRoleRepository, RoleRepository>();
             IoC.RegisterType(typeof(EfContext));
         }
     }

@@ -152,6 +152,8 @@
     <Compile Include="Models\JockeyViewModel.cs" />
     <Compile Include="Models\ListRacesViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\UserDetailsModel.cs" />
+    <Compile Include="Models\UserEditViewModel.cs" />
     <Compile Include="Models\UsersListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\KssMembershipProvider.cs" />
@@ -225,6 +227,8 @@
     <Content Include="Views\Jokey\Delete.cshtml" />
     <Content Include="Views\Race\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
