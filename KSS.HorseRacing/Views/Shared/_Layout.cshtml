@@ -1,4 +1,6 @@
 ﻿@using System.Web.Optimization
+@using KSS.HorseRacing
+@using KSS.HorseRacing.Infrastucture.DataModels
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +22,12 @@
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </a>
                 <a class="brand" href="/">Horse Racing</a>
+                @if (User.IsInRole(Role.ADMIN))
+                {
+                    <ul class="nav">
+                        @Html.ActionMenuItem("Users List", "User", "Index")
+                    </ul>
+                }
                 <div id="logindisplay">
                     @Html.Partial("_LogOnPartial")
                 </div>

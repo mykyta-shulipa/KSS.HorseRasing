@@ -55,5 +55,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
         /// The CallcoachBusiness.Models.User.
         /// </returns>
         User Get(int id);
+
+        List<User> GetAll();
     }
 }

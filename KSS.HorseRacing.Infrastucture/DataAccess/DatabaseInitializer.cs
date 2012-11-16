@@ -46,7 +46,8 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
                                        {
                                            Salt = salt,
                                            PasswordHash = cryptoProvider.CreateCryptoPassword("password", salt)
-                                       }
+                                       },
+                            Role = context.Roles.FirstOrDefault(x => x.Name == Role.JUDGE)
                         };
             context.Users.Add(judge);
 
@@ -58,7 +59,8 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
                 {
                     Salt = salt,
                     PasswordHash = cryptoProvider.CreateCryptoPassword("password", salt)
-                }
+                },
+                Role = context.Roles.FirstOrDefault(x => x.Name == Role.USER)
             };
             context.Users.Add(jokey);
             context.SaveChanges();

@@ -2,6 +2,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
 
     using KSS.HorseRacing.Infrastucture.DataAccess.Filters;
@@ -54,6 +55,10 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
                 .WhereIf(filter.Id.HasValue, x => x.Id == filter.Id)
                 .WhereIf(!string.IsNullOrWhiteSpace(filter.Username), x => x.Username.ToUpper() == filter.Username.ToUpper())
                 .WhereIf(!string.IsNullOrWhiteSpace(filter.UserTypeName), x => x.Role.Name == filter.UserTypeName);
+            if (filter.WithUserType)
+            {
+                source = source.Include(x => x.Role);
+            }
 
             var list = source.ToList();
             return list;
@@ -78,6 +83,12 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         {
             var user = getContext().Users.FirstOrDefault(x => x.Id == id);
             return user;
+        }
+
+        public List<User> GetAll()
+        {
+            var users = getContext().Users.ToList();
+            return users;
         }
 
         /// <summary>

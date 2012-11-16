@@ -1,8 +1,11 @@
 ﻿@model KSS.HorseRacing.Models.JockeyViewModel
-
+@{
+    ViewBag.Title = "Delete Jockey";
+}
+<div class="page-header"></div>
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
-    <legend>JockeyViewModel</legend>
+    <legend>Delete Jockey</legend>
 
     <div class="display-label">
         @Html.DisplayNameFor(model => model.JockeyId)
@@ -50,8 +53,7 @@
 {
     <p>
         @Html.HiddenFor(x => x.JockeyId)
-        <input type="submit" class="btn btn-danger" value="Delete" />
-        |
+        <input type="submit" class="btn btn-danger" value="Delete" />        
         @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
     </p>
 }

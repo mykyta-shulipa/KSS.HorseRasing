@@ -143,6 +143,7 @@
     <Compile Include="Controllers\JokeyController.cs" />
     <Compile Include="Controllers\RaceController.cs" />
     <Compile Include="Controllers\RaceController1.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -151,6 +152,7 @@
     <Compile Include="Models\JockeyViewModel.cs" />
     <Compile Include="Models\ListRacesViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\UsersListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\KssMembershipProvider.cs" />
     <Compile Include="Providers\KssRoleProvider.cs" />
@@ -160,6 +162,7 @@
     <Compile Include="Services\JokeyService.cs" />
     <Compile Include="Services\RaceService.cs" />
     <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="SessionStorage.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +224,7 @@
     <Content Include="Views\Jokey\Edit.cshtml" />
     <Content Include="Views\Jokey\Delete.cshtml" />
     <Content Include="Views\Race\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

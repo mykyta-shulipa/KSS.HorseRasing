@@ -3,18 +3,27 @@
 }
 <div class="page-header">
 </div>
-<div class="page-header">
-    <h3>Home page</h3>
 
-</div>
 @if (User.Identity.IsAuthenticated)
 {
-    @Html.ActionLink("Horses", "Index", "Horses")
-    <br />
-    <br />
-    @Html.ActionLink("Jokeys", "Index", "Jokey")
-    <br />
-    <br />
-    @Html.ActionLink("Races", "Index", "Race")
+    <div class="page-header">
+        <h3>Select section</h3>
+    </div>  
+    <div>
+        @Html.ActionLink("Horses", "Index", "Horses", null, new { @class = "btn btn-success btn-large" })
+        <br />
+        <br />
+        @Html.ActionLink("Jokeys", "Index", "Jokey", null, new { @class = "btn btn-success btn-large" })
+        <br />
+        <br />
+        @Html.ActionLink("Races", "Index", "Race", null, new { @class = "btn btn-success btn-large" })
+    </div>
+    
+}
+else
+{
+    <div class="page-header">
+        <h3>Home page</h3>
+    </div>  
 }
 

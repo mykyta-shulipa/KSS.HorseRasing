@@ -5,5 +5,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Filters
         public string Username { get; set; }
 
         public string UserTypeName { get; set; }
+
+        public bool WithUserType { get; set; }
     }
 }
