@@ -67,11 +67,13 @@
     <Compile Include="DataAccess\Interfaces\IHorseRepository.cs" />
     <Compile Include="DataAccess\Interfaces\IJockeyRepository.cs" />
     <Compile Include="DataAccess\Interfaces\IRaceRepository.cs" />
+    <Compile Include="DataAccess\Interfaces\IRoleRepository.cs" />
     <Compile Include="DataAccess\Interfaces\IUserRepository.cs" />
     <Compile Include="DataAccess\Repositories\BaseRepository.cs" />
     <Compile Include="DataAccess\Repositories\HorseRepository.cs" />
     <Compile Include="DataAccess\Repositories\JockeyRepository.cs" />
     <Compile Include="DataAccess\Repositories\RaceRepository.cs" />
+    <Compile Include="DataAccess\Repositories\RoleRepository.cs" />
     <Compile Include="DataAccess\Repositories\UserRepository.cs" />
     <Compile Include="DataAccess\UnitOfWork.cs" />
     <Compile Include="DataModels\BaseEntity.cs" />

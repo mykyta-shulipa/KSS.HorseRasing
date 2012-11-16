@@ -32,7 +32,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
         /// <returns>
         /// The System.Collections.Generic.IList`1[T -&gt; CallcoachBusiness.Models.User].
         /// </returns>
-        List<User> LoadUsers(UserFilter filter);
+        IEnumerable<User> LoadUsers(UserFilter filter);
 
         /// <summary>
         /// The get user by email.

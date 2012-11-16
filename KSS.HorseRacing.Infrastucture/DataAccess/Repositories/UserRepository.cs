@@ -25,7 +25,6 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
                 user.Password = new SecureCredentials();
             }
 
-
             save(user);
         }
 
@@ -49,7 +48,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         /// <returns>
         /// The System.Collections.Generic.IList`1[T -&gt; CallcoachBusiness.Models.User].
         /// </returns>
-        public List<User> LoadUsers(UserFilter filter)
+        public IEnumerable<User> LoadUsers(UserFilter filter)
         {
             var source = getContext().Users
                 .WhereIf(filter.Id.HasValue, x => x.Id == filter.Id)
@@ -81,13 +80,16 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         /// </returns>
         public User Get(int id)
         {
-            var user = getContext().Users.FirstOrDefault(x => x.Id == id);
+            var user = getContext().Users
+                .Where(x => x.Id == id)
+                .Include(x => x.Role)
+                .FirstOrDefault();
             return user;
         }
 
         public List<User> GetAll()
         {
-            var users = getContext().Users.ToList();
+            var users = getContext().Users.Include(x => x.Role).ToList();
             return users;
         }
 
