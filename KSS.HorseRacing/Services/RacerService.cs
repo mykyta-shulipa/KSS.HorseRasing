@@ -75,11 +75,42 @@ namespace KSS.HorseRacing.Services
                 var jockeys = unit.Jockey.GetAllJockeys();
                 var model = new RacerEditViewModel
                 {
+                    RacerId = racer.Id,
                     StartDateTime = racer.DateTimeStart,
                     ListHorsesForDropDown = getHorsesListForDropdown(horses),
-                    ListJockeysForDropDown = getJockeysListForDropdown(jockeys)
+                    ListJockeysForDropDown = getJockeysListForDropdown(jockeys),
+                    SelectedHorseId = racer.Horse.Id,
+                    SelectedJockeyId = racer.Jockey.Id,
+                    EndDateTime = racer.DateTimeEnd
                 };
                 return model;
+            }
+        }
+
+        public void EditRacer(RacerEditViewModel model)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var racer = unit.Racer.Get(model.RacerId);
+                if (racer.Horse.Id != model.SelectedHorseId)
+                {
+                    var horse = unit.Horse.Get(model.SelectedHorseId);
+                    racer.Horse = horse;
+                }
+
+                if (racer.Jockey.Id != model.SelectedJockeyId)
+                {
+                    var jockey = unit.Jockey.Get(model.SelectedJockeyId);
+                    racer.Jockey = jockey;
+                }
+
+                if (model.EndDateTime != null)
+                {
+                    racer.DateTimeEnd = model.EndDateTime;
+                }
+
+                racer.DateTimeStart = model.StartDateTime;
+                unit.Racer.Save(racer);
             }
         }
 

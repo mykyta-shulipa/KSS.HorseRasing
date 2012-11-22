@@ -53,10 +53,11 @@
         }
         
         [HttpPost]
-        public ActionResult Edit(RacerViewModel model)
+        public ActionResult Edit(RacerEditViewModel model)
         {
             try
-            {                
+            {
+                _racerService.EditRacer(model);
                 return RedirectToAction("Index");
             }
             catch

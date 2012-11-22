@@ -7,6 +7,8 @@ namespace KSS.HorseRacing.Models
 
     public class RacerEditViewModel
     {
+        public int RacerId { get; set; }
+
         public IEnumerable<SelectListItem> ListHorsesForDropDown { get; set; }
 
         [DisplayName("Horse")]
@@ -17,8 +19,10 @@ namespace KSS.HorseRacing.Models
         [DisplayName("Jockey")]
         public int SelectedJockeyId { get; set; }
 
+        [DisplayName("Together from")]
         public DateTime StartDateTime { get; set; }
 
-        public DateTime EndDateTime { get; set; }
+        [DisplayName("Together to")]
+        public DateTime? EndDateTime { get; set; }
     }
 }
