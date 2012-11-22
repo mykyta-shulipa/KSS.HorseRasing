@@ -38,7 +38,6 @@
             try
             {
                 _racerService.AddNewRacer(model);
-
                 return RedirectToAction("Index");
             }
             catch
@@ -46,30 +45,23 @@
                 return View();
             }
         }
-
-        //
-        // GET: /Racer/Edit/5
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var model = _racerService.GetRacerEditModel(id);
+            return View(model);
         }
-
-        //
-        // POST: /Racer/Edit/5
-
+        
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(RacerViewModel model)
         {
             try
-            {
-                // TODO: Add update logic here
-
+            {                
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 

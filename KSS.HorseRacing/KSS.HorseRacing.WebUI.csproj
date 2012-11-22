@@ -153,6 +153,7 @@
     <Compile Include="Models\ListRacesViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RacerCreateViewModel.cs" />
+    <Compile Include="Models\RacerEditViewModel.cs" />
     <Compile Include="Models\RacerViewModel.cs" />
     <Compile Include="Models\UserDetailsModel.cs" />
     <Compile Include="Models\UserEditViewModel.cs" />
@@ -237,6 +238,8 @@
     <Content Include="Views\Racer\Index.cshtml" />
     <Content Include="Views\Shared\PartialCreateNewEntity.cshtml" />
     <Content Include="Views\Racer\Create.cshtml" />
+    <Content Include="Views\Shared\PartialForDatePicker.cshtml" />
+    <Content Include="Views\Racer\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

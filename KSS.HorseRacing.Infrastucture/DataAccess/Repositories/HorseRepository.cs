@@ -16,7 +16,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
 
         public Horse Get(int id)
         {
-            var horse = getContext().Horses.FirstOrDefault(x => x.Id == id && x.IsActive);
+            var horse = getContext().Horses.FirstOrDefault(x => x.Id == id);
             return horse;
         }
 

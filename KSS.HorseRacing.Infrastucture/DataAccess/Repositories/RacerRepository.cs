@@ -25,13 +25,18 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         public IEnumerable<Racer> LoadRacers(RacerFilter filter)
         {
             var racers = getContext().Racers
-                .WhereIf(filter.IsActiveNow.HasValue && (bool)filter.IsActiveNow, x => x.DateTimeEnd < DateTime.Now);
+                .WhereIf(filter.IsActiveNow.HasValue && (bool)filter.IsActiveNow, x => x.DateTimeEnd > DateTime.Now);
+            if (filter.WithHorse)
+            {
+                racers = racers.Include(x => x.Horse);
+            }
+
             var list = racers.ToList();
             return list;
         }
 
         public void Save(Racer racer)
-        {            
+        {
             save(racer);
         }
     }

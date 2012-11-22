@@ -18,12 +18,12 @@ namespace KSS.HorseRacing.Services
             var list = new List<RacerViewModel>();
             using (var unit = new UnitOfWork())
             {
-                var racers = unit.Racer.LoadRacers(new RacerFilter { IsActiveNow = true });
+                var racers = unit.Racer.LoadRacers(new RacerFilter{WithHorse = true});
                 list.AddRange(racers.Select(getRacerViewModel));
                 return list;
             }
         }
-
+        
         public RacerViewModel GetRacerDetails(int id)
         {
             using (var unit = new UnitOfWork())
@@ -41,18 +41,8 @@ namespace KSS.HorseRacing.Services
             {
                 var horses = unit.Horse.GetAllHorses();
                 var jockeys = unit.Jockey.GetAllJockeys();
-                var listHorses = horses.Select(horse =>
-                        new SelectListItem
-                        {
-                            Value = horse.Id.ToString(CultureInfo.InvariantCulture),
-                            Text = horse.Nickname
-                        });
-                var listJockeys = jockeys.Select(jockey =>
-                        new SelectListItem
-                        {
-                            Value = jockey.Id.ToString(CultureInfo.InvariantCulture),
-                            Text = jockey.Alias
-                        });
+                var listHorses = getHorsesListForDropdown(horses);
+                var listJockeys = getJockeysListForDropdown(jockeys);
                 model.ListHorsesForDropDown = listHorses;
                 model.ListJockeysForDropDown = listJockeys;
             }
@@ -68,10 +58,28 @@ namespace KSS.HorseRacing.Services
                 var jockey = unit.Jockey.Get(model.SelectedJockeyId);
                 var racer = new Racer
                 {
-                    Horse = horse, 
-                    Jockey = jockey                                        
+                    Horse = horse,
+                    Jockey = jockey,
+                    DateTimeStart = model.StartDateTime
                 };
                 unit.Racer.Save(racer);
+            }
+        }
+
+        public RacerEditViewModel GetRacerEditModel(int id)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var racer = unit.Racer.Get(id);
+                var horses = unit.Horse.GetAllHorses();
+                var jockeys = unit.Jockey.GetAllJockeys();
+                var model = new RacerEditViewModel
+                {
+                    StartDateTime = racer.DateTimeStart,
+                    ListHorsesForDropDown = getHorsesListForDropdown(horses),
+                    ListJockeysForDropDown = getJockeysListForDropdown(jockeys)
+                };
+                return model;
             }
         }
 
@@ -80,16 +88,41 @@ namespace KSS.HorseRacing.Services
             var model = new RacerViewModel
             {
                 RacerId = racer.Id,
+                JockeyAlias = racer.Jockey.Alias,
                 JokeyName = racer.Jockey.FullName,
                 JokeyId = racer.Jockey.Id,
                 HorseId = racer.Horse.Id,
                 HorseNickname = racer.Horse.Nickname,
-                RacerDateTimeStart = racer.DateTimeStart.ToString(CultureInfo.InvariantCulture),
-                RacerDateTimeEnd = racer.DateTimeEnd.HasValue 
-                    ? ((DateTime)racer.DateTimeEnd).ToString(CultureInfo.InvariantCulture) 
+                RacerDateTimeStart = racer.DateTimeStart.ToShortDateString(),
+                RacerDateTimeEnd = racer.DateTimeEnd.HasValue
+                    ? ((DateTime)racer.DateTimeEnd).ToString(CultureInfo.InvariantCulture)
                     : "-"
             };
             return model;
+        }
+
+        private IEnumerable<SelectListItem> getHorsesListForDropdown(IEnumerable<Horse> horses)
+        {
+            horses = horses.OrderBy(x => x.Nickname);
+            var listHorses = horses.Select(horse =>
+                                           new SelectListItem
+                                           {
+                                               Value = horse.Id.ToString(CultureInfo.InvariantCulture), 
+                                               Text = horse.Nickname
+                                           });
+            return listHorses;
+        }
+
+        private IEnumerable<SelectListItem> getJockeysListForDropdown(IEnumerable<Jockey> jockeys)
+        {
+            jockeys = jockeys.OrderBy(x => x.Alias);
+            var listJockeys = jockeys.Select(jockey =>
+                    new SelectListItem
+                    {
+                        Value = jockey.Id.ToString(CultureInfo.InvariantCulture), 
+                        Text = jockey.Alias + " (" + jockey.FullName + ")"
+                    });
+            return listJockeys;
         }
     }
 }

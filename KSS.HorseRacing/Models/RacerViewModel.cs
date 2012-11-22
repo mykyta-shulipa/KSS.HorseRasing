@@ -7,10 +7,13 @@ namespace KSS.HorseRacing.Models
         [DisplayName("#")]
         public int RacerId { get; set; }
 
-        [DisplayName("Jokey")]
+        [DisplayName("Jokey's Full Name")]
         public string JokeyName { get; set; }
-        
-        [DisplayName("Horse")]
+
+        [DisplayName("Jokey's Alias")]
+        public string JockeyAlias { get; set; }
+
+        [DisplayName("Horse's Nickname")]
         public string HorseNickname { get; set; }
 
         [DisplayName("Together from")]

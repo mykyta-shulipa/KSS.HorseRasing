@@ -1,56 +1,70 @@
-﻿@model IEnumerable<KSS.HorseRacing.Models.RacerViewModel>
+﻿@using KSS.HorseRacing.Infrastucture.DataModels
+@model IEnumerable<KSS.HorseRacing.Models.RacerViewModel>
 @{
     ViewBag.Title = "Racers List";
 }
 <div class="page-header"></div>
 <div class="page-header">
-    <h4> Racers List</h4>
+    <h4>Racers List</h4>
 </div>
 @Html.Partial("PartialCreateNewEntity")
-<table class="table table-bordered table-hover table-striped tablesorter">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.RacerId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.JokeyName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HorseNickname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RacerDateTimeStart)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RacerDateTimeEnd)
-        </th>
-        <th></th>
-    </tr>
+<div>
+    <table class="table table-bordered table-hover table-striped tablesorter">
+        <thead>
+            <tr>
+                <th class="centered">
+                    @Html.DisplayNameFor(model => model.RacerId)
+                </th>
+                <th class="centered">
+                    @Html.DisplayNameFor(model => model.JokeyName)
+                </th>
+                <th class="centered">
+                    @Html.DisplayNameFor(model => model.JockeyAlias)
+                </th>
+                <th class="centered">
+                    @Html.DisplayNameFor(model => model.HorseNickname)
+                </th>
+                <th class="centered">
+                    @Html.DisplayNameFor(model => model.RacerDateTimeStart)
+                </th>
+                <th class="centered">
+                    @Html.DisplayNameFor(model => model.RacerDateTimeEnd)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="centered">
+                        @Html.DisplayFor(modelItem => item.RacerId)
+                    </td>
+                    <td class="centered">
+                        @Html.ActionLink(@item.JokeyName, "Details", "Jokey", new { @id = item.JokeyId }, new { })
+                    </td>
+                    <td class="centered">
+                        @Html.DisplayFor(modelItem => item.JockeyAlias)
+                    </td>
+                    <td class="centered">
+                        @Html.ActionLink(@item.HorseNickname, "Details", "Horses", new { @id = item.HorseId }, new { })
+                    </td>
+                    <td class="centered">
+                        @Html.DisplayFor(modelItem => item.RacerDateTimeStart)
+                    </td>
+                    <td class="centered">
+                        @Html.DisplayFor(modelItem => item.RacerDateTimeEnd)
+                    </td>
+                    <td>
+                        @if (User.IsInRole(Role.ADMIN) || User.IsInRole(Role.JUDGE))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.RacerId }, new { @class = "btn" })
+                        }
+                        @Html.ActionLink("Details", "Details", new { id = item.RacerId }, new { @class = "btn" })
+                    </td>
+                </tr>
+            }
+        </tbody>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RacerId)
-            </td>
-            <td>
-                @Html.ActionLink(@item.JokeyName, "Details", "Jokey", new { @id = item.JokeyId }, new { @class = "btn" })
-            </td>
-            <td>
-                @Html.ActionLink(@item.HorseNickname, "Details", "Horses", new { @id = item.HorseId }, new { @class = "btn" })
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RacerDateTimeStart)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RacerDateTimeEnd)
-            </td>>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-    }
-
-</table>
+    </table>
+</div>

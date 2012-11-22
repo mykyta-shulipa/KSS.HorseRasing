@@ -1,5 +1,6 @@
-.vertical-centered {
-    vertical-align: bottom;
+.centered {
+    vertical-align: bottom !important;
+    text-align: center !important;
 }
 
 .bottom-valign {
@@ -21,29 +22,6 @@
 .clear-margin {
     margin: 0px !important;
 }
-/*
-
-table thead tr .headerSortUp {
-    background-image: url(images\\asc.png);
-    background-repeat: no-repeat;
-    background-position: center right;
-}
-
-table thead tr .headerSortDown {
-    background-image: url(images\\desc.png);
-    background-repeat: no-repeat;
-    background-position: center right;
-}
-
-table thead tr .header {
-    background-repeat: no-repeat;
-    background-position: center right;
-}
-
-table thead tr .headerSortDown, table thead tr .headerSortUp {
-    background-color: #8dbdd8;
-}
-*/
 
 .cursor-hand {
     cursor: pointer;
@@ -187,7 +165,6 @@ table.tablesorter {
     font-family: arial;
     background-color: #CDCDCD;
     margin: 10px 0pt 15px;
-    font-size: 8pt;
     width: 100%;
     text-align: left;
 }

@@ -139,5 +139,11 @@
             return Expression.Lambda(propertyAccess, parameter);
         }
         #endregion
+
+        public static string GetPropertyName<T>(Expression<Func<T>> expression)
+        {
+            var memberExpression = (MemberExpression)expression.Body;
+            return memberExpression.Member.Name;
+        }
     }
 }

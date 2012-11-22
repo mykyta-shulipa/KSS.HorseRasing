@@ -21,13 +21,13 @@
         public DateTime DateBirth { get; set; }
 
         public bool IsActive { get; set; }
-        
+
         [NotMapped]
         public string FullName
         {
             get
             {
-                return FirstName + " " + MiddleName + " " + LastName;
+                return LastName + " " + FirstName + " " + MiddleName;
             }
         }
     }

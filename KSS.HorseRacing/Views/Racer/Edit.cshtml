@@ -1,0 +1,60 @@
+﻿@model KSS.HorseRacing.Models.RacerEditViewModel
+@{
+    ViewBag.Title = "Edit Racer";
+}
+<div class="page-header"></div>
+<div class="page-header">
+    <h4>
+        @ViewBag.Title
+    </h4>
+</div>
+<div class="row-fluid">
+    <div class="offset2 span6">
+        <div class="well">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+
+                <div class="row-fluid">
+                    @Html.LabelFor(model => model.EndDateTime)
+                </div>
+                <div class="row-fluid">
+                    <input type="text" class=" with-datepicker " id="EndDateTime" name="EndDateTime" value='@(Model.EndDateTime.Date.ToShortDateString().Replace('/', '-'))' />
+                    @Html.ValidationMessageFor(model => model.EndDateTime)
+                </div>
+
+                <div class="row-fluid">
+                    @Html.LabelFor(model => model.SelectedHorseId)
+                </div>
+                <div class="row-fluid">
+                    @Html.DropDownListFor(x => x.SelectedHorseId, Model.ListHorsesForDropDown)
+                </div>
+                <div class="row-fluid">
+                    @Html.LabelFor(model => model.SelectedJockeyId)
+                </div>
+                <div class="row-fluid">
+                    @Html.DropDownListFor(x => x.SelectedJockeyId, Model.ListJockeysForDropDown)
+                </div>
+
+                <div class="row-fluid">
+                    @Html.LabelFor(model => model.StartDateTime)
+                </div>
+                <div class="row-fluid">
+                    <input type="text" class="with-datepicker " id="StartDateTime" name="StartDateTime" value='@Model.StartDateTime.Date.ToShortDateString().Replace('/', '-')' />
+                    @Html.ValidationMessageFor(model => model.StartDateTime)
+                </div>
+                <p>
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                </p>
+            }
+        </div>
+        <div class="row-fluid">
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+        </div>
+    </div>
+
+</div>
+
+
+
+@Html.Partial("PartialForDatePicker")
