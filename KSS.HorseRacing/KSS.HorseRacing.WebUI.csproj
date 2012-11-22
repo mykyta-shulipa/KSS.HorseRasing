@@ -142,7 +142,7 @@
     <Compile Include="Controllers\HorsesController.cs" />
     <Compile Include="Controllers\JokeyController.cs" />
     <Compile Include="Controllers\RaceController.cs" />
-    <Compile Include="Controllers\RaceController1.cs" />
+    <Compile Include="Controllers\RacerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -152,6 +152,8 @@
     <Compile Include="Models\JockeyViewModel.cs" />
     <Compile Include="Models\ListRacesViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RacerCreateViewModel.cs" />
+    <Compile Include="Models\RacerViewModel.cs" />
     <Compile Include="Models\UserDetailsModel.cs" />
     <Compile Include="Models\UserEditViewModel.cs" />
     <Compile Include="Models\UsersListModel.cs" />
@@ -162,6 +164,7 @@
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\HorseService.cs" />
     <Compile Include="Services\JokeyService.cs" />
+    <Compile Include="Services\RacerService.cs" />
     <Compile Include="Services\RaceService.cs" />
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -176,6 +179,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
+    <Content Include="Content\datepicker.css" />
     <Content Include="Content\images\asc.gif" />
     <Content Include="Content\images\bg.gif" />
     <Content Include="Content\images\desc.gif" />
@@ -187,6 +191,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-1.8.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom.js" />
@@ -229,6 +234,9 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\Racer\Index.cshtml" />
+    <Content Include="Views\Shared\PartialCreateNewEntity.cshtml" />
+    <Content Include="Views\Racer\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

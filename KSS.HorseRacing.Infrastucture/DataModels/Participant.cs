@@ -6,6 +6,6 @@
 
         public int PlaceInRace { get; set; }
 
-        public virtual Race Race { get; set; }
+        public virtual Race Race { get; set; }        
     }
 }

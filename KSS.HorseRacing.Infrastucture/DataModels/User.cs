@@ -1,7 +1,10 @@
 ﻿namespace KSS.HorseRacing.Infrastucture.DataModels
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class User : BaseEntity
     {
+        [MaxLength(MAX_LENGTH_STRING)]
         public string Username { get; set; }
 
         public SecureCredentials Password { get; set; }

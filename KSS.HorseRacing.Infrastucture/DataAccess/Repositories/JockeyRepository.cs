@@ -22,12 +22,14 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
 
         public void Save(Jockey jockey)
         {
+            jockey.IsActive = true;
             save(jockey);
         }
 
         public void Delete(Jockey jockey)
         {
-            delete(jockey);
+            jockey.IsActive = false;
+            save(jockey);
         }
     }
 }

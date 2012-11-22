@@ -24,9 +24,12 @@ namespace KSS.HorseRacing.App_Start
 
             bundles.Add(new StyleBundle("~/css/bootstrapCss").Include(
                         "~/Content/bootstrap.*",
-                        "~/Content/bootstrap-responsive*"));
+                        "~/Content/bootstrap-responsive*",
+                        "~/Content/bootstrap-datepicker.*"));
 
-            bundles.Add(new StyleBundle("~/css/custom").Include("~/Content/custom.*"));
+            bundles.Add(new StyleBundle("~/css/custom").Include(
+                        "~/Content/custom.*",
+                        "~/Content/datepicker.*"));
 
             //BundleTable.EnableOptimizations = true;
         }

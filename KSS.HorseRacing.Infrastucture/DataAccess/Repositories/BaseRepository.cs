@@ -69,30 +69,6 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         }
 
         /// <summary>
-        /// The save entity (create or modify).
-        /// </summary>
-        /// <param name="entity">
-        /// The entity.
-        /// </param>
-        /// <param name="context">
-        /// The context.
-        /// </param>
-        /// <typeparam name="T">
-        /// The general type T.
-        /// </typeparam>
-        protected void save<T>(T entity, EfContext context) where T : BaseEntity
-        {
-            if (entity.Id == 0)
-            {
-                create(entity, context);
-            }
-            else
-            {
-                modify(entity, context);
-            }
-        }
-
-        /// <summary>
         /// The delete current entity.
         /// </summary>
         /// <param name="entity">
@@ -105,6 +81,30 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         {
             _context.Entry(entity).State = EntityState.Deleted;
             _context.SaveChanges();
+        }
+
+        /// <summary>
+        /// The save entity (create or modify).
+        /// </summary>
+        /// <param name="entity">
+        /// The entity.
+        /// </param>
+        /// <param name="context">
+        /// The context.
+        /// </param>
+        /// <typeparam name="T">
+        /// The general type T.
+        /// </typeparam>
+        private void save<T>(T entity, EfContext context) where T : BaseEntity
+        {
+            if (entity.Id == 0)
+            {
+                create(entity, context);
+            }
+            else
+            {
+                modify(entity, context);
+            }
         }
 
         /// <summary>

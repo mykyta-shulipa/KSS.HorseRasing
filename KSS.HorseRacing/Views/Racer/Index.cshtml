@@ -1,0 +1,56 @@
+﻿@model IEnumerable<KSS.HorseRacing.Models.RacerViewModel>
+@{
+    ViewBag.Title = "Racers List";
+}
+<div class="page-header"></div>
+<div class="page-header">
+    <h4> Racers List</h4>
+</div>
+@Html.Partial("PartialCreateNewEntity")
+<table class="table table-bordered table-hover table-striped tablesorter">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RacerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JokeyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HorseNickname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RacerDateTimeStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RacerDateTimeEnd)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RacerId)
+            </td>
+            <td>
+                @Html.ActionLink(@item.JokeyName, "Details", "Jokey", new { @id = item.JokeyId }, new { @class = "btn" })
+            </td>
+            <td>
+                @Html.ActionLink(@item.HorseNickname, "Details", "Horses", new { @id = item.HorseId }, new { @class = "btn" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RacerDateTimeStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RacerDateTimeEnd)
+            </td>>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>

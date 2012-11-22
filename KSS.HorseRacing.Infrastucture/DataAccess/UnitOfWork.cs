@@ -21,6 +21,8 @@
 
         private IRoleRepository _roleRepository;
 
+        private IRacerRepository _racerRepository;
+
         public UnitOfWork()
         {
             _context = IoC.Resolve<EfContext>();
@@ -77,6 +79,16 @@
                 _roleRepository = IoC.Resolve<IRoleRepository>();
                 _roleRepository.SetContext(_context);
                 return _roleRepository;
+            }
+        }
+
+        public IRacerRepository Racer
+        {
+            get
+            {
+                _racerRepository = IoC.Resolve<IRacerRepository>();
+                _racerRepository.SetContext(_context);
+                return _racerRepository;
             }
         }
 

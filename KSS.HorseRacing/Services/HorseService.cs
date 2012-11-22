@@ -1,8 +1,6 @@
 namespace KSS.HorseRacing.Services
 {
-    using System;
     using System.Collections.Generic;
-    using System.Globalization;
 
     using KSS.HorseRacing.Infrastucture.DataAccess;
     using KSS.HorseRacing.Infrastucture.DataModels;
@@ -27,7 +25,7 @@ namespace KSS.HorseRacing.Services
                 var model = new HorseViewModel
                 {
                     HorseId = horse.Id,
-                    DateBirth = horse.DateBirth.ToString(CultureInfo.InvariantCulture),
+                    DateBirth = horse.DateBirth,
                     Nickname = horse.Nickname
                 };
                 return model;
@@ -41,7 +39,7 @@ namespace KSS.HorseRacing.Services
                 var horse = new Horse
                 {
                     Nickname = model.Nickname,
-                    DateBirth = DateTime.Parse(model.DateBirth)
+                    DateBirth = model.DateBirth
                 };
                 unit.Horse.Save(horse);
             }
@@ -54,7 +52,7 @@ namespace KSS.HorseRacing.Services
             {
                 var horse = unit.Horse.Get(model.HorseId);
                 horse.Nickname = model.Nickname;
-                horse.DateBirth = DateTime.Parse(model.DateBirth);
+                horse.DateBirth = model.DateBirth;
                 unit.Horse.Save(horse);
             }
         }

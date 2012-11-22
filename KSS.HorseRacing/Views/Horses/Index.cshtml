@@ -8,15 +8,7 @@
     <h2>Horses List
     </h2>
 </div>
-@if (User.IsInRole(Role.ADMIN))
-{
-    <p>
-        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-large pull-right" })
-    </p>                                                                                                   
-    <br />
-    <br />
-    <br />
-}
+@Html.Partial("PartialCreateNewEntity")
 <table id="sorting-table" class="table table-bordered table-striped table-hover tablesorter">
     <thead>
         <tr>

@@ -6,6 +6,11 @@
 
     public class EfContext : DbContext
     {
+        public EfContext()
+            : base("EfDataContext")
+        {
+        }
+
         public IDbSet<Horse> Horses { get; set; }
 
         public IDbSet<Jockey> Jockeys { get; set; }

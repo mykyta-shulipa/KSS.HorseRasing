@@ -3,39 +3,52 @@
 @{
     ViewBag.Title = "Add new Horse";
 }
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Add new horse</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.HorseId)
-        </div>
-        
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Nickname)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Nickname)
-            @Html.ValidationMessageFor(model => model.Nickname)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DateBirth)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DateBirth)
-            @Html.ValidationMessageFor(model => model.DateBirth)
-        </div>
-
-        <p>
-            <input type="submit" class="btn btn-primary" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index", null, new {@class="btn"})
+<div class="page-header"></div>
+<div class="page-header">
+    <h4>
+        @ViewBag.Title
+    </h4>
 </div>
+<div class="row-fluid offset3  ">
+    <div class="row-fluid">
+        <div class="span4 well">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+    
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Nickname)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Nickname)
+                    @Html.ValidationMessageFor(model => model.Nickname)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.DateBirth)
+                </div>
+                <div class="editor-field">
+                    <input class="text-box single-line with-datepicker" id="DateBirth" name="DateBirth" type="text" value='@(DateTime.Now.AddYears(-5).Date.ToShortDateString().Replace('/', '-'))' />
+                    @Html.ValidationMessageFor(model => model.DateBirth)
+                </div>
+                <br/>
+                <br/>
+                <p class="row-fluid">
+                    <input type="submit" class="btn btn-primary span12" value="Create" />
+                </p>
+            }
+        </div>
+    </div>
+    <div class="row-fluid">
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.with-datepicker').datepicker({
+            format: 'dd-mm-yyyy'
+        });
+    });
+</script>
