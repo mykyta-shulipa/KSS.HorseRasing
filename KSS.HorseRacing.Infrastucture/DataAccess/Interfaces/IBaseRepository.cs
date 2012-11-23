@@ -9,18 +9,5 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
         /// The database context.
         /// </param>
         void SetContext(EfContext context);
-
-        /// <summary>
-        /// The set commit mode.
-        /// </summary>
-        /// <param name="isDeferred">
-        /// The is deferred.
-        /// </param>
-        void SetCommitMode(bool isDeferred);
-
-        /// <summary>
-        /// The commit.
-        /// </summary>
-        void Commit();
     }
 }

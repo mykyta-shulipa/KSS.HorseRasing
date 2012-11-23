@@ -1,7 +1,7 @@
 namespace KSS.HorseRacing.Infrastucture.DataModels
 {
     using System;
-    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Racer : BaseEntity
     {
@@ -9,10 +9,14 @@ namespace KSS.HorseRacing.Infrastucture.DataModels
 
         public DateTime? DateTimeEnd { get; set; }
 
+        [Column("Id_Jockey")]
+        public int JockeyId { get; set; }
+
         public virtual Jockey Jockey { get; set; }
 
-        public virtual Horse Horse { get; set; }
+        [Column("Id_Horse")]
+        public int HorseId { get; set; }
 
-        public ICollection<Participant> Participants { get; set; }
+        public virtual Horse Horse { get; set; }
     }
 }

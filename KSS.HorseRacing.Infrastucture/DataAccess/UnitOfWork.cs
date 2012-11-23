@@ -32,8 +32,12 @@
         {
             get
             {
-                _userRepository = IoC.Resolve<IUserRepository>();
-                _userRepository.SetContext(_context);
+                if (_userRepository == null)
+                {
+                    _userRepository = IoC.Resolve<IUserRepository>();
+                    _userRepository.SetContext(_context);
+                }
+
                 return _userRepository;
             }
         }
@@ -42,8 +46,12 @@
         {
             get
             {
-                _horseRepository = IoC.Resolve<IHorseRepository>();
-                _horseRepository.SetContext(_context);
+                if (_horseRepository == null)
+                {
+                    _horseRepository = IoC.Resolve<IHorseRepository>();
+                    _horseRepository.SetContext(_context);
+                }
+
                 return _horseRepository;
             }
         }
@@ -52,8 +60,12 @@
         {
             get
             {
-                _jockeyRepository = IoC.Resolve<IJockeyRepository>();
-                _jockeyRepository.SetContext(_context);
+                if (_jockeyRepository == null)
+                {
+                    _jockeyRepository = IoC.Resolve<IJockeyRepository>();
+                    _jockeyRepository.SetContext(_context);
+                }
+
                 return _jockeyRepository;
             }
         }
@@ -62,13 +74,13 @@
         {
             get
             {
-                _raceRepository = IoC.Resolve<IRaceRepository>();
-                _raceRepository.SetContext(_context);
+                if (_raceRepository == null)
+                {
+                    _raceRepository = IoC.Resolve<IRaceRepository>();
+                    _raceRepository.SetContext(_context);
+                }
+
                 return _raceRepository;
-            }
-            set
-            {
-                _raceRepository = value;
             }
         }
 
@@ -76,8 +88,12 @@
         {
             get
             {
-                _roleRepository = IoC.Resolve<IRoleRepository>();
-                _roleRepository.SetContext(_context);
+                if (_roleRepository == null)
+                {
+                    _roleRepository = IoC.Resolve<IRoleRepository>();
+                    _roleRepository.SetContext(_context);
+                }
+
                 return _roleRepository;
             }
         }
@@ -86,8 +102,12 @@
         {
             get
             {
-                _racerRepository = IoC.Resolve<IRacerRepository>();
-                _racerRepository.SetContext(_context);
+                if (_racerRepository == null)
+                {
+                    _racerRepository = IoC.Resolve<IRacerRepository>();
+                    _racerRepository.SetContext(_context);
+                }
+
                 return _racerRepository;
             }
         }

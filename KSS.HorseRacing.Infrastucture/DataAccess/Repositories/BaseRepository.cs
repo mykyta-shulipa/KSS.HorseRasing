@@ -25,25 +25,6 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         }
 
         /// <summary>
-        /// The set commit mode.
-        /// </summary>
-        /// <param name="isDeferred">
-        /// The is deferred.
-        /// </param>
-        public void SetCommitMode(bool isDeferred)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// The commit.
-        /// </summary>
-        public void Commit()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        /// <summary>
         /// Creates the context.
         /// </summary>
         /// <returns>
