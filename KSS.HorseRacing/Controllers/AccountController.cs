@@ -49,7 +49,7 @@
                         return Redirect(returnUrl);
                     }
 
-                    return RedirectToAction("Index", "Horses");
+                    return RedirectToAction("Index", "Home");
                 }
             }
 

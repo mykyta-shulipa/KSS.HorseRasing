@@ -2,7 +2,6 @@ namespace KSS.HorseRacing.Services
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
 
     using KSS.HorseRacing.Infrastucture.DataAccess;
     using KSS.HorseRacing.Infrastucture.DataModels;
@@ -27,7 +26,7 @@ namespace KSS.HorseRacing.Services
                 var model = new JockeyViewModel
                 {
                     Alias = jockey.Alias,
-                    DateBirth = jockey.DateBirth.ToString(CultureInfo.InvariantCulture),
+                    DateBirth = jockey.DateBirth.ToShortDateString(),
                     FirstName = jockey.FirstName,
                     LastName = jockey.LastName,
                     MiddleName = jockey.MiddleName

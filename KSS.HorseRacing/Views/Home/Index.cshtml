@@ -10,10 +10,6 @@
         <h3>Select section</h3>
     </div>  
     <ul class="nav nav-stacked nav-pills span2">
-
-        @{
-    const string CLASSES = "btn btn-success btn-large span2 ";
-        }
         <li class="active">
             @Html.ActionLink("Horses", "Index", "Horses")
         </li>
@@ -23,18 +19,15 @@
         <li class="active">
             @Html.ActionLink("Racers", "Index", "Racer")
         </li>
-        <li class="active muted disabled">
+        @*<li class="active disabled">
             @Html.ActionLink("Races", "Index", "Race")
-        </li>
-        <li class="active"></li>
-
-    </ul>
-    
+        </li>*@
+        @*<li class="active"></li>*@
+    </ul>    
 }
 else
 {
     <div class="page-header">
         <h3>Home page</h3>
-    </div>  
+    </div>
 }
-

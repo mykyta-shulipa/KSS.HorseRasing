@@ -2,9 +2,11 @@
 {
     using System.Web.Mvc;
 
+    using KSS.HorseRacing.Infrastucture.DataModels;
     using KSS.HorseRacing.Models;
     using KSS.HorseRacing.Services;
 
+    [KssAuthorize]
     public class RacerController : Controller
     {
         private readonly RacerService _racerService;
@@ -26,6 +28,7 @@
             return View(model);
         }
 
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Create()
         {
             var model = _racerService.GetRacerCreateViewModel();
@@ -33,6 +36,7 @@
         }
 
         [HttpPost]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Create(RacerCreateViewModel model)
         {
             try
@@ -42,17 +46,19 @@
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
+        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
         public ActionResult Edit(int id)
         {
             var model = _racerService.GetRacerEditModel(id);
             return View(model);
         }
-        
+
         [HttpPost]
+        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
         public ActionResult Edit(RacerEditViewModel model)
         {
             try
@@ -66,18 +72,14 @@
             }
         }
 
-        //
-        // GET: /Racer/Delete/5
-
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        //
-        // POST: /Racer/Delete/5
-
         [HttpPost]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

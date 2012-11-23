@@ -18,18 +18,26 @@ namespace KSS.HorseRacing.Services
             var list = new List<RacerViewModel>();
             using (var unit = new UnitOfWork())
             {
-                var racers = unit.Racer.LoadRacers(new RacerFilter{WithHorse = true});
+                var racers = unit.Racer.LoadRacers(new RacerFilter { WithHorse = true });
                 list.AddRange(racers.Select(getRacerViewModel));
                 return list;
             }
         }
-        
-        public RacerViewModel GetRacerDetails(int id)
+
+        public RacerDetailsViewModel GetRacerDetails(int id)
         {
             using (var unit = new UnitOfWork())
             {
                 var racer = unit.Racer.Get(id);
-                var model = getRacerViewModel(racer);
+                var model = new RacerDetailsViewModel
+                            {
+                                RacerId = racer.Id,
+                                HorseNickname = racer.Horse.Nickname,
+                                JockeyAlias = racer.Jockey.Alias,
+                                JokeyFullName = racer.Jockey.FullName,
+                                RacerDateTimeEnd = racer.DateTimeEnd.HasValue ? ((DateTime)racer.DateTimeEnd).ToShortDateString() : "-",
+                                RacerDateTimeStart = racer.DateTimeStart.ToShortDateString()
+                            };
                 return model;
             }
         }
@@ -138,7 +146,7 @@ namespace KSS.HorseRacing.Services
             var listHorses = horses.Select(horse =>
                                            new SelectListItem
                                            {
-                                               Value = horse.Id.ToString(CultureInfo.InvariantCulture), 
+                                               Value = horse.Id.ToString(CultureInfo.InvariantCulture),
                                                Text = horse.Nickname
                                            });
             return listHorses;
@@ -150,7 +158,7 @@ namespace KSS.HorseRacing.Services
             var listJockeys = jockeys.Select(jockey =>
                     new SelectListItem
                     {
-                        Value = jockey.Id.ToString(CultureInfo.InvariantCulture), 
+                        Value = jockey.Id.ToString(CultureInfo.InvariantCulture),
                         Text = jockey.Alias + " (" + jockey.FullName + ")"
                     });
             return listJockeys;
