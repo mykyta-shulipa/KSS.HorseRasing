@@ -5,6 +5,7 @@ namespace KSS.HorseRacing
     public class SessionStorage
     {
         public const string LOGIN_MESSAGE = "login-message";
+
         /// <summary>
         /// The add value with key.
         /// </summary>

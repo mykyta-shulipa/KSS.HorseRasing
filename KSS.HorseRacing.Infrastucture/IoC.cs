@@ -3,8 +3,6 @@
     using System;
     using System.Collections.Generic;
 
-    using KSS.HorseRacing.Infrastucture.DataAccess;
-
     using Microsoft.Practices.Unity;
 
     public static class IoC
