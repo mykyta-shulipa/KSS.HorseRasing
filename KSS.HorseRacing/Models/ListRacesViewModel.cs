@@ -2,7 +2,7 @@ namespace KSS.HorseRacing.Models
 {
     using System.Collections.Generic;
 
-    using KSS.HorseRacing.Infrastucture.DataModels;
+    using Infrastucture.DataModels;
 
     public class ListRacesViewModel
     {

@@ -1,6 +1,5 @@
 ﻿namespace KSS.HorseRacing.Controllers
 {
-    using System;
     using System.Web.Mvc;
     using System.Web.Security;
 
@@ -13,74 +12,32 @@
     {
         private readonly UserService _userService;
 
-        public UserController(UserService userService)
+        private SessionStorage _sessionStorage;
+
+        public UserController(UserService userService, SessionStorage sessionStorage)
         {
             _userService = userService;
+            _sessionStorage = sessionStorage;
         }
 
-        public ActionResult Index()
+        public ActionResult Settings()
         {
-            var lIst = _userService.GetUsersListModel();
-            return View(lIst);
-        }
+            var model = _userService.GetSettingsViewModel();
+            var value = _sessionStorage.GetValueAndClearAfter(SessionStorage.SETTINGS_MESSAGE_KEY);
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                model.MessageToShowAbove = value;
+            }
 
-        public ActionResult Edit(int id)
-        {
-            var model = _userService.GetUserEditModel(id);
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(UserEditViewModel model)
+        public ActionResult ChangePassword(SettingsViewModel model)
         {
-            try
-            {
-                var exist = _userService.CheckIfUserWithUsernameExist(model.Username);
-                if (!exist)
-                {
-                    var editedUserUsernameOld = _userService.EditUser(model);
-                    if (string.Equals(User.Identity.Name, editedUserUsernameOld) && !string.Equals(model.Username, editedUserUsernameOld))
-                    {
-                        FormsAuthentication.SignOut();
-                        FormsAuthentication.SetAuthCookie(editedUserUsernameOld, false);
-                    }
-
-                    return RedirectToAction("Index");
-                }
-            }
-            catch
-            {
-                return View(model);
-            }
-
-            return View(model);
-        }
-
-        //
-        // GET: /User/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            var model = _userService.GetUserDetailsModel(id);
-            return View(model);
-        }
-
-        //
-        // POST: /User/Delete/5
-
-        [HttpPost]
-        public ActionResult DeleteUser(int id)
-        {
-            try
-            {
-                _userService.DeleteUser(id);
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _userService.ChangePassword(model.UserId, model.PasswordModel.Password);
+            _sessionStorage.AddValueWithKey(SessionStorage.SETTINGS_MESSAGE_KEY, "Your password has been changed.");
+            return RedirectToAction("Settings");
         }
     }
 }

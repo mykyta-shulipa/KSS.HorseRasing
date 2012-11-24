@@ -4,6 +4,8 @@ namespace KSS.HorseRacing
 
     public class SessionStorage
     {
+        public const string SETTINGS_MESSAGE_KEY = "settings-key";
+
         public const string LOGIN_MESSAGE = "login-message";
 
         /// <summary>
