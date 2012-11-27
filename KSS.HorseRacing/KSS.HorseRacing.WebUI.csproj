@@ -152,7 +152,8 @@
     <Compile Include="Models\CreateUserViewModel.cs" />
     <Compile Include="Models\HorseViewModel.cs" />
     <Compile Include="Models\JockeyViewModel.cs" />
-    <Compile Include="Models\ListRacesViewModel.cs" />
+    <Compile Include="Models\ParticipantViewModel.cs" />
+    <Compile Include="Models\RaceViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PasswordViewModel.cs" />
     <Compile Include="Models\RacerCreateViewModel.cs" />

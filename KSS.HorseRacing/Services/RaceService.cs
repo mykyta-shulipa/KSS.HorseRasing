@@ -6,12 +6,12 @@ namespace KSS.HorseRacing.Services
 
     public class RaceService
     {
-        public ListRacesViewModel GetListRaces()
+        public RaceViewModel GetListRaces()
         {
             using (var unit = new UnitOfWork())
             {
                 var allRaces = unit.Race.GetAllRaces();
-                var model = new ListRacesViewModel { Races = allRaces };
+                var model = new RaceViewModel { Races = allRaces };
                 return model;
             }
         }

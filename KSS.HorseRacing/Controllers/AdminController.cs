@@ -3,8 +3,8 @@
     using System.Web.Mvc;
     using System.Web.Security;
 
-    using KSS.HorseRacing.Models;
-    using KSS.HorseRacing.Services;
+    using Models;
+    using Services;
 
     public class AdminController : Controller
     {

@@ -1,9 +1,9 @@
 namespace KSS.HorseRacing.Infrastucture
 {
-    using KSS.HorseRacing.Infrastucture.DataAccess;
-    using KSS.HorseRacing.Infrastucture.DataAccess.Interfaces;
-    using KSS.HorseRacing.Infrastucture.DataAccess.Repositories;
-    using KSS.HorseRacing.Infrastucture.Security;
+    using DataAccess;
+    using DataAccess.Interfaces;
+    using DataAccess.Repositories;
+    using Security;
 
     public static class InfrastructureDiConfig
     {
@@ -16,6 +16,7 @@ namespace KSS.HorseRacing.Infrastucture
             IoC.Register<IJockeyRepository, JockeyRepository>();
             IoC.Register<IRoleRepository, RoleRepository>();
             IoC.Register<IRacerRepository, RacerRepository>();
+            IoC.Register<IRaceRepository, RaceRepository>();
             IoC.RegisterType(typeof(EfContext));
         }
     }
