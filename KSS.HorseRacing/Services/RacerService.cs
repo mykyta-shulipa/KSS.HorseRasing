@@ -28,7 +28,7 @@ namespace KSS.HorseRacing.Services
         {
             using (var unit = new UnitOfWork())
             {
-                var racer = unit.Racer.Get(id);
+                var racer = unit.Racer.Get(id);                
                 var model = new RacerDetailsViewModel
                             {
                                 RacerId = racer.Id,

@@ -138,6 +138,7 @@
     <Compile Include="Configuration\UnityControllerFactory.cs" />
     <Compile Include="Configuration\WebDiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorsesController.cs" />
@@ -149,14 +150,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="KssAuthorize.cs" />
+    <Compile Include="Models\CreateUserViewModel.cs" />
     <Compile Include="Models\HorseViewModel.cs" />
     <Compile Include="Models\JockeyViewModel.cs" />
-    <Compile Include="Models\ListRacesViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ParticipantViewModel.cs" />
+    <Compile Include="Models\PasswordViewModel.cs" />
     <Compile Include="Models\RacerCreateViewModel.cs" />
     <Compile Include="Models\RacerDetailsViewModel.cs" />
     <Compile Include="Models\RacerEditViewModel.cs" />
     <Compile Include="Models\RacerViewModel.cs" />
+    <Compile Include="Models\RaceViewModel.cs" />
+    <Compile Include="Models\SettingsViewModel.cs" />
     <Compile Include="Models\UserDetailsModel.cs" />
     <Compile Include="Models\UserEditViewModel.cs" />
     <Compile Include="Models\UsersListModel.cs" />
@@ -165,6 +170,7 @@
     <Compile Include="Providers\KssRoleProvider.cs" />
     <Compile Include="Rules\AccountRule.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\HorseService.cs" />
     <Compile Include="Services\JokeyService.cs" />
     <Compile Include="Services\RacerService.cs" />
@@ -231,8 +237,6 @@
     <Content Include="Views\Jockey\Edit.cshtml" />
     <Content Include="Views\Jockey\Delete.cshtml" />
     <Content Include="Views\Race\Index.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\Racer\Index.cshtml" />
     <Content Include="Views\Shared\PartialCreateNewEntity.cshtml" />
@@ -240,6 +244,11 @@
     <Content Include="Views\Shared\PartialForDatePicker.cshtml" />
     <Content Include="Views\Racer\Edit.cshtml" />
     <Content Include="Views\Racer\Details.cshtml" />
+    <Content Include="Views\User\Settings.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -57,6 +57,7 @@
             {
                 return RedirectToAction("Index", "Racer");
             }
+
             var model = _racerService.GetRacerEditModel(id);
             return View(model);
         }

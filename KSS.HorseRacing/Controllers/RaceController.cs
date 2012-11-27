@@ -26,8 +26,7 @@
         }
 
         public ActionResult Create()
-        {
-            new RaceViewModel();
+        {            
             return View();
         }
 
@@ -94,9 +93,5 @@
                 return View();
             }
         }
-    }
-
-    public class RaceViewModel
-    {        
     }
 }

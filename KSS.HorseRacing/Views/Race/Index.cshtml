@@ -1,17 +1,20 @@
-﻿@model KSS.HorseRacing.Models.ListRacesViewModel
+﻿@model  IEnumerable<KSS.HorseRacing.Models.RaceViewModel>
 @{
     ViewBag.Title = "Races list";
 }
 <div class="page-header"></div>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="page-header">
+    <h4>
+        @ViewBag.Title
+    </h4>
+</div>
+@Html.Partial("PartialCreateNewEntity")
 <table>
     <tr>
         <th></th>
     </tr>
 
-@foreach (var item in Model.Races) {
+@foreach (var race in Model) {
     <tr>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

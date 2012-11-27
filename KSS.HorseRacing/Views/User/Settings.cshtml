@@ -1,0 +1,62 @@
+﻿@using System.Linq.Expressions
+@using KSS.HorseRacing.Models
+@model SettingsViewModel
+
+@{
+    ViewBag.Title = "Settings";
+}
+<div class="page-header"></div>
+<div class="page-header">
+    <h4>
+        @ViewBag.Title
+    </h4>
+</div>
+@{
+    Html.EnableClientValidation(true);
+}
+<div class="offset2 span5">
+    @if (!string.IsNullOrWhiteSpace(Model.MessageToShowAbove))
+    {
+        <div class="row-fluid">
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>
+                    @Model.MessageToShowAbove
+                </strong>
+            </div>
+        </div>
+    }
+    @using (Html.BeginForm("ChangePassword", "User", FormMethod.Post, new
+        {
+            @class = "form-horizontal well validation"
+        }))
+    {
+        @Html.HiddenFor(x => x.UserId)
+        <div class="row-fluid">
+            <h4>Change Password
+            </h4>
+            <br />
+            @Validation("New Password", x => x.PasswordModel.Password)
+            @Validation("Confirm Password", x => x.PasswordModel.ComparePassword)
+            <br />
+        </div>
+        <div class="row-fluid">
+            <input type="submit" class="btn btn-primary pull-right" value="Change password" />
+        </div>    
+    }
+</div>
+</div>
+
+@helper Validation(string caption, Expression<Func<SettingsViewModel, string>> expression)
+{
+    <div class="control-group pull-right min-width-390">
+        @Html.LabelFor(expression, caption, new { @class = "control-label" })
+
+        <div class="controls">
+            @Html.EditorFor(expression, new { @class = "validation-field" })
+        </div>
+        <span class="help-block validation-message pull-right">
+            @Html.ValidationMessageFor(expression)
+        </span>
+    </div>
+}

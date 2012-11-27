@@ -7,7 +7,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
     using KSS.HorseRacing.Infrastucture.DataModels;
     using KSS.HorseRacing.Infrastucture.Security;
 
-    public class DatabaseInitializer : DropCreateDatabaseAlways<EfContext>
+    public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<EfContext>
     {
         protected override void Seed(EfContext context)
         {
