@@ -237,7 +237,6 @@
     <Content Include="Views\Jockey\Edit.cshtml" />
     <Content Include="Views\Jockey\Delete.cshtml" />
     <Content Include="Views\Race\Index.cshtml" />
-    <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\Racer\Index.cshtml" />
     <Content Include="Views\Shared\PartialCreateNewEntity.cshtml" />
     <Content Include="Views\Racer\Create.cshtml" />
