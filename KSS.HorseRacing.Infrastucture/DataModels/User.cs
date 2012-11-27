@@ -8,7 +8,7 @@
         [MaxLength(MAX_LENGTH_STRING)]
         public string Username { get; set; }
 
-        public SecureCredentials Password { get; set; }
+        public Credentials Password { get; set; }
 
         public virtual Role Role { get; set; }
 

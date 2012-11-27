@@ -1,0 +1,65 @@
+﻿@model KSS.HorseRacing.Models.JockeyViewModel
+@{
+    ViewBag.Title = "Edit Jockey";
+    ViewBag.Title = "Редактировать данные о жокее";
+}
+<div class="page-header"></div>
+<div class="page-header">
+    <h2>@ViewBag.Title
+    </h2>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+
+    @Html.HiddenFor(x => x.JockeyId)
+        
+    <div class="editor-label">
+        @Html.DisplayNameFor(model => model.Alias)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Alias)
+        @Html.ValidationMessageFor(model => model.Alias)
+    </div>
+
+    <div class="editor-label">
+        @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.FirstName)
+        @Html.ValidationMessageFor(model => model.FirstName)
+    </div>
+
+    <div class="editor-label">
+        @Html.DisplayNameFor(model => model.MiddleName)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.MiddleName)
+        @Html.ValidationMessageFor(model => model.MiddleName)
+    </div>
+
+    <div class="editor-label">
+        @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.LastName)
+        @Html.ValidationMessageFor(model => model.LastName)
+    </div>
+
+    <div class="editor-label">
+        @Html.DisplayNameFor(model => model.DateBirth)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.DateBirth)
+        @Html.ValidationMessageFor(model => model.DateBirth)
+    </div>
+
+    <p>
+        <input type="submit" class="btn btn-primary" value="Подтвердить изменения" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink(/*"Back to List"*/ "Вернуться к списку", "Index", null, new { @class = "btn" })
+</div>

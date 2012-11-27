@@ -53,6 +53,10 @@
         [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
         public ActionResult Edit(int id)
         {
+            if (id == 0)
+            {
+                return RedirectToAction("Index", "Racer");
+            }
             var model = _racerService.GetRacerEditModel(id);
             return View(model);
         }

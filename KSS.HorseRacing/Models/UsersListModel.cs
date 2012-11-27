@@ -7,10 +7,12 @@ namespace KSS.HorseRacing.Models
         [DisplayName("#")]
         public int UserId { get; set; }
 
-        [DisplayName("User Name")]
+        //[DisplayName("User Name")]
+        [DisplayName("Имя пользователя")]
         public string Username { get; set; }
 
-        [DisplayName("User Role Name")]
+        [DisplayName("Роль пользователя")]
+        //[DisplayName("User Role Name")]
         public string RoleName { get; set; }
     }
 }

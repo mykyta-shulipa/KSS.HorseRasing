@@ -138,9 +138,10 @@
     <Compile Include="Configuration\UnityControllerFactory.cs" />
     <Compile Include="Configuration\WebDiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorsesController.cs" />
-    <Compile Include="Controllers\JokeyController.cs" />
+    <Compile Include="Controllers\JockeyController.cs" />
     <Compile Include="Controllers\RaceController.cs" />
     <Compile Include="Controllers\RacerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -220,15 +221,15 @@
     <Content Include="Views\Horses\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
-    <Content Include="Views\Jokey\Index.cshtml" />
+    <Content Include="Views\Jockey\Index.cshtml" />
     <Content Include="Views\Horses\Details.cshtml" />
     <Content Include="Views\Horses\Create.cshtml" />
     <Content Include="Views\Horses\Edit.cshtml" />
     <Content Include="Views\Horses\Delete.cshtml" />
-    <Content Include="Views\Jokey\Details.cshtml" />
-    <Content Include="Views\Jokey\Create.cshtml" />
-    <Content Include="Views\Jokey\Edit.cshtml" />
-    <Content Include="Views\Jokey\Delete.cshtml" />
+    <Content Include="Views\Jockey\Details.cshtml" />
+    <Content Include="Views\Jockey\Create.cshtml" />
+    <Content Include="Views\Jockey\Edit.cshtml" />
+    <Content Include="Views\Jockey\Delete.cshtml" />
     <Content Include="Views\Race\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
@@ -250,6 +251,10 @@
     <ProjectReference Include="..\KSS.HorseRacing.Infrastucture\KSS.HorseRacing.Infrastucture.csproj">
       <Project>{990cdaa9-85de-4749-bcf1-7bfe23df1381}</Project>
       <Name>KSS.HorseRacing.Infrastucture</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KSS.HorseRacing.Localization\KSS.HorseRacing.Localization.csproj">
+      <Project>{1230412e-c561-47b0-beb0-59a9ed229829}</Project>
+      <Name>KSS.HorseRacing.Localization</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

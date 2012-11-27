@@ -56,17 +56,11 @@
             return View(model);
         }
 
-        //
-        // GET: /User/Delete/5
-
         public ActionResult Delete(int id)
         {
             var model = _userService.GetUserDetailsModel(id);
             return View(model);
         }
-
-        //
-        // POST: /User/Delete/5
 
         [HttpPost]
         public ActionResult DeleteUser(int id)
@@ -79,7 +73,7 @@
             }
             catch
             {
-                return View();
+                return RedirectToAction("Delete", id);
             }
         }
     }

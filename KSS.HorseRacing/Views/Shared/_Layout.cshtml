@@ -21,11 +21,14 @@
             <div class="container-fluid">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="/">Horse Racing</a>
+                <a class="brand" href="/">
+                    @*Horse Racing*@
+                    С.К.А.Ч.К.И.
+                </a>
                 @if (User.IsInRole(Role.ADMIN))
                 {
                     <ul class="nav">
-                        @Html.ActionMenuItem("Users List", "User", "Index")
+                        @Html.ActionMenuItem(/*"Users List"*/ "Список всех пользователей", "User", "Index")
                     </ul>
                 }
                 <div id="logindisplay">

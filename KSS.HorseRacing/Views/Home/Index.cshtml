@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Home page";
+    ViewBag.Title = "Домашняя страница";
 }
 <div class="page-header">
 </div>
@@ -7,17 +8,20 @@
 @if (User.Identity.IsAuthenticated)
 {
     <div class="page-header">
-        <h3>Select section</h3>
+        <h3>
+            @*Select section*@
+            Выберите раздел:
+        </h3>
     </div>  
     <ul class="nav nav-stacked nav-pills span2">
         <li class="active">
-            @Html.ActionLink("Horses", "Index", "Horses")
+            @Html.ActionLink(/*"Horses"*/ "Лошади" , "Index", "Horses")
         </li>
         <li class="active">
-            @Html.ActionLink("Jokeys", "Index", "Jokey")
+            @Html.ActionLink(/*"Jokeys" */"Жокеи", "Index", "Jokey")
         </li>
         <li class="active">
-            @Html.ActionLink("Racers", "Index", "Racer")
+            @Html.ActionLink(/*"Racers"*/ "Гонщики", "Index", "Racer")
         </li>
         @*<li class="active disabled">
             @Html.ActionLink("Races", "Index", "Race")
@@ -28,6 +32,9 @@
 else
 {
     <div class="page-header">
-        <h3>Home page</h3>
+        <h3>
+            @*Home page*@
+            Домашняя страница
+        </h3>
     </div>
 }

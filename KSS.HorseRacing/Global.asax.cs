@@ -1,5 +1,6 @@
 ﻿namespace KSS.HorseRacing
 {
+    using System.Globalization;
     using System.Web.Http;
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -22,6 +23,11 @@
             BundlesConfig.RegisterBundles(BundleTable.Bundles);
 
             setDependencyResolver();
+
+            // Create culture info object 
+            var ci = new CultureInfo("en");
+            System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+            System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
         }
 
         private void setDependencyResolver()

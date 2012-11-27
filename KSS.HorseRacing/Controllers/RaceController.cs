@@ -20,24 +20,16 @@
             return View(model);
         }
 
-        //
-        // GET: /Race/Details/5
-
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        //
-        // GET: /Race/Create
-
         public ActionResult Create()
         {
+            new RaceViewModel();
             return View();
         }
-
-        //
-        // POST: /Race/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -53,9 +45,6 @@
                 return View();
             }
         }
-
-        //
-        // GET: /Race/Edit/5
 
         public ActionResult Edit(int id)
         {
@@ -105,5 +94,9 @@
                 return View();
             }
         }
+    }
+
+    public class RaceViewModel
+    {        
     }
 }

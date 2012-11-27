@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{239D04
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSS.HorseRacing.Infrastucture", "KSS.HorseRacing.Infrastucture\KSS.HorseRacing.Infrastucture.csproj", "{990CDAA9-85DE-4749-BCF1-7BFE23DF1381}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSS.HorseRacing.Localization", "KSS.HorseRacing.Localization\KSS.HorseRacing.Localization.csproj", "{1230412E-C561-47B0-BEB0-59A9ED229829}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{990CDAA9-85DE-4749-BCF1-7BFE23DF1381}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{990CDAA9-85DE-4749-BCF1-7BFE23DF1381}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{990CDAA9-85DE-4749-BCF1-7BFE23DF1381}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1230412E-C561-47B0-BEB0-59A9ED229829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1230412E-C561-47B0-BEB0-59A9ED229829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1230412E-C561-47B0-BEB0-59A9ED229829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1230412E-C561-47B0-BEB0-59A9ED229829}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

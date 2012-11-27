@@ -30,7 +30,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
             var admin = new User
             {
                 Username = "admin",
-                Password = new SecureCredentials
+                Password = new Credentials
                                 {
                                     Salt = salt,
                                     PasswordHash = cryptoProvider.CreateCryptoPassword(PASSWORD, salt)
@@ -43,7 +43,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
             var judge = new User
                         {
                             Username = "judge",
-                            Password = new SecureCredentials
+                            Password = new Credentials
                                        {
                                            Salt = salt,
                                            PasswordHash = cryptoProvider.CreateCryptoPassword(PASSWORD, salt)
@@ -56,7 +56,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
             var jokey = new User
             {
                 Username = "joñkey",
-                Password = new SecureCredentials
+                Password = new Credentials
                 {
                     Salt = salt,
                     PasswordHash = cryptoProvider.CreateCryptoPassword(PASSWORD, salt)

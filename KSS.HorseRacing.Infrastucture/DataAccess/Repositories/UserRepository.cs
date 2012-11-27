@@ -22,7 +22,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         {
             if (user.Password == null)
             {
-                user.Password = new SecureCredentials();
+                user.Password = new Credentials();
             }
 
             save(user);

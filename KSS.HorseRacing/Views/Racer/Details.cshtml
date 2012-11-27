@@ -2,6 +2,7 @@
 @model KSS.HorseRacing.Models.RacerDetailsViewModel
 @{
     ViewBag.Title = "Racer Details";
+    ViewBag.Title = "Подробные сведения о гонщике";
 }
 <div class="page-header"></div>
 <div class="page-header">
@@ -64,9 +65,9 @@
             <p>
                 @if (User.IsInRole(Role.ADMIN) || User.IsInRole(Role.JUDGE))
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.RacerId }, new { @class = "btn" })        
+                    @Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { id = Model.RacerId }, new { @class = "btn" })        
                 }
-                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+                @Html.ActionLink(/*"Back to List" */"Вернуться к списку", "Index", null, new { @class = "btn" })
             </p>
         </div>
     </div>

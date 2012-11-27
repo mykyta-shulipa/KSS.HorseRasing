@@ -11,14 +11,14 @@
             <br/>            
             <ul class="dropdown-menu">                
                 <li>
-                    @Html.ActionLink("LogOff", "Logout", "Account")
+                    @Html.ActionLink(/*"LogOff"*/ "Выйти", "Logout", "Account")
                 </li>
             </ul>
         </div>
     }
     else
     {
-        @Html.ActionLink("LogIn", "Login", "Account", null, new { @class = "btn btn-primary" })                
+        @Html.ActionLink(/*"LogIn"*/ "Войти", "Login", "Account", null, new { @class = "btn btn-primary" })                
     }
 </div>
 

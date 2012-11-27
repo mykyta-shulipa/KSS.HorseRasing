@@ -11,18 +11,22 @@ namespace KSS.HorseRacing.Models
 
         public IEnumerable<SelectListItem> ListHorsesForDropDown { get; set; }
 
-        [DisplayName("Horse")]
+        [DisplayName("Лошадь")]
+        //[DisplayName("Horse")]
         public int SelectedHorseId { get; set; }
 
         public IEnumerable<SelectListItem> ListJockeysForDropDown { get; set; }
 
-        [DisplayName("Jockey")]
+        [DisplayName("Жокей")]
+        //[DisplayName("Jockey")]
         public int SelectedJockeyId { get; set; }
 
-        [DisplayName("Together from")]
+        //[DisplayName("Together from")]
+        [DisplayName("Вместе с ")]
         public DateTime StartDateTime { get; set; }
 
-        [DisplayName("Together to")]
+        //[DisplayName("Together to")]
+        [DisplayName("Вместе до")]
         public DateTime? EndDateTime { get; set; }
     }
 }

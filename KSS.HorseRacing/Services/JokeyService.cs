@@ -2,6 +2,7 @@ namespace KSS.HorseRacing.Services
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using KSS.HorseRacing.Infrastucture.DataAccess;
     using KSS.HorseRacing.Infrastucture.DataModels;
@@ -9,12 +10,22 @@ namespace KSS.HorseRacing.Services
 
     public class JokeyService
     {
-        public IList<Jockey> GetListJokeys()
+        public IEnumerable<JockeyViewModel> GetListJokeys()
         {
             using (var unit = new UnitOfWork())
             {
                 var jockeys = unit.Jockey.GetAllJockeys();
-                return jockeys;
+                var jockeysList = jockeys.Select(
+                    jockey => new JockeyViewModel
+                    {
+                        Alias = jockey.Alias, 
+                        DateBirth = jockey.DateBirth.ToShortDateString(), 
+                        FirstName = jockey.FirstName, 
+                        JockeyId = jockey.Id, 
+                        LastName = jockey.LastName, 
+                        MiddleName = jockey.MiddleName
+                    });
+                return jockeysList;
             }
         }
 

@@ -4,10 +4,10 @@ namespace KSS.HorseRacing.Models
 
     public class LoginModel
     {
-        [Required]        
+        [Required(ErrorMessage = "Поле Логин обязательно к заполнению!")]        
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Поле Пароль обязательно к заполнению!")]        
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
