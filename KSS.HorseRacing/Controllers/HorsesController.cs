@@ -45,11 +45,12 @@
             }
             catch
             {
+                ModelState.AddModelError(string.Empty, "Что-то пошло не так. Попробуйте ещё раз!");
                 return View(model);
             }
         }
 
-        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Edit(int id)
         {
             var model = _horseService.GetHorseDetails(id);
@@ -57,7 +58,7 @@
         }
 
         [HttpPost]
-        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Edit(HorseViewModel model)
         {
             try
@@ -68,6 +69,7 @@
             }
             catch
             {
+                ModelState.AddModelError(string.Empty, "Что-то пошло не так. Попробуйте ещё раз!");
                 return View(model);
             }
         }

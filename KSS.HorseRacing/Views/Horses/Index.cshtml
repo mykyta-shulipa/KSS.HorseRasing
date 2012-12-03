@@ -10,7 +10,10 @@
         Список всех лошадей
     </h2>
 </div>
-@Html.Partial("PartialCreateNewEntity")
+@if (User.IsInRole(Role.ADMIN))
+{
+    @Html.Partial("PartialCreateNewEntity")
+}
 <table id="sorting-table" class="table table-bordered table-striped table-hover tablesorter">
     <thead>
         <tr>
@@ -20,11 +23,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.DateBirth)
             </th>
-
-            @if (User.IsInRole(Role.JUDGE))
-            {
-                <td></td>   
-            }
             <td></td>
             @if (User.IsInRole(Role.ADMIN))
             {
@@ -35,7 +33,6 @@
     <tbody>
         @foreach (var item in Model)
         {
-        
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nickname)
@@ -43,18 +40,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.DateBirth)
                 </td>
-
-                @if (User.IsInRole(Role.ADMIN) || User.IsInRole(Role.JUDGE))
+                @if (User.IsInRole(Role.ADMIN))
                 {
                     <td>
                         @Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { id = item.Id }, new { @class = "btn" })
                     </td>
-                }
-                <td>
-                    @Html.ActionLink(/*"Details" */"Подробно", "Details", new { id = item.Id }, new { @class = "btn" })
-                </td>
-                @if (User.IsInRole(Role.ADMIN))
-                {
                     <td>
                         @Html.ActionLink(/*"Delete"*/ "Удалить", "Delete", new { id = item.Id }, new { @class = "btn" })
                     </td>

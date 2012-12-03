@@ -1,4 +1,6 @@
-﻿namespace KSS.HorseRacing.Controllers
+﻿using KSS.HorseRacing.Infrastucture.DataModels;
+
+namespace KSS.HorseRacing.Controllers
 {
     using System.Web.Mvc;
     using System.Web.Security;
@@ -6,6 +8,7 @@
     using Models;
     using Services;
 
+    [KssAuthorize(Roles = Role.ADMIN)]
     public class AdminController : Controller
     {
         private readonly AdminService _adminService;
@@ -47,6 +50,7 @@
             }
             catch
             {
+                ModelState.AddModelError(string.Empty, "Что-то пошло не так. Попробуйте ещё раз!");
                 return View(model);
             }
 
@@ -70,6 +74,7 @@
             }
             catch
             {
+                ModelState.AddModelError(string.Empty, "Что-то пошло не так. Попробуйте ещё раз!");
                 return RedirectToAction("Delete", "Admin", new { id });
             }
         }
@@ -90,6 +95,7 @@
             }
             catch
             {
+                ModelState.AddModelError(string.Empty, "Что-то пошло не так. Попробуйте ещё раз!");
                 return View(model);
             }
         }

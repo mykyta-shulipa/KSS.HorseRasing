@@ -1,4 +1,5 @@
-﻿@model  IEnumerable<KSS.HorseRacing.Models.RaceViewModel>
+﻿@using KSS.HorseRacing.Infrastucture.DataModels
+@model  IEnumerable<KSS.HorseRacing.Models.RaceViewModel>
 @{
     ViewBag.Title = "Список всех гонок";
 }
@@ -8,20 +9,43 @@
         @ViewBag.Title
     </h4>
 </div>
-@Html.Partial("PartialCreateNewEntity")
+@if (User.IsInRole(Role.JUDGE))
+{
+    @Html.Partial("PartialCreateNewEntity")
+}
 <table>
     <tr>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(x => x.RaceId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.RaceDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.RaceNumberInDay)
+        </th>
     </tr>
 
-@foreach (var race in Model) {
-    <tr>
-        <td>
-            @*@Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { /* id=item.PrimaryKey */ }) |
+    @foreach (var race in Model)
+    {
+        <tr>
+            <td>
+                @race.RaceId
+            </td>
+            <td>
+                @race.RaceDateTime
+            </td>
+            <td>
+                @race.RaceNumberInDay
+            </td>
+            @*
+            <td>
+                @Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink(/*"Details"*/ "Детали", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink(/*"Delete"*/ "Удалить", "Delete", new { /* id=item.PrimaryKey */ })*@
-        </td>
-    </tr>
-}
+            @Html.ActionLink(/*"Delete"*/ "Удалить", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+            *@
+        </tr>
+    }
 
 </table>

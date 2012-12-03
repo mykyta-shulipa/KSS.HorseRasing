@@ -50,7 +50,7 @@
             }
         }
 
-        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Edit(int id)
         {
             var model = _jokeyService.GetJockeyDetails(id);
@@ -58,7 +58,7 @@
         }
 
         [HttpPost]
-        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Edit(JockeyViewModel model)
         {
             try

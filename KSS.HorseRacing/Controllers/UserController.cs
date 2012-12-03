@@ -12,7 +12,7 @@
     {
         private readonly UserService _userService;
 
-        private SessionStorage _sessionStorage;
+        private readonly SessionStorage _sessionStorage;
 
         public UserController(UserService userService, SessionStorage sessionStorage)
         {

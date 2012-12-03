@@ -63,7 +63,7 @@
         <br />
         <div class="row-fluid">
             <p>
-                @if (User.IsInRole(Role.ADMIN) || User.IsInRole(Role.JUDGE))
+                @if (User.IsInRole(Role.ADMIN))
                 {
                     @Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { id = Model.RacerId }, new { @class = "btn" })        
                 }

@@ -1,4 +1,6 @@
-﻿namespace KSS.HorseRacing.Controllers
+﻿using System;
+
+namespace KSS.HorseRacing.Controllers
 {
     using System.Web.Mvc;
 
@@ -50,7 +52,7 @@
             }
         }
 
-        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Edit(int id)
         {
             if (id == 0)
@@ -63,7 +65,7 @@
         }
 
         [HttpPost]
-        [KssAuthorize(Roles = Role.ADMIN + "," + Role.JUDGE)]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Edit(RacerEditViewModel model)
         {
             try
@@ -73,6 +75,7 @@
             }
             catch
             {
+                ModelState.AddModelError(string.Empty, "Что-то пошло не так. Попробуйте ещё раз!");
                 return View(model);
             }
         }
@@ -80,6 +83,7 @@
         [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Delete(int id)
         {
+            throw new NotImplementedException();
             return View();
         }
 
@@ -87,6 +91,7 @@
         [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            throw new NotImplementedException();
             try
             {
                 // TODO: Add delete logic here

@@ -10,7 +10,10 @@
         @ViewBag.Title
     </h4>
 </div>
-@Html.Partial("PartialCreateNewEntity")
+@if (User.IsInRole(Role.ADMIN))
+{
+    @Html.Partial("PartialCreateNewEntity")
+}
 <div>
     <table class="table table-bordered table-hover table-striped tablesorter">
         <thead>
@@ -59,7 +62,7 @@
                         @Html.DisplayFor(modelItem => item.RacerDateTimeEnd)
                     </td>
                     <td>
-                        @if (User.IsInRole(Role.ADMIN) || User.IsInRole(Role.JUDGE))
+                        @if (User.IsInRole(Role.ADMIN))
                         {
                             @Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { id = item.RacerId }, new { @class = "btn" })
                         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using KSS.HorseRacing.Infrastucture.DataModels;
 using KSS.HorseRacing.Models;
 
 namespace KSS.HorseRacing.Controllers
@@ -32,13 +33,14 @@ namespace KSS.HorseRacing.Controllers
             return View();
         }
 
+        [KssAuthorize(Roles = Role.JUDGE)]
         public ActionResult Create()
         {
             var model = _raceService.GetRaceCreateViewModel();
             return View(model);
         }
         
-        [HttpPost]
+        [HttpPost]        
         public ActionResult GetParticipantInfo(int participantId)
         {
             var model = _racerService.GetRacerViewModel(participantId);
@@ -46,6 +48,7 @@ namespace KSS.HorseRacing.Controllers
         }
 
         [HttpPost]
+        [KssAuthorize(Roles = Role.JUDGE)]
         public ActionResult Create(RaceCreateViewModel model)
         {
             throw new NotImplementedException();

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<KSS.HorseRacing.Models.UsersListModel>
+﻿@using KSS.HorseRacing.Infrastucture.DataModels
+@model IEnumerable<KSS.HorseRacing.Models.UsersListModel>
 @{
     ViewBag.Title = "Users List";
     ViewBag.Title = "Список всех пользователей";
@@ -10,7 +11,10 @@
         @ViewBag.Title
     </h3>
 </div>
-@Html.Partial("PartialCreateNewEntity")
+@if (User.IsInRole(Role.ADMIN))
+{
+    @Html.Partial("PartialCreateNewEntity")
+}
 <table class="table table-bordered table-hover">
     <tr>
         <th>
@@ -38,7 +42,7 @@
                 @Html.DisplayFor(modelItem => item.RoleName)
             </td>
             <td>
-                @Html.ActionLink(/*"Edit" */"Редактировать", "Edit", new { @id = item.UserId }, new { @class = "btn" })                
+                @Html.ActionLink(/*"Edit" */"Редактировать", "Edit", new { @id = item.UserId }, new { @class = "btn" })
                 @Html.ActionLink(/*"Delete"*/ "Удалить", "Delete", new { id = item.UserId }, new { @class = "btn btn-danger" })
             </td>
         </tr>
