@@ -10,7 +10,9 @@
 </div>
 @{
     Html.EnableClientValidation(true);
-}
+}                                         
+
+
 @using (Html.BeginForm("Create", "Race", FormMethod.Post, new { @class = "validation" }))
 {
     <div class="well offset3 span9">
