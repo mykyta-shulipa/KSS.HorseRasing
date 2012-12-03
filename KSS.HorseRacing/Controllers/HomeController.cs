@@ -1,8 +1,7 @@
-﻿using System.Web.Security;
-
-namespace KSS.HorseRacing.Controllers
+﻿namespace KSS.HorseRacing.Controllers
 {
     using System;
+    using System.Web.Security;
     using System.Web;
     using System.Web.Mvc;
 
@@ -12,16 +11,16 @@ namespace KSS.HorseRacing.Controllers
     {
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                FormsAuthentication.SignOut();
-                return RedirectToAction("Index", "Home");
-            }
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    FormsAuthentication.SignOut();
+            //    return RedirectToAction("Index", "Home");
+            //}
             
             return View();
         }
 
-        public ActionResult SetCulture(string culture)
+     /*   public ActionResult SetCulture(string culture)
         {
             // Validate input
             culture = CultureHelper.GetValidCulture(culture);
@@ -46,6 +45,6 @@ namespace KSS.HorseRacing.Controllers
             Response.Cookies.Add(cookie);
 
             return RedirectToAction("Index");
-        }
+        }*/
     }
 }

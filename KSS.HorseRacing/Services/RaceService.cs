@@ -65,6 +65,8 @@ namespace KSS.HorseRacing.Services
                             WithJockey = true
                         });
                 model.ListParticipantsForDropdown = getPartisipantsListForDropdown(participants);
+                var dateTime = DateTime.Now;
+                model.DateTimeOfRace = dateTime.Day + "-" + dateTime.Month + "-" + dateTime.Year;
                 return model;
             }
         }
@@ -75,7 +77,7 @@ namespace KSS.HorseRacing.Services
             var selectListItems = racers.Select(racer => new SelectListItem
                 {
                     Value = racer.Id.ToString(CultureInfo.InvariantCulture),
-                    Text = racer.Jockey.Alias + " и лошадь " + racer.Horse.Nickname
+                    Text = "∆окей " + racer.Jockey.Alias + " и лошадь " + racer.Horse.Nickname
                 });
             return selectListItems;
         }

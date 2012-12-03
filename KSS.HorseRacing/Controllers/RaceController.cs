@@ -1,4 +1,5 @@
-﻿using KSS.HorseRacing.Models;
+﻿using System;
+using KSS.HorseRacing.Models;
 
 namespace KSS.HorseRacing.Controllers
 {
@@ -11,9 +12,12 @@ namespace KSS.HorseRacing.Controllers
     {
         private readonly RaceService _raceService;
 
-        public RaceController(RaceService raceService)
+        private readonly RacerService _racerService;
+
+        public RaceController(RaceService raceService, RacerService racerService)
         {
             _raceService = raceService;
+            _racerService = racerService;
         }
 
         public ActionResult Index()
@@ -24,28 +28,31 @@ namespace KSS.HorseRacing.Controllers
 
         public ActionResult Details(int id)
         {
+            throw new NotImplementedException();
             return View();
         }
-
-        //
-        // GET: /Race/Create
 
         public ActionResult Create()
         {
             var model = _raceService.GetRaceCreateViewModel();
             return View(model);
         }
-
-        //
-        // POST: /Race/Create
+        
+        [HttpPost]
+        public ActionResult GetParticipantInfo(int participantId)
+        {
+            var model = _racerService.GetRacerViewModel(participantId);
+            return Json(model);
+        }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(RaceCreateViewModel model)
         {
+            throw new NotImplementedException();
             try
             {
                 // TODO: Add insert logic here
-
+                
                 return RedirectToAction("Index");
             }
             catch
@@ -59,6 +66,7 @@ namespace KSS.HorseRacing.Controllers
 
         public ActionResult Edit(int id)
         {
+            throw new NotImplementedException();
             return View();
         }
 
@@ -68,6 +76,7 @@ namespace KSS.HorseRacing.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
+            throw new NotImplementedException();
             try
             {
                 // TODO: Add update logic here
@@ -85,6 +94,7 @@ namespace KSS.HorseRacing.Controllers
 
         public ActionResult Delete(int id)
         {
+            throw new NotImplementedException();
             return View();
         }
 
@@ -94,6 +104,7 @@ namespace KSS.HorseRacing.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            throw new NotImplementedException();
             try
             {
                 // TODO: Add delete logic here

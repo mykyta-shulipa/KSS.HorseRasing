@@ -1,7 +1,5 @@
 ﻿$(function () {
     var active = 'active';
-    var headersortdown = 'headerSortDown';
-    var headersortup = 'headerSortUp';
 
     //get url parameter value from page URL
     var urlParam = function (name) {
@@ -25,7 +23,7 @@
         setInterval(function () {
             $(".valid").parents(".control-group").removeClass("error").addClass("success");
             $(".input-validation-error").parents(".control-group").removeClass("success").addClass("error");
-        }, 100);
+        }, 50);
     }
     
     //pagination

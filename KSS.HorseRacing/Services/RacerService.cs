@@ -28,7 +28,7 @@ namespace KSS.HorseRacing.Services
         {
             using (var unit = new UnitOfWork())
             {
-                var racer = unit.Racer.Get(id);                
+                var racer = unit.Racer.Get(id);
                 var model = new RacerDetailsViewModel
                             {
                                 RacerId = racer.Id,
@@ -162,6 +162,16 @@ namespace KSS.HorseRacing.Services
                         Text = jockey.Alias + " (" + jockey.FullName + ")"
                     });
             return listJockeys;
+        }
+
+        public RacerViewModel GetRacerViewModel(int racerId)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var racer = unit.Racer.Get(racerId);
+                var model = getRacerViewModel(racer);
+                return model;
+            }
         }
     }
 }
