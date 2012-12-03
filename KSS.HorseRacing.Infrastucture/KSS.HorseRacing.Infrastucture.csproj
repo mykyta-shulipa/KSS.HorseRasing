@@ -89,7 +89,7 @@
     <Compile Include="DataModels\Race.cs" />
     <Compile Include="DataModels\Racer.cs" />
     <Compile Include="DataModels\Role.cs" />
-    <Compile Include="DataModels\SecureCredentials.cs" />
+    <Compile Include="DataModels\Credentials.cs" />
     <Compile Include="DataModels\User.cs" />
     <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="InfrastructureDiConfig.cs" />

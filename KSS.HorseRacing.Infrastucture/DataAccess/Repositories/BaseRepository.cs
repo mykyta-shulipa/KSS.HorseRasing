@@ -6,6 +6,9 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
     using KSS.HorseRacing.Infrastucture.DataAccess.Interfaces;
     using KSS.HorseRacing.Infrastucture.DataModels;
 
+    /// <summary>
+    /// The base repository.
+    /// </summary>
     public abstract class BaseRepository : IBaseRepository
     {
         /// <summary>

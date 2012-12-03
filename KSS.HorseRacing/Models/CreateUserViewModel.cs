@@ -8,9 +8,10 @@ namespace KSS.HorseRacing.Models
     {
         public IEnumerable<SelectListItem> RolesForDropdown { get; set; }
 
-        [Display(Name = "Select role:")]
+        [Display(Name = "Выберите роль:")]
         public int SelectedRole { get; set; }
 
+        [Display(Name = "Имя пользователя (логин)")]
         public string Username { get; set; }
     }
 }

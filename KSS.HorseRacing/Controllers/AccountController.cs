@@ -53,7 +53,8 @@
                 }
             }
 
-            ModelState.AddModelError(string.Empty, @"Incorrect login and/or password. Please, try again.");
+            //ModelState.AddModelError(string.Empty, @"Incorrect login and/or password. Please, try again.");
+            ModelState.AddModelError(string.Empty, @"неправильный логин и/или пароль. Пожалуйста, попробуйте ещё раз.");
             return View(model);
         }
 
@@ -66,7 +67,8 @@
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            _sessionStorage.AddValueWithKey(SessionStorage.LOGIN_MESSAGE, "Please login to view that page.");
+            //_sessionStorage.AddValueWithKey(SessionStorage.LOGIN_MESSAGE, "Please login to view that page.");
+            _sessionStorage.AddValueWithKey(SessionStorage.LOGIN_MESSAGE, "Войдите для просмотра страницы.");
             return RedirectToAction("Login");
         }
     }

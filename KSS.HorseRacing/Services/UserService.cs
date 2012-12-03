@@ -26,7 +26,7 @@ namespace KSS.HorseRacing.Services
             {
                 var user = unit.User.Get(userId);
                 var salt = _cryptoProvider.CreateSalt();
-                user.Password = new SecureCredentials
+                user.Password = new Credentials
                                 {
                                     Salt = salt, 
                                     PasswordHash = _cryptoProvider.CreateCryptoPassword(password, salt)

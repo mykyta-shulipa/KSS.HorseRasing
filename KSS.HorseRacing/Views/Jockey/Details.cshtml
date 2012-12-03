@@ -1,6 +1,7 @@
 ﻿@model KSS.HorseRacing.Models.JockeyViewModel
 @{
     ViewBag.Title = "Jockey Details";
+    ViewBag.Title = "Подробные сведения о жокее";
 }
 <div class="page-header"></div>
 <div class="page-header">
@@ -59,8 +60,8 @@
         <br />
         <div class="row-fluid">
             <p>
-                @Html.ActionLink("Edit", "Edit", new { id = Model.JockeyId }, new { @class = "btn" })
-                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+                @Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { id = Model.JockeyId }, new { @class = "btn" })
+                @Html.ActionLink(/*"Back to List"*/ "Вернуться к списку", "Index", null, new { @class = "btn" })
             </p>
         </div>
     </div>

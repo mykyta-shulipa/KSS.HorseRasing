@@ -1,22 +1,19 @@
 ﻿@model KSS.HorseRacing.Models.HorseViewModel
 @{
     ViewBag.Title = "Edit Horse";
+    ViewBag.Title = "Редактировать данные о лошади";
 }
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Edit Horse</legend>
+        <legend>@ViewBag.Title</legend>
 
         @Html.HiddenFor(x => x.HorseId)
-        <div class="editor-field">
-            @Html.EditorFor(model => model.HorseId)
-            @Html.ValidationMessageFor(model => model.HorseId)
-        </div>
-
+        
         <div class="editor-label">
-            @Html.LabelFor(model => model.Nickname)
+            @Html.DisplayNameFor(model => model.Nickname)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Nickname)
@@ -24,7 +21,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.DateBirth)
+            @Html.DisplayNameFor(model => model.DateBirth)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.DateBirth)
@@ -32,11 +29,11 @@
         </div>
 
         <p>
-            <input type="submit" class="btn btn-primary" value="Save" />
+            <input type="submit" class="btn btn-primary" value="Подтвердить изменения" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", null, new {@class="btn"})
+    @Html.ActionLink(/*"Back to List"*/ "Вернуться к списку", "Index", null, new {@class="btn"})
 </div>

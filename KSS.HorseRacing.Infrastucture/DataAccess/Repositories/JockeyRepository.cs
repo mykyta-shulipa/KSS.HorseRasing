@@ -8,7 +8,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
 
     public class JockeyRepository : BaseRepository, IJockeyRepository
     {
-        public IList<Jockey> GetAllJockeys()
+        public IEnumerable<Jockey> GetAllJockeys()
         {
             var jockeys = getContext().Jockeys.ToList();
             return jockeys;

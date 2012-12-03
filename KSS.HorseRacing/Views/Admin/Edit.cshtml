@@ -1,20 +1,22 @@
 ﻿@model KSS.HorseRacing.Models.UserEditViewModel
 @{
     ViewBag.Title = "Edit User";
+    ViewBag.Title = "Редактировать информацию о пользователе";
 }
 <div class="page-header">
 </div>
 <div class="page-header">
-    <h3>Edit User
+    <h3>@ViewBag.Title
     </h3>
 </div>
 <div class="row-fluid">
-    <div class="offset3 span3">
+    <div class="offset3 span4">
         @using (Html.BeginForm())
         {
             @Html.HiddenFor(x => x.UserId)
             <dl class="dl-horizontal">
-                <dt>User Name
+                <dt>
+                    Имя пользователя (логин)
                 </dt>
                 <dd>
                     @Html.EditorFor(x => x.Username)
@@ -22,17 +24,19 @@
             </dl>
     
             <dl class="dl-horizontal">
-                <dt>User Role
+                <dt>
+                    Роль пользователя:
                 </dt>
                 <dd>
-                    @Html.DropDownListFor(x => x.SelectedRoleId, Model.Roles, "Select Role")
+                    @Html.DropDownListFor(x => x.SelectedRoleId, Model.Roles)
                 </dd>
             </dl>
-            <div class="btn-group pull-right">
-                @Html.ActionLink("Back To List", "Index", "User", null, new { @class = "btn" })
-                <input type="submit" class="btn btn-primary " value="Save" />
+            <div class="row-fluid">                
+                <input type="submit" class="btn btn-primary span12" value="Подтвердить изменения" />
             </div>
         }
-
+        <div class="row-fluid">
+            @Html.ActionLink(/*"Back To List"*/ "Вернуться к списку", "Index", "Admin", null, new { @class = "btn span12" })
+        </div>
     </div>
 </div>

@@ -4,6 +4,7 @@
 
 @{
     ViewBag.Title = "Settings";
+    ViewBag.Title = "Настройки";
 }
 <div class="page-header"></div>
 <div class="page-header">
@@ -33,18 +34,19 @@
     {
         @Html.HiddenFor(x => x.UserId)
         <div class="row-fluid">
-            <h4>Change Password
+            <h4>
+                @*Change Password*@
+                Сменить пароль
             </h4>
             <br />
-            @Validation("New Password", x => x.PasswordModel.Password)
-            @Validation("Confirm Password", x => x.PasswordModel.ComparePassword)
+            @Validation(/*"New Password"*/ "Новый пароль", x => x.PasswordModel.Password)
+            @Validation(/*"Confirm Password"*/ "Подтверждение пароля", x => x.PasswordModel.ComparePassword)
             <br />
         </div>
         <div class="row-fluid">
-            <input type="submit" class="btn btn-primary pull-right" value="Change password" />
+            <input type="submit" class="btn btn-primary pull-right" value="Сменить пароль" />
         </div>    
     }
-</div>
 </div>
 
 @helper Validation(string caption, Expression<Func<SettingsViewModel, string>> expression)

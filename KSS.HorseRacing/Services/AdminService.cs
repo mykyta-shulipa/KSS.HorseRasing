@@ -108,7 +108,7 @@ namespace KSS.HorseRacing.Services
             {
                 var role = unit.Role.Get(model.SelectedRole);
                 var salt = _cryptoProvider.CreateSalt();
-                var credentials = new SecureCredentials
+                var credentials = new Credentials
                                   {
                                       Salt = salt,
                                       PasswordHash = _cryptoProvider.CreateCryptoPassword(model.Username, salt)

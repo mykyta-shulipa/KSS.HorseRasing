@@ -1,11 +1,17 @@
 ﻿@model KSS.HorseRacing.Models.HorseViewModel
 @{
     ViewBag.Title = "Delete Horse";
+    ViewBag.Title = "Удаление данных о лошади";
 }
-<h3>Are you sure you want to delete this horse?</h3>
-<div class="row-fluid">
-    @Html.DisplayFor(model => model.HorseId)
+@*<h3>Are you sure you want to delete this horse?</h3>*@
+<div class="page-header"></div>
+<div class="page-header">
+    <h4>
+        @ViewBag.Title
+    </h4>
 </div>
+<h3>Вы уверены, что хотите удалить данные об этой лошади из БД? </h3>
+
 <div class="row-fluid">
     @Html.DisplayNameFor(model => model.Nickname)
 </div>
@@ -18,11 +24,12 @@
 <div class="row-fluid">
     @Html.DisplayFor(model => model.DateBirth)
 </div>
+<br/>
 @using (Html.BeginForm("DeleteHorse", "Horses"))
 {
     <p>
         @Html.HiddenFor(x => x.HorseId)
-        <input type="submit" class="btn btn-danger" value="Delete" />
+        <input type="submit" class="btn btn-danger" value="Удалить" />
     </p>
 }
-@Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+@Html.ActionLink(/*"Back to List"*/ "Вернуться к списку", "Index", null, new { @class = "btn" })

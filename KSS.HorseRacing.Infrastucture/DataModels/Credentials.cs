@@ -2,7 +2,7 @@ namespace KSS.HorseRacing.Infrastucture.DataModels
 {
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class SecureCredentials
+    public class Credentials
     {
         [Column("Salt")]
         public string Salt { get; set; }

@@ -11,18 +11,18 @@
             <br />
             <ul class="dropdown-menu">
                 <li>
-                    @Html.ActionLink("Settings", "Settings", "User")
+                    @Html.ActionLink(/*"Settings"*/ "Настройки", "Settings", "User")
                 </li>
                 <li class="divider"></li>
                 <li>
-                    @Html.ActionLink("LogOff", "Logout", "Account")
+                    @Html.ActionLink(/*"LogOff"*/ "Выйти", "Logout", "Account")
                 </li>
             </ul>
         </div>
     }
     else
     {
-        @Html.ActionLink("LogIn", "Login", "Account", null, new { @class = "btn btn-primary" })                
+        @Html.ActionLink(/*"LogIn"*/ "Войти", "Login", "Account", null, new { @class = "btn btn-primary" })                
     }
 </div>
 

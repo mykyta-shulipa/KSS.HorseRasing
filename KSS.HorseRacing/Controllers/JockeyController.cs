@@ -7,11 +7,11 @@
     using KSS.HorseRacing.Services;
 
     [KssAuthorize]
-    public class JokeyController : Controller
+    public class JockeyController : Controller
     {
         private readonly JokeyService _jokeyService;
 
-        public JokeyController(JokeyService jokeyService)
+        public JockeyController(JokeyService jokeyService)
         {
             _jokeyService = jokeyService;
         }

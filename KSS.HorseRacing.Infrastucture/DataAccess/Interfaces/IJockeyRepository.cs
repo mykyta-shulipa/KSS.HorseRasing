@@ -6,7 +6,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
 
     public interface IJockeyRepository : IBaseRepository
     {
-        IList<Jockey> GetAllJockeys();
+        IEnumerable<Jockey> GetAllJockeys();
 
         Jockey Get(int id);
 

@@ -5,6 +5,7 @@ namespace KSS.HorseRacing.Models
 
     public class UserEditViewModel
     {
+        
         public int UserId { get; set; }
 
         public string Username { get; set; }
