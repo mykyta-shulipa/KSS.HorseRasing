@@ -250,6 +250,7 @@
     <Content Include="Views\Jockey\Details.cshtml" />
     <Content Include="Views\Jockey\Edit.cshtml" />
     <Content Include="Views\Jockey\Index.cshtml" />
+    <Content Include="Views\Shared\PartialPageHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

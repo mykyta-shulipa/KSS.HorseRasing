@@ -3,12 +3,7 @@
     ViewBag.Title = "Edit User";
     ViewBag.Title = "Редактировать информацию о пользователе";
 }
-<div class="page-header">
-</div>
-<div class="page-header">
-    <h3>@ViewBag.Title
-    </h3>
-</div>
+@Html.Partial("PartialPageHeader")
 <div class="row-fluid">
     <div class="offset3 span4">
         @using (Html.BeginForm())

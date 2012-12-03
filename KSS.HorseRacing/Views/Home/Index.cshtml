@@ -2,8 +2,7 @@
     ViewBag.Title = "Home page";
     ViewBag.Title = "Домашняя страница";
 }
-<div class="page-header">
-</div>
+@Html.Partial("PartialPageHeader")
 
 @if (User.Identity.IsAuthenticated)
 {
@@ -34,7 +33,7 @@ else
     <div class="page-header">
         <h3>
             @*Home page*@
-            Домашняя страница
+            Авторизируйтесь для просмотра системы
         </h3>
     </div>
 }

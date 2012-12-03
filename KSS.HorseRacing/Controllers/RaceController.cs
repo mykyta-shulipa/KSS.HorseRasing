@@ -1,11 +1,10 @@
-﻿using System;
-using KSS.HorseRacing.Infrastucture.DataModels;
-using KSS.HorseRacing.Models;
-
-namespace KSS.HorseRacing.Controllers
+﻿namespace KSS.HorseRacing.Controllers
 {
+    using System;
     using System.Web.Mvc;
 
+    using KSS.HorseRacing.Infrastucture.DataModels;
+    using KSS.HorseRacing.Models;
     using KSS.HorseRacing.Services;
 
     [KssAuthorize]

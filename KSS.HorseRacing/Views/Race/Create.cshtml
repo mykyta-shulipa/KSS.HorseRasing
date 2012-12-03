@@ -2,17 +2,11 @@
 @{
     ViewBag.Title = "Добавить результаты гонки";
 }
-<div class="page-header"></div>
-<div class="page-header">
-    <h4>
-        @ViewBag.Title
-    </h4>
-</div>
+@Html.Partial("PartialPageHeader")
+
 @{
     Html.EnableClientValidation(true);
 }                                         
-
-
 @using (Html.BeginForm("Create", "Race", FormMethod.Post, new { @class = "validation" }))
 {
     <div class="well offset3 span9">
