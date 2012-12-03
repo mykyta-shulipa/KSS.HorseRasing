@@ -34,5 +34,10 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
             var list = queryable.ToList();
             return list;
         }
+
+        public void Save(Participant participant)
+        {
+            save(participant);
+        }
     }
 }

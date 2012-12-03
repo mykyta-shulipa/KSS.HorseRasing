@@ -86,5 +86,32 @@ namespace KSS.HorseRacing.Services
                 });
             return selectListItems;
         }
+
+        public void AddNewRace(RaceCreateViewModel model)
+        {
+
+            using (var unit = new UnitOfWork())
+            {
+                var race = new Race
+                {
+                    DateTimeOfRace = DateTime.Parse(model.DateTimeOfRace),
+                    NumberRaceInDay = Convert.ToInt32(model.NumberRaceInDay)
+                };
+                unit.Race.Save(race);
+
+                foreach (var viewModel in model.Participants)
+                {
+                    var racer = unit.Racer.Get(viewModel.RacerId);
+                    var participant = new Participant
+                    {
+                        Race = race,
+                        Racer = racer,
+                        NumberInRace = viewModel.NumberInRace,
+                        PlaceInRace = viewModel.PlaceInRace
+                    };
+                    unit.Participant.Save(participant);
+                }
+            }
+        }
     }
 }

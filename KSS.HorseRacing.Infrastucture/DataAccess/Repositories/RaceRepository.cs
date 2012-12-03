@@ -13,5 +13,10 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
             var races = getContext().Races.ToList();
             return races;
         }
+
+        public void Save(Race race)
+        {
+            save(race);
+        }
     }
 }

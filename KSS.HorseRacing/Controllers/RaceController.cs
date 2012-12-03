@@ -49,12 +49,10 @@
         [HttpPost]
         [KssAuthorize(Roles = Role.JUDGE)]
         public ActionResult Create(RaceCreateViewModel model)
-        {
-            throw new NotImplementedException();
+        {            
             try
             {
-                // TODO: Add insert logic here
-                
+                _raceService.AddNewRace(model);                
                 return RedirectToAction("Index");
             }
             catch

@@ -7,5 +7,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
     public interface IRaceRepository : IBaseRepository
     {
         List<Race> GetAllRaces();
+
+        void Save(Race race);
     }
 }

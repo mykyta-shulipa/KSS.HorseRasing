@@ -2,6 +2,8 @@ namespace KSS.HorseRacing.Models
 {
     public class ParticipantViewModel
     {
+        public int RacerId { get; set; }
+
         public int ParticipantId { get; set; }
 
         public int NumberInRace { get; set; }

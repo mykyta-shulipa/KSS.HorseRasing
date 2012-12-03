@@ -7,5 +7,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
     public interface IParticipantRepository : IBaseRepository
     {
         List<Participant> LoadParticipants(ParticipantFilter filter);
+
+        void Save(Participant participant);
     }
 }
