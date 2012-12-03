@@ -55,7 +55,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess
             salt = cryptoProvider.CreateSalt();
             var jokey = new User
             {
-                Username = "joñkey",
+                Username = "user",
                 Password = new Credentials
                 {
                     Salt = salt,

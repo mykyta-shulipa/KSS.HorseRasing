@@ -73,8 +73,13 @@ namespace KSS.HorseRacing.Services
 
         private IEnumerable<SelectListItem> getPartisipantsListForDropdown(IEnumerable<Racer> racers)
         {
-            if (racers == null) throw new ArgumentNullException("racers");
-            var selectListItems = racers.Select(racer => new SelectListItem
+            if (racers == null)
+            {
+                throw new ArgumentNullException("racers");
+            }
+
+            var selectListItems = racers.Select(
+                racer => new SelectListItem
                 {
                     Value = racer.Id.ToString(CultureInfo.InvariantCulture),
                     Text = "∆окей " + racer.Jockey.Alias + " и лошадь " + racer.Horse.Nickname

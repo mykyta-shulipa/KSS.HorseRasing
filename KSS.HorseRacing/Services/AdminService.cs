@@ -28,9 +28,24 @@ namespace KSS.HorseRacing.Services
                                                  {
                                                      UserId = user.Id,
                                                      Username = user.Username,
-                                                     RoleName = user.Role != null ? user.Role.Name : string.Empty
+                                                     RoleName = user.Role != null ? getRoleNameForRole(user.Role.Name) : string.Empty
                                                  }).ToList();
                 return model;
+            }
+        }
+
+        private string getRoleNameForRole(string roleName)
+        {
+            switch (roleName)
+            {
+                case Role.ADMIN:
+                    return "Администратор";
+                case Role.JUDGE:
+                    return "Судья";
+                case Role.USER:
+                    return "Пользователь";
+                default:
+                    return roleName;
             }
         }
 
@@ -41,12 +56,11 @@ namespace KSS.HorseRacing.Services
                 var user = unit.User.Get(id);
                 var model = new UserEditViewModel { UserId = user.Id, Username = user.Username };
                 var roles = unit.Role.GetAll();
-                model.Roles = (from item in roles
-                               select new SelectListItem
-                                      {
-                                          Text = item.Name,
-                                          Value = item.Id.ToString(CultureInfo.InvariantCulture)
-                                      }).ToList();
+                model.Roles = roles.Select(item => new SelectListItem
+                {
+                    Text = getRoleNameForRole(item.Name), 
+                    Value = item.Id.ToString(CultureInfo.InvariantCulture)
+                }).ToList();
                 model.SelectedRoleId = user.Role.Id;
                 return model;
             }

@@ -19,7 +19,7 @@ namespace KSS.HorseRacing.Services
                     jockey => new JockeyViewModel
                     {
                         Alias = jockey.Alias, 
-                        DateBirth = jockey.DateBirth.ToShortDateString(), 
+                        DateBirth = getDateTimeStringForDatepicker(jockey.DateBirth), 
                         FirstName = jockey.FirstName, 
                         JockeyId = jockey.Id, 
                         LastName = jockey.LastName, 
@@ -29,6 +29,11 @@ namespace KSS.HorseRacing.Services
             }
         }
 
+        private string getDateTimeStringForDatepicker(DateTime dateTime)
+        {
+            return dateTime.ToShortDateString().Replace('/', '-');
+        }
+
         public JockeyViewModel GetJockeyDetails(int id)
         {
             using (var unit = new UnitOfWork())
@@ -36,8 +41,9 @@ namespace KSS.HorseRacing.Services
                 var jockey = unit.Jockey.Get(id);
                 var model = new JockeyViewModel
                 {
+                    JockeyId = jockey.Id,
                     Alias = jockey.Alias,
-                    DateBirth = jockey.DateBirth.ToShortDateString(),
+                    DateBirth = getDateTimeStringForDatepicker(jockey.DateBirth),
                     FirstName = jockey.FirstName,
                     LastName = jockey.LastName,
                     MiddleName = jockey.MiddleName

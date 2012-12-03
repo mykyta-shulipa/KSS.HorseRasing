@@ -122,6 +122,12 @@ namespace KSS.HorseRacing.Services
             }
         }
 
+
+        private string getDateTimeStringForDatepicker(DateTime dateTime)
+        {
+            return dateTime.ToShortDateString().Replace('/', '-');
+        }
+
         private RacerViewModel getRacerViewModel(Racer racer)
         {
             var model = new RacerViewModel
@@ -132,9 +138,9 @@ namespace KSS.HorseRacing.Services
                 JokeyId = racer.Jockey.Id,
                 HorseId = racer.Horse.Id,
                 HorseNickname = racer.Horse.Nickname,
-                RacerDateTimeStart = racer.DateTimeStart.ToShortDateString(),
+                RacerDateTimeStart = getDateTimeStringForDatepicker(racer.DateTimeStart),
                 RacerDateTimeEnd = racer.DateTimeEnd.HasValue
-                    ? ((DateTime)racer.DateTimeEnd).ToString(CultureInfo.InvariantCulture)
+                    ? getDateTimeStringForDatepicker((DateTime)racer.DateTimeEnd)
                     : "-"
             };
             return model;
