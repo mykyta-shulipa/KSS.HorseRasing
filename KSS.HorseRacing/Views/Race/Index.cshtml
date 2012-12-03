@@ -1,6 +1,6 @@
 ﻿@model  IEnumerable<KSS.HorseRacing.Models.RaceViewModel>
 @{
-    ViewBag.Title = "Races list";
+    ViewBag.Title = "Список всех гонок";
 }
 <div class="page-header"></div>
 <div class="page-header">
@@ -17,9 +17,9 @@
 @foreach (var race in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @*@Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink(/*"Details"*/ "Детали", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink(/*"Delete"*/ "Удалить", "Delete", new { /* id=item.PrimaryKey */ })*@
         </td>
     </tr>
 }

@@ -23,6 +23,8 @@
 
         private IRacerRepository _racerRepository;
 
+        private IParticipantRepository _participantRepository;
+
         public UnitOfWork()
         {
             _context = IoC.Resolve<EfContext>();
@@ -112,6 +114,20 @@
             }
         }
 
+        public IParticipantRepository Participant
+        {
+            get
+            {
+                if (_participantRepository == null)
+                {
+                    _participantRepository = IoC.Resolve<IParticipantRepository>();
+                    _participantRepository.SetContext(_context);
+                }
+
+                return _participantRepository;  
+            }
+        }
+       
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
@@ -124,4 +140,4 @@
             }
         }
     }
-}
+    }

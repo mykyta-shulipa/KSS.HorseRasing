@@ -153,6 +153,7 @@
     <Compile Include="Models\HorseViewModel.cs" />
     <Compile Include="Models\JockeyViewModel.cs" />
     <Compile Include="Models\ParticipantViewModel.cs" />
+    <Compile Include="Models\RaceCreateViewModel.cs" />
     <Compile Include="Models\RaceViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PasswordViewModel.cs" />
@@ -247,6 +248,7 @@
     <Content Include="Views\Racer\Details.cshtml" />
     <Content Include="Views\User\Settings.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Race\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

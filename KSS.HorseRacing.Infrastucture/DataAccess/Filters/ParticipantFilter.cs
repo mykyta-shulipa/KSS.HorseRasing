@@ -1,8 +1,10 @@
 namespace KSS.HorseRacing.Infrastucture.DataAccess.Filters
 {
-    public class RacerFilter : BaseFilter
+    public class ParticipantFilter : BaseFilter
     {
-        public bool? IsActiveNow { get; set; }
+        public int? RaceId { get; set; }
+
+        public bool WithRacer { get; set; }
 
         public bool WithHorse { get; set; }
 

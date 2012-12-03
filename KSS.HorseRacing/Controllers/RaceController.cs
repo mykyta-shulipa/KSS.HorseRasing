@@ -1,4 +1,6 @@
-﻿namespace KSS.HorseRacing.Controllers
+﻿using KSS.HorseRacing.Models;
+
+namespace KSS.HorseRacing.Controllers
 {
     using System.Web.Mvc;
 
@@ -20,9 +22,6 @@
             return View(model);
         }
 
-        //
-        // GET: /Race/Details/5
-
         public ActionResult Details(int id)
         {
             return View();
@@ -33,7 +32,8 @@
 
         public ActionResult Create()
         {
-            return View();
+            var model = _raceService.GetRaceCreateViewModel();
+            return View(model);
         }
 
         //

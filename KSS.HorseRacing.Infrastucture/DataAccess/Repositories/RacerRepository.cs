@@ -5,10 +5,10 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
     using System.Data.Entity;
     using System.Linq;
 
-    using KSS.HorseRacing.Infrastucture.DataAccess.Filters;
-    using KSS.HorseRacing.Infrastucture.DataAccess.Interfaces;
-    using KSS.HorseRacing.Infrastucture.DataModels;
-    using KSS.HorseRacing.Infrastucture.Extensions;
+    using Filters;
+    using Interfaces;
+    using DataModels;
+    using Extensions;
 
     public class RacerRepository : BaseRepository, IRacerRepository
     {
@@ -26,9 +26,15 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         {
             var racers = getContext().Racers
                 .WhereIf(filter.IsActiveNow.HasValue && (bool)filter.IsActiveNow, x => x.DateTimeEnd > DateTime.Now);
+
             if (filter.WithHorse)
             {
                 racers = racers.Include(x => x.Horse);
+            }
+
+            if (filter.WithJockey)
+            {
+                racers = racers.Include(x => x.Jockey);
             }
 
             var list = racers.ToList();
