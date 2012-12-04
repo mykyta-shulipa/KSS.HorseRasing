@@ -1,6 +1,7 @@
 ﻿namespace KSS.HorseRacing.Controllers
 {
     using System;
+    using System.Linq;
     using System.Web.Mvc;
 
     using KSS.HorseRacing.Infrastucture.DataModels;
@@ -28,8 +29,8 @@
 
         public ActionResult Details(int id)
         {
-            throw new NotImplementedException();
-            return View();
+            var model = _raceService.GetRaceDetailsViewModel(id);
+            return View(model);
         }
 
         [KssAuthorize(Roles = Role.JUDGE)]
@@ -38,18 +39,18 @@
             var model = _raceService.GetRaceCreateViewModel();
             return View(model);
         }
-        
-        [HttpPost]        
-        public ActionResult GetParticipantInfo(int participantId)
-        {
-            var model = _racerService.GetRacerViewModel(participantId);
-            return Json(model);
-        }
 
         [HttpPost]
         [KssAuthorize(Roles = Role.JUDGE)]
         public ActionResult Create(RaceCreateViewModel model)
-        {            
+        {
+            if (model.Participants == null)
+            {
+                ModelState.AddModelError(string.Empty, "Заезд должен иметь участников!");
+                model = _raceService.GetRaceCreateViewModel(DateTime.Parse(model.DateTimeOfRace), model.NumberRaceInDay);
+                return View(model);
+            }
+
             try
             {
                 _raceService.AddNewRace(model);                
@@ -57,8 +58,15 @@
             }
             catch
             {
-                return View();
+                return View(model);
             }
+        }
+
+        [HttpPost]        
+        public ActionResult GetParticipantInfo(int participantId)
+        {
+            var model = _racerService.GetRacerViewModel(participantId);
+            return Json(model);
         }
 
         //

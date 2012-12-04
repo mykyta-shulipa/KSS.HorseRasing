@@ -129,6 +129,15 @@ namespace KSS.HorseRacing.Services
             }
         }
 
+        public RacerViewModel GetRacerViewModel(int racerId)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var racer = unit.Racer.Get(racerId);
+                var model = getRacerViewModel(racer);
+                return model;
+            }
+        }
 
         private RacerViewModel getRacerViewModel(Racer racer)
         {
@@ -146,16 +155,6 @@ namespace KSS.HorseRacing.Services
                     : "-"
             };
             return model;
-        }
-
-        public RacerViewModel GetRacerViewModel(int racerId)
-        {
-            using (var unit = new UnitOfWork())
-            {
-                var racer = unit.Racer.Get(racerId);
-                var model = getRacerViewModel(racer);
-                return model;
-            }
         }
 
         private IEnumerable<SelectListItem> getHorsesListForDropdown(IEnumerable<Horse> horses)

@@ -9,5 +9,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Filters
         public bool WithHorse { get; set; }
 
         public bool WithJockey { get; set; }
+
+        public bool WithRacerHorceAndJockey { get; set; }
     }
 }

@@ -62,6 +62,11 @@ namespace KSS.HorseRacing.Services
 
         public RaceCreateViewModel GetRaceCreateViewModel()
         {
+            return GetRaceCreateViewModel(DateTime.Now);
+        }
+
+        public RaceCreateViewModel GetRaceCreateViewModel(DateTime dateTime, string numberInDay = null)
+        {
             using (var unit = new UnitOfWork())
             {
                 var model = new RaceCreateViewModel();
@@ -71,8 +76,13 @@ namespace KSS.HorseRacing.Services
                             WithHorse = true,
                             WithJockey = true
                         });
-                model.ListParticipantsForDropdown = getPartisipantsListForDropdown(participants);                
-                model.DateTimeOfRace = DateTime.Now.ToShortDateString();
+                model.ListParticipantsForDropdown = getPartisipantsListForDropdown(participants);
+                model.DateTimeOfRace = dateTime.ToString("MM-dd-yyyy");
+                if (!string.IsNullOrWhiteSpace(numberInDay))
+                {
+                    model.NumberRaceInDay = numberInDay;
+                }
+
                 return model;
             }
         }
@@ -101,6 +111,38 @@ namespace KSS.HorseRacing.Services
                     };
                     unit.Participant.Save(participant);
                 }
+            }
+        }
+
+        public RaceDetailsViewModel GetRaceDetailsViewModel(int id)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var race = unit.Race.Get(id);
+                var model = new RaceDetailsViewModel
+                {
+                    DateTimeOfRace = race.DateTimeOfRace.ToShortDateString(),
+                    NumberRaceInDay = race.NumberRaceInDay.ToString(CultureInfo.InvariantCulture),
+                    Participants = new List<ParticipantViewModel>()
+                };
+
+                var participants = unit.Participant.LoadParticipants(new ParticipantFilter { RaceId = race.Id, WithRacerHorceAndJockey = true });
+                foreach (var participant in participants)
+                {
+                    model.Participants.Add(new ParticipantViewModel
+                    {
+                        HorseId = participant.Racer.Horse.Id,
+                        HorseNickname = participant.Racer.Horse.Nickname,
+                        ParticipantId = participant.Id,
+                        RacerId = participant.Racer.Id,
+                        JockeyId = participant.Racer.Jockey.Id,
+                        JockeyAlias = participant.Racer.Jockey.Alias,
+                        NumberInRace = participant.NumberInRace,
+                        PlaceInRace = participant.PlaceInRace
+                    });
+                }
+
+                return model;
             }
         }
 

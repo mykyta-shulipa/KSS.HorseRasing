@@ -9,5 +9,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
         List<Race> GetAllRaces();
 
         void Save(Race race);
+
+        Race Get(int id);
     }
 }

@@ -5,7 +5,7 @@
 }
 @Html.Partial("PartialPageHeader")
 @Html.Partial("PartialCreateNewEntity", Role.JUDGE)
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover table-striped tablesorter">
     <thead>
         <tr>
             <th>
@@ -17,6 +17,7 @@
             <th>
                 @Html.DisplayNameFor(x => x.RaceNumberInDay)
             </th>
+            <td></td>
         </tr>
     </thead>
     <tbody>
@@ -32,13 +33,11 @@
                 <td>
                     @race.RaceNumberInDay
                 </td>
-                @*
-            <td>
-                @Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink(/*"Details"*/ "Детали", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink(/*"Delete"*/ "Удалить", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-            *@
+                <td>
+                    @Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { id = race.RaceId }, new { @class = "btn" })
+                    @Html.ActionLink(/*"Details"*/ "Детали", "Details", new { id = race.RaceId }, new { @class = "btn" })
+                    @Html.ActionLink(/*"Delete"*/ "Удалить", "Delete", new { id = race.RaceId }, new { @class = "btn" })
+                </td>
             </tr>
         }
     </tbody>

@@ -8,9 +8,12 @@
     Html.EnableClientValidation(true);
 }
 @using (Html.BeginForm("Create", "Race", FormMethod.Post, new { @class = "validation" }))
-{
-    <div class="well offset3 span9">
-        <div class="row-fluid">
+{    
+    <div class="offset3 span9">
+        <div class="validation-message row-fluid">
+            @Html.ValidationSummary(true)
+        </div>
+        <div class="row-fluid well">
             <div class="row-fluid">
                 <strong>Дата проведения гонки
                 </strong>
@@ -41,7 +44,9 @@
                 <strong>Участники:</strong>
                 <table class="table table-bordered table-hover">
                     <thead>
-                        <th>#</th>
+                        <th>
+                            #
+                        </th>
                         <th>Полное имя жокея
                         </th>
                         <th>Псевдоним жокея 
@@ -85,15 +90,11 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.with-datepicker').datepicker({
-            format: 'dd-mm-yyyy'
-        });
         var counter = 0;
         $("#add-new-participant-button").click(function () {
             var participantId = $('#participants-dropdown-list :selected').val();
-
-
             var namePart = 'Participants[' + counter + '].';
+
             var onSuccess = function (data) {
                 var htmlString = '<tr><td>' + (counter + 1) + '</td>';
                 htmlString += '<input data-val="true" name="' + namePart + 'RacerId" type="hidden" value="' + data.RacerId + '">';
@@ -136,3 +137,4 @@
         });
     });
 </script>
+@Html.Partial("PartialForDatePicker")

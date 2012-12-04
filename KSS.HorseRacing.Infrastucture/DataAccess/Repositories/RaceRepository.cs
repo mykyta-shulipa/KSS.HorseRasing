@@ -18,5 +18,11 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
         {
             save(race);
         }
+
+        public Race Get(int id)
+        {
+            var race = getContext().Races.FirstOrDefault(x => x.Id == id);
+            return race;
+        }
     }
 }

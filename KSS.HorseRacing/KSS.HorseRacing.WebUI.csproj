@@ -155,6 +155,7 @@
     <Compile Include="Models\JockeyViewModel.cs" />
     <Compile Include="Models\ParticipantViewModel.cs" />
     <Compile Include="Models\RaceCreateViewModel.cs" />
+    <Compile Include="Models\RaceDetailsViewModel.cs" />
     <Compile Include="Models\RaceViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PasswordViewModel.cs" />
@@ -252,6 +253,7 @@
     <Content Include="Views\Jockey\Edit.cshtml" />
     <Content Include="Views\Jockey\Index.cshtml" />
     <Content Include="Views\Shared\PartialPageHeader.cshtml" />
+    <Content Include="Views\Race\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
