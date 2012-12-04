@@ -147,6 +147,25 @@ namespace KSS.HorseRacing.Services
             }
         }
 
+        public void EditRace(RaceDetailsViewModel model)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var loadParticipants = unit.Participant.LoadParticipants(new ParticipantFilter { RaceId = model.RaceId });
+                foreach (var participantViewModel in model.Participants)
+                {
+                    var viewModel = participantViewModel;
+                    foreach (var participant in loadParticipants.Where(participant => viewModel.ParticipantId == participant.Id))
+                    {
+                        participant.NumberInRace = participantViewModel.NumberInRace;
+                        participant.PlaceInRace = participantViewModel.PlaceInRace;
+                        unit.Participant.Save(participant);
+                        break;
+                    }
+                }
+            }
+        }
+
         private IEnumerable<SelectListItem> getPartisipantsListForDropdown(IEnumerable<Racer> racers)
         {
             if (racers == null)

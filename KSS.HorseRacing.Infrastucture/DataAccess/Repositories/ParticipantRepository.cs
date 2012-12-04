@@ -11,6 +11,11 @@
 
     public class ParticipantRepository : BaseRepository, IParticipantRepository
     {
+        public void Save(Participant participant)
+        {
+            save(participant);
+        }
+
         public List<Participant> LoadParticipants(ParticipantFilter filter)
         {
             var queryable = getContext().Participants
@@ -41,11 +46,6 @@
             
             var list = queryable.ToList();
             return list;
-        }
-
-        public void Save(Participant participant)
-        {
-            save(participant);
         }
     }
 }

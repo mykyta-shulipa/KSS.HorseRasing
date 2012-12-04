@@ -79,13 +79,11 @@
         // POST: /Race/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            throw new NotImplementedException();
+        public ActionResult Edit(RaceDetailsViewModel model)
+        {            
             try
             {
-                // TODO: Add update logic here
-
+                _raceService.EditRace(model);
                 return RedirectToAction("Index");
             }
             catch
