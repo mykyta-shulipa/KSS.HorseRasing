@@ -172,6 +172,7 @@
     <Compile Include="Rules\AccountRule.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\GeneralService.cs" />
     <Compile Include="Services\HorseService.cs" />
     <Compile Include="Services\JokeyService.cs" />
     <Compile Include="Services\RacerService.cs" />

@@ -34,21 +34,6 @@ namespace KSS.HorseRacing.Services
             }
         }
 
-        private string getRoleNameForRole(string roleName)
-        {
-            switch (roleName)
-            {
-                case Role.ADMIN:
-                    return "Администратор";
-                case Role.JUDGE:
-                    return "Судья";
-                case Role.USER:
-                    return "Пользователь";
-                default:
-                    return roleName;
-            }
-        }
-
         public UserEditViewModel GetUserEditModel(int id)
         {
             using (var unit = new UnitOfWork())
@@ -157,6 +142,21 @@ namespace KSS.HorseRacing.Services
                     Value = role.Id.ToString(CultureInfo.InvariantCulture)
                 });
             return listItems;
+        }
+
+        private string getRoleNameForRole(string roleName)
+        {
+            switch (roleName)
+            {
+                case Role.ADMIN:
+                    return "Администратор";
+                case Role.JUDGE:
+                    return "Судья";
+                case Role.USER:
+                    return "Пользователь";
+                default:
+                    return roleName;
+            }
         }
     }
 }

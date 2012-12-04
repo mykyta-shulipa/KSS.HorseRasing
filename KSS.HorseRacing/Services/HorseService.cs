@@ -9,6 +9,13 @@ namespace KSS.HorseRacing.Services
     
     public class HorseService
     {
+        private readonly GeneralService _generalService;
+
+        public HorseService(GeneralService generalService)
+        {
+            _generalService = generalService;
+        }
+
         public IList<Horse> GetListHorses()
         {
             using (var unit = new UnitOfWork())
@@ -26,7 +33,7 @@ namespace KSS.HorseRacing.Services
                 var model = new HorseViewModel
                 {
                     HorseId = horse.Id,
-                    DateBirth = getDateTimeStringForDatepicker(horse.DateBirth),
+                    DateBirth = _generalService.GetDateTimeStringForDatepicker(horse.DateBirth),
                     Nickname = horse.Nickname
                 };
                 return model;
@@ -64,11 +71,6 @@ namespace KSS.HorseRacing.Services
                 var horse = unit.Horse.Get(id);
                 unit.Horse.Delete(horse);
             }
-        }
-
-        private string getDateTimeStringForDatepicker(DateTime dateTime)
-        {
-            return dateTime.ToShortDateString().Replace('/', '-');
         }
     }
 }

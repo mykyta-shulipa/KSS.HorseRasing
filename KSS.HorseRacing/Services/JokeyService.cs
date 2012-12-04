@@ -10,6 +10,13 @@ namespace KSS.HorseRacing.Services
 
     public class JokeyService
     {
+        private readonly GeneralService _generalService;
+
+        public JokeyService(GeneralService generalService)
+        {
+            _generalService = generalService;
+        }
+
         public IEnumerable<JockeyViewModel> GetListJokeys()
         {
             using (var unit = new UnitOfWork())
@@ -19,7 +26,7 @@ namespace KSS.HorseRacing.Services
                     jockey => new JockeyViewModel
                     {
                         Alias = jockey.Alias, 
-                        DateBirth = getDateTimeStringForDatepicker(jockey.DateBirth), 
+                        DateBirth = _generalService.GetDateTimeStringForDatepicker(jockey.DateBirth), 
                         FirstName = jockey.FirstName, 
                         JockeyId = jockey.Id, 
                         LastName = jockey.LastName, 
@@ -28,12 +35,7 @@ namespace KSS.HorseRacing.Services
                 return jockeysList;
             }
         }
-
-        private string getDateTimeStringForDatepicker(DateTime dateTime)
-        {
-            return dateTime.ToShortDateString().Replace('/', '-');
-        }
-
+        
         public JockeyViewModel GetJockeyDetails(int id)
         {
             using (var unit = new UnitOfWork())
@@ -43,7 +45,7 @@ namespace KSS.HorseRacing.Services
                 {
                     JockeyId = jockey.Id,
                     Alias = jockey.Alias,
-                    DateBirth = getDateTimeStringForDatepicker(jockey.DateBirth),
+                    DateBirth = _generalService.GetDateTimeStringForDatepicker(jockey.DateBirth),
                     FirstName = jockey.FirstName,
                     LastName = jockey.LastName,
                     MiddleName = jockey.MiddleName
@@ -84,7 +86,6 @@ namespace KSS.HorseRacing.Services
 
         public void DeleteJockey(int id)
         {
-
             using (var unit = new UnitOfWork())
             {
                 var jockey = unit.Jockey.Get(id);

@@ -1,18 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Web.Mvc;
-using KSS.HorseRacing.Infrastucture.DataAccess.Filters;
-using KSS.HorseRacing.Infrastucture.DataModels;
-
 namespace KSS.HorseRacing.Services
 {
-    using Infrastucture.DataAccess;
-    using Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Web.Mvc;
+
+    using KSS.HorseRacing.Infrastucture.DataAccess;
+    using KSS.HorseRacing.Infrastucture.DataAccess.Filters;
+    using KSS.HorseRacing.Infrastucture.DataModels;
+    using KSS.HorseRacing.Models;
 
     public class RaceService
     {
+        private readonly GeneralService _generalService;
+
+        public RaceService(GeneralService generalService)
+        {
+            _generalService = generalService;
+        }
+
         public IEnumerable<RaceViewModel> GetListRaces()
         {
             using (var unit = new UnitOfWork())
@@ -43,7 +50,7 @@ namespace KSS.HorseRacing.Services
                         new RaceViewModel
                             {
                                 RaceId = race.Id,
-                                RaceDateTime = race.DateTimeOfRace.ToShortDateString(),
+                                RaceDateTime = _generalService.GetDateTimeStringForDatepicker(race.DateTimeOfRace),
                                 RaceNumberInDay = race.NumberRaceInDay.ToString(CultureInfo.InvariantCulture),
                                 Participants = participants
                             });
@@ -64,27 +71,10 @@ namespace KSS.HorseRacing.Services
                             WithHorse = true,
                             WithJockey = true
                         });
-                model.ListParticipantsForDropdown = getPartisipantsListForDropdown(participants);
-                var dateTime = DateTime.Now;
-                model.DateTimeOfRace = dateTime.Day + "-" + dateTime.Month + "-" + dateTime.Year;
+                model.ListParticipantsForDropdown = getPartisipantsListForDropdown(participants);                
+                model.DateTimeOfRace = DateTime.Now.ToShortDateString();
                 return model;
             }
-        }
-
-        private IEnumerable<SelectListItem> getPartisipantsListForDropdown(IEnumerable<Racer> racers)
-        {
-            if (racers == null)
-            {
-                throw new ArgumentNullException("racers");
-            }
-
-            var selectListItems = racers.Select(
-                racer => new SelectListItem
-                {
-                    Value = racer.Id.ToString(CultureInfo.InvariantCulture),
-                    Text = "∆окей " + racer.Jockey.Alias + " и лошадь " + racer.Horse.Nickname
-                });
-            return selectListItems;
         }
 
         public void AddNewRace(RaceCreateViewModel model)
@@ -112,6 +102,22 @@ namespace KSS.HorseRacing.Services
                     unit.Participant.Save(participant);
                 }
             }
+        }
+
+        private IEnumerable<SelectListItem> getPartisipantsListForDropdown(IEnumerable<Racer> racers)
+        {
+            if (racers == null)
+            {
+                throw new ArgumentNullException("racers");
+            }
+
+            var selectListItems = racers.Select(
+                racer => new SelectListItem
+                {
+                    Value = racer.Id.ToString(CultureInfo.InvariantCulture),
+                    Text = "∆окей " + racer.Jockey.Alias + " и лошадь " + racer.Horse.Nickname
+                });
+            return selectListItems;
         }
     }
 }
