@@ -166,6 +166,21 @@ namespace KSS.HorseRacing.Services
             }
         }
 
+        public void DeleteRace(int id)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var race = unit.Race.Get(id);
+                var loadParticipants = unit.Participant.LoadParticipants(new ParticipantFilter { RaceId = race.Id });
+                foreach (var participant in loadParticipants)
+                {
+                    unit.Participant.Delete(participant);
+                }
+
+                unit.Race.Delete(race);
+            }
+        }
+
         private IEnumerable<SelectListItem> getPartisipantsListForDropdown(IEnumerable<Racer> racers)
         {
             if (racers == null)

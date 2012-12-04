@@ -1,7 +1,6 @@
 ﻿namespace KSS.HorseRacing.Controllers
 {
     using System;
-    using System.Linq;
     using System.Web.Mvc;
 
     using KSS.HorseRacing.Infrastucture.DataModels;
@@ -51,73 +50,46 @@
                 return View(model);
             }
 
-            try
-            {
-                _raceService.AddNewRace(model);                
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View(model);
-            }
+            _raceService.AddNewRace(model);
+            return RedirectToAction("Index");
         }
 
-        [HttpPost]        
+        [HttpPost]
         public ActionResult GetParticipantInfo(int participantId)
         {
             var model = _racerService.GetRacerViewModel(participantId);
             return Json(model);
         }
 
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Edit(int id)
         {
             var model = _raceService.GetRaceDetailsViewModel(id);
             return View(model);
         }
 
-        //
-        // POST: /Race/Edit/5
-
         [HttpPost]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Edit(RaceDetailsViewModel model)
-        {            
-            try
-            {
-                _raceService.EditRace(model);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+        {
+            _raceService.EditRace(model);
+            return RedirectToAction("Index");
         }
 
-        //
-        // GET: /Race/Delete/5
-
+        [HttpGet]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Delete(int id)
         {
-            throw new NotImplementedException();
-            return View();
+            var model = _raceService.GetRaceDetailsViewModel(id);
+            return View(model);
         }
 
-        //
-        // POST: /Race/Delete/5
-
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [KssAuthorize(Roles = Role.ADMIN)]
+        public ActionResult DeleteRace(RaceDetailsViewModel model)
         {
-            throw new NotImplementedException();
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _raceService.DeleteRace(model.RaceId);
+            return RedirectToAction("Index");
         }
     }
 }

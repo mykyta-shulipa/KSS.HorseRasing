@@ -256,6 +256,7 @@
     <Content Include="Views\Race\Details.cshtml" />
     <Content Include="Views\Race\Edit.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ParticipantViewModel.cshtml" />
+    <Content Include="Views\Race\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

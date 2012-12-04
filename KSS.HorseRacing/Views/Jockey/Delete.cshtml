@@ -48,7 +48,7 @@
 <div class="row-fluid">
     @Html.DisplayFor(model => model.DateBirth)
 </div>
-@using (Html.BeginForm("DeleteJockey"))
+@using (Html.BeginForm("DeleteJockey", "Jockey", FormMethod.Post))
 {
     <p>
         @Html.HiddenFor(x => x.JockeyId)

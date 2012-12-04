@@ -24,5 +24,10 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
             var race = getContext().Races.FirstOrDefault(x => x.Id == id);
             return race;
         }
+
+        public void Delete(Race race)
+        {
+            delete(race);
+        }
     }
 }

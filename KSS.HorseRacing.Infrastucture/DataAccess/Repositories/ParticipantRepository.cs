@@ -16,6 +16,11 @@
             save(participant);
         }
 
+        public void Delete(Participant participant)
+        {
+            delete(participant);
+        }
+
         public List<Participant> LoadParticipants(ParticipantFilter filter)
         {
             var queryable = getContext().Participants

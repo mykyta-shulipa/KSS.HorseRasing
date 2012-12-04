@@ -9,5 +9,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
         List<Participant> LoadParticipants(ParticipantFilter filter);
 
         void Save(Participant participant);
+
+        void Delete(Participant participant);
     }
 }

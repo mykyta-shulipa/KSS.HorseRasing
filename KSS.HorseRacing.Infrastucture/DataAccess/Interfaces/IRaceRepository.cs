@@ -11,5 +11,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
         void Save(Race race);
 
         Race Get(int id);
+
+        void Delete(Race race);
     }
 }
