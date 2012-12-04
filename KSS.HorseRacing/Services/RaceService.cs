@@ -121,6 +121,7 @@ namespace KSS.HorseRacing.Services
                 var race = unit.Race.Get(id);
                 var model = new RaceDetailsViewModel
                 {
+                    RaceId = race.Id,
                     DateTimeOfRace = race.DateTimeOfRace.ToShortDateString(),
                     NumberRaceInDay = race.NumberRaceInDay.ToString(CultureInfo.InvariantCulture),
                     Participants = new List<ParticipantViewModel>()

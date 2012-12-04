@@ -254,6 +254,8 @@
     <Content Include="Views\Jockey\Index.cshtml" />
     <Content Include="Views\Shared\PartialPageHeader.cshtml" />
     <Content Include="Views\Race\Details.cshtml" />
+    <Content Include="Views\Race\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ParticipantViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

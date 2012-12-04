@@ -1,0 +1,19 @@
+﻿@model KSS.HorseRacing.Models.ParticipantViewModel
+<tr>
+    <td>
+        @Model.ParticipantId
+    </td>
+    <td>
+        @Model.JockeyAlias
+    </td>
+    <td>
+        @Model.HorseNickname
+    </td>
+    <td>
+        @Html.EditorFor(x => x.NumberInRace)
+
+    </td>
+    <td>
+        @Html.EditorFor(x => x.PlaceInRace)
+    </td>
+</tr>

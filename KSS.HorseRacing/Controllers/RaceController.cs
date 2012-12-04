@@ -69,13 +69,10 @@
             return Json(model);
         }
 
-        //
-        // GET: /Race/Edit/5
-
         public ActionResult Edit(int id)
         {
-            throw new NotImplementedException();
-            return View();
+            var model = _raceService.GetRaceDetailsViewModel(id);
+            return View(model);
         }
 
         //

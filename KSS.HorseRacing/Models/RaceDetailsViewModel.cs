@@ -5,6 +5,8 @@ namespace KSS.HorseRacing.Models
 
     public class RaceDetailsViewModel
     {
+        public int RaceId { get; set; }
+
         [Display(Name = "Дата заезда")]
         public string DateTimeOfRace { get; set; }
 
