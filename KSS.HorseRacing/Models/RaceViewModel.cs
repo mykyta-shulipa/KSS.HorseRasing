@@ -1,8 +1,7 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace KSS.HorseRacing.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class RaceViewModel
     {

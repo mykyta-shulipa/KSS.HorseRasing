@@ -4,17 +4,8 @@
     ViewBag.Title = "Users List";
     ViewBag.Title = "Список всех пользователей";
 }
-<div class="page-header"></div>
-<div class="page-header">
-    <h3>
-        @*Users List*@
-        @ViewBag.Title
-    </h3>
-</div>
-@if (User.IsInRole(Role.ADMIN))
-{
-    @Html.Partial("PartialCreateNewEntity")
-}
+@Html.Partial("PartialPageHeader")
+@Html.Partial("PartialCreateNewEntity", Role.ADMIN)
 <table class="table table-bordered table-hover">
     <tr>
         <th>

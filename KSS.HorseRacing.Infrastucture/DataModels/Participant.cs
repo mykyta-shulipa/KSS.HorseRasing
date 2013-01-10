@@ -8,14 +8,14 @@
 
         public int PlaceInRace { get; set; }
 
+        public virtual Race Race { get; set; }
+
+        public virtual Racer Racer { get; set; }
+
         [Column("Id_Race")]
         public int RaceId { get; set; }
 
-        public virtual Race Race { get; set; }
-
         [Column("Id_Racer")]
         public int RacerId { get; set; }
-
-        public virtual Racer Racer { get; set; }
     }
 }

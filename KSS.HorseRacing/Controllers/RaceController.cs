@@ -1,11 +1,10 @@
-﻿using System;
-using KSS.HorseRacing.Infrastucture.DataModels;
-using KSS.HorseRacing.Models;
-
-namespace KSS.HorseRacing.Controllers
+﻿namespace KSS.HorseRacing.Controllers
 {
+    using System;
     using System.Web.Mvc;
 
+    using KSS.HorseRacing.Infrastucture.DataModels;
+    using KSS.HorseRacing.Models;
     using KSS.HorseRacing.Services;
 
     [KssAuthorize]
@@ -29,8 +28,8 @@ namespace KSS.HorseRacing.Controllers
 
         public ActionResult Details(int id)
         {
-            throw new NotImplementedException();
-            return View();
+            var model = _raceService.GetRaceDetailsViewModel(id);
+            return View(model);
         }
 
         [KssAuthorize(Roles = Role.JUDGE)]
@@ -39,85 +38,58 @@ namespace KSS.HorseRacing.Controllers
             var model = _raceService.GetRaceCreateViewModel();
             return View(model);
         }
-        
-        [HttpPost]        
+
+        [HttpPost]
+        [KssAuthorize(Roles = Role.JUDGE)]
+        public ActionResult Create(RaceCreateViewModel model)
+        {
+            if (model.Participants == null)
+            {
+                ModelState.AddModelError(string.Empty, "Заезд должен иметь участников!");
+                model = _raceService.GetRaceCreateViewModel(DateTime.Parse(model.DateTimeOfRace), model.NumberRaceInDay);
+                return View(model);
+            }
+
+            _raceService.AddNewRace(model);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
         public ActionResult GetParticipantInfo(int participantId)
         {
             var model = _racerService.GetRacerViewModel(participantId);
             return Json(model);
         }
 
-        [HttpPost]
-        [KssAuthorize(Roles = Role.JUDGE)]
-        public ActionResult Create(RaceCreateViewModel model)
-        {
-            throw new NotImplementedException();
-            try
-            {
-                // TODO: Add insert logic here
-                
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Race/Edit/5
-
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Edit(int id)
         {
-            throw new NotImplementedException();
-            return View();
+            var model = _raceService.GetRaceDetailsViewModel(id);
+            return View(model);
         }
-
-        //
-        // POST: /Race/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [KssAuthorize(Roles = Role.ADMIN)]
+        public ActionResult Edit(RaceDetailsViewModel model)
         {
-            throw new NotImplementedException();
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _raceService.EditRace(model);
+            return RedirectToAction("Index");
         }
 
-        //
-        // GET: /Race/Delete/5
-
+        [HttpGet]
+        [KssAuthorize(Roles = Role.ADMIN)]
         public ActionResult Delete(int id)
         {
-            throw new NotImplementedException();
-            return View();
+            var model = _raceService.GetRaceDetailsViewModel(id);
+            return View(model);
         }
 
-        //
-        // POST: /Race/Delete/5
-
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [KssAuthorize(Roles = Role.ADMIN)]
+        public ActionResult DeleteRace(RaceDetailsViewModel model)
         {
-            throw new NotImplementedException();
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _raceService.DeleteRace(model.RaceId);
+            return RedirectToAction("Index");
         }
     }
 }

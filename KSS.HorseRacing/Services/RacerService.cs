@@ -13,6 +13,13 @@ namespace KSS.HorseRacing.Services
 
     public class RacerService
     {
+        private readonly GeneralService _generalService;
+
+        public RacerService(GeneralService generalService)
+        {
+            _generalService = generalService;
+        }
+
         public IList<RacerViewModel> GetListRacers()
         {
             var list = new List<RacerViewModel>();
@@ -122,6 +129,16 @@ namespace KSS.HorseRacing.Services
             }
         }
 
+        public RacerViewModel GetRacerViewModel(int racerId)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var racer = unit.Racer.Get(racerId);
+                var model = getRacerViewModel(racer);
+                return model;
+            }
+        }
+
         private RacerViewModel getRacerViewModel(Racer racer)
         {
             var model = new RacerViewModel
@@ -132,9 +149,9 @@ namespace KSS.HorseRacing.Services
                 JokeyId = racer.Jockey.Id,
                 HorseId = racer.Horse.Id,
                 HorseNickname = racer.Horse.Nickname,
-                RacerDateTimeStart = racer.DateTimeStart.ToShortDateString(),
+                RacerDateTimeStart = _generalService.GetDateTimeStringForDatepicker(racer.DateTimeStart),
                 RacerDateTimeEnd = racer.DateTimeEnd.HasValue
-                    ? ((DateTime)racer.DateTimeEnd).ToString(CultureInfo.InvariantCulture)
+                    ? _generalService.GetDateTimeStringForDatepicker((DateTime)racer.DateTimeEnd)
                     : "-"
             };
             return model;
@@ -162,16 +179,6 @@ namespace KSS.HorseRacing.Services
                         Text = jockey.Alias + " (" + jockey.FullName + ")"
                     });
             return listJockeys;
-        }
-
-        public RacerViewModel GetRacerViewModel(int racerId)
-        {
-            using (var unit = new UnitOfWork())
-            {
-                var racer = unit.Racer.Get(racerId);
-                var model = getRacerViewModel(racer);
-                return model;
-            }
         }
     }
 }

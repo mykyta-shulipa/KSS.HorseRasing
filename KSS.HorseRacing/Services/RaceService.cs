@@ -1,18 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Web.Mvc;
-using KSS.HorseRacing.Infrastucture.DataAccess.Filters;
-using KSS.HorseRacing.Infrastucture.DataModels;
-
 namespace KSS.HorseRacing.Services
 {
-    using Infrastucture.DataAccess;
-    using Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Web.Mvc;
+
+    using KSS.HorseRacing.Infrastucture.DataAccess;
+    using KSS.HorseRacing.Infrastucture.DataAccess.Filters;
+    using KSS.HorseRacing.Infrastucture.DataModels;
+    using KSS.HorseRacing.Models;
 
     public class RaceService
     {
+        private readonly GeneralService _generalService;
+
+        public RaceService(GeneralService generalService)
+        {
+            _generalService = generalService;
+        }
+
         public IEnumerable<RaceViewModel> GetListRaces()
         {
             using (var unit = new UnitOfWork())
@@ -43,7 +50,7 @@ namespace KSS.HorseRacing.Services
                         new RaceViewModel
                             {
                                 RaceId = race.Id,
-                                RaceDateTime = race.DateTimeOfRace.ToShortDateString(),
+                                RaceDateTime = _generalService.GetDateTimeStringForDatepicker(race.DateTimeOfRace),
                                 RaceNumberInDay = race.NumberRaceInDay.ToString(CultureInfo.InvariantCulture),
                                 Participants = participants
                             });
@@ -55,6 +62,11 @@ namespace KSS.HorseRacing.Services
 
         public RaceCreateViewModel GetRaceCreateViewModel()
         {
+            return GetRaceCreateViewModel(DateTime.Now);
+        }
+
+        public RaceCreateViewModel GetRaceCreateViewModel(DateTime dateTime, string numberInDay = null)
+        {
             using (var unit = new UnitOfWork())
             {
                 var model = new RaceCreateViewModel();
@@ -65,16 +77,119 @@ namespace KSS.HorseRacing.Services
                             WithJockey = true
                         });
                 model.ListParticipantsForDropdown = getPartisipantsListForDropdown(participants);
-                var dateTime = DateTime.Now;
-                model.DateTimeOfRace = dateTime.Day + "-" + dateTime.Month + "-" + dateTime.Year;
+                model.DateTimeOfRace = dateTime.ToString("MM-dd-yyyy");
+                if (!string.IsNullOrWhiteSpace(numberInDay))
+                {
+                    model.NumberRaceInDay = numberInDay;
+                }
+
                 return model;
+            }
+        }
+
+        public void AddNewRace(RaceCreateViewModel model)
+        {
+
+            using (var unit = new UnitOfWork())
+            {
+                var race = new Race
+                {
+                    DateTimeOfRace = DateTime.Parse(model.DateTimeOfRace),
+                    NumberRaceInDay = Convert.ToInt32(model.NumberRaceInDay)
+                };
+                unit.Race.Save(race);
+
+                foreach (var viewModel in model.Participants)
+                {
+                    var racer = unit.Racer.Get(viewModel.RacerId);
+                    var participant = new Participant
+                    {
+                        Race = race,
+                        Racer = racer,
+                        NumberInRace = viewModel.NumberInRace,
+                        PlaceInRace = viewModel.PlaceInRace
+                    };
+                    unit.Participant.Save(participant);
+                }
+            }
+        }
+
+        public RaceDetailsViewModel GetRaceDetailsViewModel(int id)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var race = unit.Race.Get(id);
+                var model = new RaceDetailsViewModel
+                {
+                    RaceId = race.Id,
+                    DateTimeOfRace = race.DateTimeOfRace.ToShortDateString(),
+                    NumberRaceInDay = race.NumberRaceInDay.ToString(CultureInfo.InvariantCulture),
+                    Participants = new List<ParticipantViewModel>()
+                };
+
+                var participants = unit.Participant.LoadParticipants(new ParticipantFilter { RaceId = race.Id, WithRacerHorceAndJockey = true });
+                foreach (var participant in participants)
+                {
+                    model.Participants.Add(new ParticipantViewModel
+                    {
+                        HorseId = participant.Racer.Horse.Id,
+                        HorseNickname = participant.Racer.Horse.Nickname,
+                        ParticipantId = participant.Id,
+                        RacerId = participant.Racer.Id,
+                        JockeyId = participant.Racer.Jockey.Id,
+                        JockeyAlias = participant.Racer.Jockey.Alias,
+                        NumberInRace = participant.NumberInRace,
+                        PlaceInRace = participant.PlaceInRace
+                    });
+                }
+
+                return model;
+            }
+        }
+
+        public void EditRace(RaceDetailsViewModel model)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var loadParticipants = unit.Participant.LoadParticipants(new ParticipantFilter { RaceId = model.RaceId });
+                foreach (var participantViewModel in model.Participants)
+                {
+                    var viewModel = participantViewModel;
+                    foreach (var participant in loadParticipants.Where(participant => viewModel.ParticipantId == participant.Id))
+                    {
+                        participant.NumberInRace = participantViewModel.NumberInRace;
+                        participant.PlaceInRace = participantViewModel.PlaceInRace;
+                        unit.Participant.Save(participant);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void DeleteRace(int id)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var race = unit.Race.Get(id);
+                var loadParticipants = unit.Participant.LoadParticipants(new ParticipantFilter { RaceId = race.Id });
+                foreach (var participant in loadParticipants)
+                {
+                    unit.Participant.Delete(participant);
+                }
+
+                unit.Race.Delete(race);
             }
         }
 
         private IEnumerable<SelectListItem> getPartisipantsListForDropdown(IEnumerable<Racer> racers)
         {
-            if (racers == null) throw new ArgumentNullException("racers");
-            var selectListItems = racers.Select(racer => new SelectListItem
+            if (racers == null)
+            {
+                throw new ArgumentNullException("racers");
+            }
+
+            var selectListItems = racers.Select(
+                racer => new SelectListItem
                 {
                     Value = racer.Id.ToString(CultureInfo.InvariantCulture),
                     Text = "∆окей " + racer.Jockey.Alias + " и лошадь " + racer.Horse.Nickname

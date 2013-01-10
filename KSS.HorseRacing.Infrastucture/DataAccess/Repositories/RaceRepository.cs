@@ -14,5 +14,20 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
             return races;
         }
 
+        public void Save(Race race)
+        {
+            save(race);
+        }
+
+        public Race Get(int id)
+        {
+            var race = getContext().Races.FirstOrDefault(x => x.Id == id);
+            return race;
+        }
+
+        public void Delete(Race race)
+        {
+            delete(race);
+        }
     }
 }

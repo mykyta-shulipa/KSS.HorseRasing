@@ -10,6 +10,13 @@ namespace KSS.HorseRacing.Services
 
     public class JokeyService
     {
+        private readonly GeneralService _generalService;
+
+        public JokeyService(GeneralService generalService)
+        {
+            _generalService = generalService;
+        }
+
         public IEnumerable<JockeyViewModel> GetListJokeys()
         {
             using (var unit = new UnitOfWork())
@@ -18,17 +25,18 @@ namespace KSS.HorseRacing.Services
                 var jockeysList = jockeys.Select(
                     jockey => new JockeyViewModel
                     {
-                        Alias = jockey.Alias,
-                        DateBirth = jockey.DateBirth.ToShortDateString(),
-                        FirstName = jockey.FirstName,
-                        JockeyId = jockey.Id,
-                        LastName = jockey.LastName,
+
+                        Alias = jockey.Alias, 
+                        DateBirth = _generalService.GetDateTimeStringForDatepicker(jockey.DateBirth), 
+                        FirstName = jockey.FirstName, 
+                        JockeyId = jockey.Id, 
+                        LastName = jockey.LastName, 
                         MiddleName = jockey.MiddleName
                     });
                 return jockeysList;
             }
         }
-
+        
         public JockeyViewModel GetJockeyDetails(int id)
         {
             using (var unit = new UnitOfWork())
@@ -36,8 +44,9 @@ namespace KSS.HorseRacing.Services
                 var jockey = unit.Jockey.Get(id);
                 var model = new JockeyViewModel
                 {
+                    JockeyId = jockey.Id,
                     Alias = jockey.Alias,
-                    DateBirth = jockey.DateBirth.ToShortDateString(),
+                    DateBirth = _generalService.GetDateTimeStringForDatepicker(jockey.DateBirth),
                     FirstName = jockey.FirstName,
                     LastName = jockey.LastName,
                     MiddleName = jockey.MiddleName
@@ -78,7 +87,6 @@ namespace KSS.HorseRacing.Services
 
         public void DeleteJockey(int id)
         {
-
             using (var unit = new UnitOfWork())
             {
                 var jockey = unit.Jockey.Get(id);

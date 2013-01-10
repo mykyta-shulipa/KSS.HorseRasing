@@ -4,16 +4,9 @@
     ViewBag.Title = "Racers List";
     ViewBag.Title = "Список гонщиков";
 }
-<div class="page-header"></div>
-<div class="page-header">
-    <h4>
-        @ViewBag.Title
-    </h4>
-</div>
-@if (User.IsInRole(Role.ADMIN))
-{
-    @Html.Partial("PartialCreateNewEntity")
-}
+
+@Html.Partial("PartialPageHeader")
+@Html.Partial("PartialCreateNewEntity", Role.ADMIN)
 <div>
     <table class="table table-bordered table-hover table-striped tablesorter">
         <thead>

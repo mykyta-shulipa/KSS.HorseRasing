@@ -3,37 +3,37 @@
     ViewBag.Title = "Edit Horse";
     ViewBag.Title = "Редактировать данные о лошади";
 }
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
+@Html.Partial("PartialPageHeader")
 
-    <fieldset>
-        <legend>@ViewBag.Title</legend>
+<div class="row-fluid">
+    <div class="offset4 span3 well">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)        
+            @Html.HiddenFor(x => x.HorseId)        
+            <div class="editor-label">
+                @Html.DisplayNameFor(model => model.Nickname)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Nickname)
+                @Html.ValidationMessageFor(model => model.Nickname)
+            </div>
 
-        @Html.HiddenFor(x => x.HorseId)
-        
-        <div class="editor-label">
-            @Html.DisplayNameFor(model => model.Nickname)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Nickname)
-            @Html.ValidationMessageFor(model => model.Nickname)
-        </div>
-
-        <div class="editor-label">
-            @Html.DisplayNameFor(model => model.DateBirth)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DateBirth)
-            @Html.ValidationMessageFor(model => model.DateBirth)
-        </div>
-
-        <p>
-            <input type="submit" class="btn btn-primary" value="Подтвердить изменения" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink(/*"Back to List"*/ "Вернуться к списку", "Index", null, new {@class="btn"})
+            <div class="editor-label">
+                @Html.DisplayNameFor(model => model.DateBirth)
+            </div>
+            <div class="editor-field">
+                <input class="text-box single-line with-datepicker" id="DateBirth" name="DateBirth" type="text" value='@Model.DateBirth' />
+                @Html.ValidationMessageFor(model => model.DateBirth)
+            </div>
+            <p>
+                <input type="submit" class="btn btn-primary span12" value="Подтвердить изменения" />
+            </p>
+            <div>
+                @Html.ActionLink(/*"Back to List"*/ "Вернуться к списку", "Index", null, new { @class = "btn span12" })
+            </div>
+        }
+    </div>
 </div>
+
+@Html.Partial("PartialForDatePicker")

@@ -81,18 +81,10 @@
 
         [HttpPost]
         [KssAuthorize(Roles = Role.ADMIN)]
-        public ActionResult DeleteJockey(int id)
+        public ActionResult DeleteJockey(JockeyViewModel model)
         {
-            try
-            {
-                _jokeyService.DeleteJockey(id);
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View("Index");
-            }
+            _jokeyService.DeleteJockey(model.JockeyId);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -3,16 +3,10 @@
     ViewBag.Title = "Edit Jockey";
     ViewBag.Title = "Редактировать данные о жокее";
 }
-<div class="page-header"></div>
-<div class="page-header">
-    <h2>@ViewBag.Title
-    </h2>
-</div>
+@Html.Partial("PartialPageHeader")
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-
-
     @Html.HiddenFor(x => x.JockeyId)
         
     <div class="editor-label">
@@ -48,10 +42,10 @@
     </div>
 
     <div class="editor-label">
-        @Html.DisplayNameFor(model => model.DateBirth)
+        @Html.DisplayNameFor(x=>x.DateBirth)
     </div>
     <div class="editor-field">
-        @Html.EditorFor(model => model.DateBirth)
+        <input class="text-box single-line with-datepicker" id="DateBirth" name="DateBirth" type="text" value='@Model.DateBirth' />
         @Html.ValidationMessageFor(model => model.DateBirth)
     </div>
 
@@ -63,3 +57,4 @@
 <div>
     @Html.ActionLink(/*"Back to List"*/ "Вернуться к списку", "Index", null, new { @class = "btn" })
 </div>
+@Html.Partial("PartialForDatePicker")

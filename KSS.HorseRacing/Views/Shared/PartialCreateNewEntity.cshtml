@@ -1,5 +1,5 @@
-﻿@using KSS.HorseRacing.Infrastucture.DataModels
-@if (User.IsInRole(Role.JUDGE))
+﻿@model string
+@if (User.IsInRole(Model))
 {
     <p>
         @Html.ActionLink(/*"Create New"*/ "Создать", "Create", null, new { @class = "btn btn-primary btn-large pull-right" })

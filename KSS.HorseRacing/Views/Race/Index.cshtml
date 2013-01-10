@@ -3,49 +3,43 @@
 @{
     ViewBag.Title = "Список всех гонок";
 }
-<div class="page-header"></div>
-<div class="page-header">
-    <h4>
-        @ViewBag.Title
-    </h4>
-</div>
-@if (User.IsInRole(Role.JUDGE))
-{
-    @Html.Partial("PartialCreateNewEntity")
-}
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(x => x.RaceId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(x => x.RaceDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(x => x.RaceNumberInDay)
-        </th>
-    </tr>
-
-    @foreach (var race in Model)
-    {
+@Html.Partial("PartialPageHeader")
+@Html.Partial("PartialCreateNewEntity", Role.JUDGE)
+<table class="table table-bordered table-hover table-striped tablesorter">
+    <thead>
         <tr>
-            <td>
-                @race.RaceId
-            </td>
-            <td>
-                @race.RaceDateTime
-            </td>
-            <td>
-                @race.RaceNumberInDay
-            </td>
-            @*
-            <td>
-                @Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink(/*"Details"*/ "Детали", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink(/*"Delete"*/ "Удалить", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-            *@
+            <th>
+                @Html.DisplayNameFor(x => x.RaceId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(x => x.RaceDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(x => x.RaceNumberInDay)
+            </th>
+            <td></td>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var race in Model)
+        {
+            <tr>
+                <td>
+                    @race.RaceId
+                </td>
+                <td>
+                    @race.RaceDateTime
+                </td>
+                <td>
+                    @race.RaceNumberInDay
+                </td>
+                <td>
+                    @Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { id = race.RaceId }, new { @class = "btn" })
+                    @Html.ActionLink(/*"Details"*/ "Детали", "Details", new { id = race.RaceId }, new { @class = "btn" })
+                    @Html.ActionLink(/*"Delete"*/ "Удалить", "Delete", new { id = race.RaceId }, new { @class = "btn" })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>

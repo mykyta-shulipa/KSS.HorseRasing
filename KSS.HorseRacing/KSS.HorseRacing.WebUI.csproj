@@ -156,6 +156,7 @@
     <Compile Include="Models\JockeyViewModel.cs" />
     <Compile Include="Models\ParticipantViewModel.cs" />
     <Compile Include="Models\RaceCreateViewModel.cs" />
+    <Compile Include="Models\RaceDetailsViewModel.cs" />
     <Compile Include="Models\RaceViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PasswordViewModel.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Rules\AccountRule.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\GeneralService.cs" />
     <Compile Include="Services\HorseService.cs" />
     <Compile Include="Services\JokeyService.cs" />
     <Compile Include="Services\RacerService.cs" />
@@ -258,6 +260,11 @@
     <Content Include="Views\Home\SelectWinners.cshtml" />
     <Content Include="Views\Home\SelectWinnerJokeys.cshtml" />
     <Content Include="Views\Home\PartialWinnerJockeysForYear.cshtml" />
+    <Content Include="Views\Shared\PartialPageHeader.cshtml" />
+    <Content Include="Views\Race\Details.cshtml" />
+    <Content Include="Views\Race\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ParticipantViewModel.cshtml" />
+    <Content Include="Views\Race\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

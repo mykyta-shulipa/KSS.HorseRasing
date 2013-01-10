@@ -2,18 +2,10 @@
 @model IEnumerable<Horse>
 @{
     ViewBag.Title = "List Horses";
+    ViewBag.Title = "Список всех лошадей";
 }
-<div class="page-header"></div>
-<div class="page-header">
-    <h2>
-        @*Horses List*@
-        Список всех лошадей
-    </h2>
-</div>
-@if (User.IsInRole(Role.ADMIN))
-{
-    @Html.Partial("PartialCreateNewEntity")
-}
+@Html.Partial("PartialPageHeader")
+@Html.Partial("PartialCreateNewEntity", Role.ADMIN)
 <table id="sorting-table" class="table table-bordered table-striped table-hover tablesorter">
     <thead>
         <tr>
@@ -42,6 +34,9 @@
                 </td>
                 @if (User.IsInRole(Role.ADMIN))
                 {
+                    <td>
+                        @Html.ActionLink(/*"Details"*/ "Подробно", "Details", new { id = item.Id }, new { @class = "btn" })
+                    </td>
                     <td>
                         @Html.ActionLink(/*"Edit"*/ "Редактировать", "Edit", new { id = item.Id }, new { @class = "btn" })
                     </td>

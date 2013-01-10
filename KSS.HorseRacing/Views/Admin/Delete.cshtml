@@ -3,12 +3,12 @@
     ViewBag.Title = "Delete User";
     ViewBag.Title = "Удаление пользователя";
 }
-<div class="page-header"></div>
-<div class="page-header">
-    <h3>
+@Html.Partial("PartialPageHeader")
+<div class="row-fluid">
+    <h4>
         @*Are you sure you want to delete this?*@
         Вы действительно хотите удалить этого пользователя?
-    </h3>
+    </h4>
 </div>
 <fieldset>
     @*<legend>User Details</legend>*@

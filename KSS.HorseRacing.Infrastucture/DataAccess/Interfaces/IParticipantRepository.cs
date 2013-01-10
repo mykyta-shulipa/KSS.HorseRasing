@@ -9,7 +9,11 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
         List<Participant> LoadParticipants(ParticipantFilter filter);
 
         int GetCountWinnerRaces(int participantId);
-        
+
         IEnumerable<Participant> GetWinnersForYear(int year);
+
+        void Save(Participant participant);
+
+        void Delete(Participant participant);
     }
 }

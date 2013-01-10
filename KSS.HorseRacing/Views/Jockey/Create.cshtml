@@ -3,11 +3,7 @@
     ViewBag.Title = "Add New Jockey";
     ViewBag.Title = "Добавить нового жокея";
 }
-<div class="page-header"></div>
-<div class="page-header">
-    <h2>@ViewBag.Title
-    </h2>
-</div>
+@Html.Partial("PartialPageHeader")
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
