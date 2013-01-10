@@ -1,0 +1,35 @@
+﻿@model IEnumerable<KSS.HorseRacing.Models.WinnerJockeyForYearViewModel>
+
+<table class="table table-bordered table-hover table-striped tablesorter">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.JockeyFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JockeyAlias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantityWinnerRaces)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.JockeyFullName, "Details", "Jockey", new { id = item.JockeyId }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JockeyAlias)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantityWinnerRaces)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

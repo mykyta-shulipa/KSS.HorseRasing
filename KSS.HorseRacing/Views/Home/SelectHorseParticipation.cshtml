@@ -1,0 +1,29 @@
+﻿@model IEnumerable<KSS.HorseRacing.Models.HorseParticipationViewModel>
+@{
+    ViewBag.Title = "Количество заездов для лошади";
+}
+<table class="table table-bordered table-hover table-striped tablesorter">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HorseNickname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RaceQuantity)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.HorseNickname, "Details", "Horses", new { id = item.HorseId }, null)
+                </td>
+                <td>
+                    @item.RaceQuantity
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

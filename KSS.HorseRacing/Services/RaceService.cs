@@ -81,5 +81,20 @@ namespace KSS.HorseRacing.Services
                 });
             return selectListItems;
         }
+
+        public List<WinnersViewModel> SelectWinners(int quantityParticipants)
+        {
+            using (var unit = new UnitOfWork())
+            {
+                var participants = unit.Participant.LoadParticipants(new ParticipantFilter {WithHorse = true, WithJockey = true});
+
+                return participants.Select(participant => new WinnersViewModel
+                    {
+                        HorseNickname = participant.Racer.Horse.Nickname, 
+                        JockeyAlias = participant.Racer.Jockey.Alias, 
+                        CountWinnerRaces = unit.Participant.GetCountWinnerRaces(participant.Id)
+                    }).OrderByDescending(x=>x.CountWinnerRaces).Take(quantityParticipants).ToList();
+            }
+        }
     }
 }

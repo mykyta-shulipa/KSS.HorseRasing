@@ -1,0 +1,40 @@
+﻿@model IEnumerable<KSS.HorseRacing.Models.WinnersViewModel>
+           @{
+               ViewBag.Title = "Топ победителей"
+           }                                   
+
+<p>
+    Показано @ViewBag.Quantity победителей заездов.
+</p>
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HorseNickname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JockeyAlias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountWinnerRaces)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HorseNickname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JockeyAlias)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountWinnerRaces)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

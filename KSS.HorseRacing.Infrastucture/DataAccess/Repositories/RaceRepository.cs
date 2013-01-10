@@ -13,5 +13,6 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Repositories
             var races = getContext().Races.ToList();
             return races;
         }
+
     }
 }

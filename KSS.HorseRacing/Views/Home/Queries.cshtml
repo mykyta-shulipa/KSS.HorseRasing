@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Статистика";
+}
+
+<p>
+    @:1. Отобрать все заезды, которые проводились в X месяце года Y. 
+    @Html.ActionLink("Выполнить запрос", "SelectRaces", "Home", null, new {@class="btn"}))
+</p>
+<br />
+<br />
+
+<p>
+    @:2. Отобрать участников (псевдоним жокея и кличка лошади) заезда под номером X, проводимого Y числа. 
+    @Html.ActionLink("Выполнить запрос", "SelectParticipants", "Home", null, new {@class="btn"}))
+</p>
+<br />
+<br />
+
+<p>
+    @:3. Подсчитать сколько раз каждый из коней принимал участие в заездах. 
+    @Html.ActionLink("Выполнить запрос", "SelectHorseParticipation", "Home", null, new {@class="btn"}))
+</p>
+<br />
+<br />
+
+<p>
+    @:4. Отобрать жокеев, которые занимали призовые места в скачках в X году. 
+    @Html.ActionLink("Выполнить запрос", "SelectWinnerJokeys", "Home", null, new {@class="btn"}))
+</p>
+<br />
+<br />
+
+<p>
+    @:5. Отобрать участников (псевдоним жокея и кличка лошади), которые чаще всего выигрывали заезды
+    @Html.ActionLink("Выполнить запрос", "SelectWinners", "Home", null, new {@class="btn"}))
+</p>
+<br />
+<br />

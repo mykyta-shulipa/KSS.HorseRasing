@@ -7,5 +7,9 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
     public interface IParticipantRepository : IBaseRepository
     {
         List<Participant> LoadParticipants(ParticipantFilter filter);
+
+        int GetCountWinnerRaces(int participantId);
+        
+        IEnumerable<Participant> GetWinnersForYear(int year);
     }
 }

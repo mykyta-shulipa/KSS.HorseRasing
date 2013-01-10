@@ -1,3 +1,6 @@
+using System.Linq;
+using KSS.HorseRacing.Infrastucture.DataAccess.Filters;
+
 namespace KSS.HorseRacing.Services
 {
     using System.Collections.Generic;
@@ -5,7 +8,7 @@ namespace KSS.HorseRacing.Services
     using KSS.HorseRacing.Infrastucture.DataAccess;
     using KSS.HorseRacing.Infrastucture.DataModels;
     using KSS.HorseRacing.Models;
-    
+
     public class HorseService
     {
         public IList<Horse> GetListHorses()
@@ -65,6 +68,23 @@ namespace KSS.HorseRacing.Services
                 var horse = unit.Horse.Get(id);
                 unit.Horse.Delete(horse);
             }
+        }
+
+        public List<HorseParticipationViewModel> SelectHorseParticipation()
+        {
+            var model = new List<HorseParticipationViewModel>();
+            using (var unit = new UnitOfWork())
+            {
+                var allHorses = unit.Horse.GetAllHorses();
+                var participants = unit.Participant.LoadParticipants(new ParticipantFilter {WithHorse = true});
+                model.AddRange(allHorses.Select(horse => new HorseParticipationViewModel
+                    {
+                        HorseId = horse.Id, 
+                        HorseNickname = horse.Nickname, 
+                        RaceQuantity = participants.Count(x => x.Racer.HorseId == horse.Id)
+                    }));
+            }
+            return model;
         }
     }
 }
