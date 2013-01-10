@@ -2,6 +2,7 @@
 
 namespace KSS.HorseRacing.Controllers
 {
+    using System;
     using System.Web.Mvc;
 
     public class HomeController : Controller
@@ -65,9 +66,9 @@ namespace KSS.HorseRacing.Controllers
 
         public ActionResult SelectWinners()
         {
-            const int quantityParticipants = 15;
-            var winners = _raceService.SelectWinners(quantityParticipants);
-            ViewBag.Quantity = quantityParticipants;
+            const int QUANTITY_PARTICIPANTS = 15;
+            var winners = _raceService.SelectWinners(QUANTITY_PARTICIPANTS);
+            ViewBag.Quantity = Math.Min(QUANTITY_PARTICIPANTS, winners.Count);
             return View(winners);
         }
 
@@ -80,6 +81,28 @@ namespace KSS.HorseRacing.Controllers
         {
             var model = _jokeyService.GetWinnerJokeysForYear(year);
             return PartialView("PartialWinnerJockeysForYear", model);
+        }
+
+        public ActionResult SelectParticipants()
+        {
+            return View();
+        }
+
+        public ActionResult GetParticipantsForRace(DateTime date, int number)
+        {
+            var model = _raceService.GetParticipantsForRace(date, number);
+            return PartialView("PartialParticipantsForRace", model);
+        }
+
+        public ActionResult SelectRaces()
+        {
+            return View();
+        }
+
+        public ActionResult GetRaceForMonth( DateTime date)
+        {
+            var model = _raceService.GetRaces(date);
+            return PartialView("PartialRacesList", model);
         }
     }
 }

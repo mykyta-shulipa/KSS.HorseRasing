@@ -1,13 +1,15 @@
 ﻿@{
-    ViewBag.Title = "Жокеи с призовыми местами.";
+    ViewBag.Title = "Заезды по месяцам.";
 }
 @Html.Partial("PartialPageHeader")
 
 <div class="row-fluid">
-    Выберите год:
+    Выберите месяц:
 </div>
 <div class="row-fluid">
-    <input class="text-box single-line with-datepicker"  id="selected-year"  type="number"  value='@(DateTime.Now.Year.ToString())' />
+    <input class="text-box single-line with-datepicker"  id="selected-date"  type="text"  value='@(DateTime.Now.Month + "-" + DateTime.Now.Year)' />
+    <br />
+    <br />
 </div>
 <br />
 <br />
@@ -20,7 +22,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('.with-datepicker').datepicker({
-            format: 'yyyy'
+            format: 'mm-yyyy'
         });
     });
 
@@ -36,31 +38,30 @@
 
     $("#get").click(function () {
         var sectionResults = $("#place-for-results");
-        var selectedYear = $('#selected-year').val();
-        if (selectedYear != null && selectedYear != "") {
+        var selectedDate = $('#selected-date').val();
+        if (selectedDate != null && selectedDate != "") {
             cursorWait();
             var onError = function () {
                 cursorClear();
                 alert("Error while AJAX request");
             };
 
-            function requestForHtmlLayoutForms() {
+            (function () {
                 var onSuccess = function (data) {
                     sectionResults.html(data);
                     cursorClear();
                 };
                 $.ajax({
-                    url: "/Home/GetWinnerJokeyForYear/",
-                    data: { year: selectedYear },
+                    url: "/Home/GetRaceForMonth/",
+                    data: { date: selectedDate },
                     traditional: true
                 }).success(onSuccess).error(onError);
-            }
-
-            requestForHtmlLayoutForms();
+            })();
 
         } else {
             sectionResults.html("");
         }
     });
 </script>
+
 

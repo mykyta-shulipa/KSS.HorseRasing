@@ -1,0 +1,33 @@
+﻿@model List<KSS.HorseRacing.Models.ParticipantViewModel>
+
+@if(Model != null)
+{
+    <table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Псевдоним жокея 
+            </th>
+            <th>Кличка лошади
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.JockeyAlias
+                </td>
+                <td>
+                    @item.HorseNickname
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+}
+else
+{
+  @: Неправильно указаны параметры - запись о такой гонке не существует в БД
+}

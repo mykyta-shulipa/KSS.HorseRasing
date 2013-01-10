@@ -10,7 +10,7 @@ namespace KSS.HorseRacing.Infrastucture.DataAccess.Interfaces
 
         int GetCountWinnerRaces(int participantId);
 
-        IEnumerable<Participant> GetWinnersForYear(int year);
+        List<Participant> GetWinnersForYear(int year);
 
         void Save(Participant participant);
 

@@ -26,17 +26,17 @@ namespace KSS.HorseRacing.Services
                     jockey => new JockeyViewModel
                     {
 
-                        Alias = jockey.Alias, 
-                        DateBirth = _generalService.GetDateTimeStringForDatepicker(jockey.DateBirth), 
-                        FirstName = jockey.FirstName, 
-                        JockeyId = jockey.Id, 
-                        LastName = jockey.LastName, 
+                        Alias = jockey.Alias,
+                        DateBirth = _generalService.GetDateTimeStringForDatepicker(jockey.DateBirth),
+                        FirstName = jockey.FirstName,
+                        JockeyId = jockey.Id,
+                        LastName = jockey.LastName,
                         MiddleName = jockey.MiddleName
                     });
                 return jockeysList;
             }
         }
-        
+
         public JockeyViewModel GetJockeyDetails(int id)
         {
             using (var unit = new UnitOfWork())
@@ -101,11 +101,11 @@ namespace KSS.HorseRacing.Services
                 var participants = unit.Participant.GetWinnersForYear(year);
                 var model = participants.Select(participant => new WinnerJockeyForYearViewModel
                     {
-                        JockeyId = participant.Racer.JockeyId, 
-                        JockeyAlias = participant.Racer.Jockey.Alias, 
-                        QuantityWinnerRaces = unit.Participant.GetCountWinnerRaces(participant.Id), 
+                        JockeyId = participant.Racer.JockeyId,
+                        JockeyAlias = participant.Racer.Jockey.Alias,
+                        QuantityWinnerRaces = unit.Participant.GetCountWinnerRaces(participant.Id),
                         JockeyFullName = participant.Racer.Jockey.FullName
-                    }).OrderByDescending(x=>x.JockeyFullName).ToList();
+                    }).OrderByDescending(x => x.JockeyFullName).ToList();
                 return model;
             }
         }

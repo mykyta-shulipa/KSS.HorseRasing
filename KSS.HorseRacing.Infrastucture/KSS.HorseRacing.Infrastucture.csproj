@@ -63,6 +63,7 @@
     <Compile Include="DataAccess\EfContext.cs" />
     <Compile Include="DataAccess\Filters\BaseFilter.cs" />
     <Compile Include="DataAccess\Filters\ParticipantFilter.cs" />
+    <Compile Include="DataAccess\Filters\RaceFilter.cs" />
     <Compile Include="DataAccess\Filters\RacerFilter.cs" />
     <Compile Include="DataAccess\Filters\UserFilter.cs" />
     <Compile Include="DataAccess\Interfaces\IBaseRepository.cs" />

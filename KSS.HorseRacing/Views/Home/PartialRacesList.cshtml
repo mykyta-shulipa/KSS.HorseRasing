@@ -1,0 +1,30 @@
+﻿@model List<KSS.HorseRacing.Models.RaceDetailsViewModel>
+
+<table class="table table-bordered table-hover table-striped tablesorter">
+    <thead>
+        <tr>
+            <th>Дата и время заезда
+            </th>
+            <th>Номер заезда в этот день
+            </th>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var race in Model)
+        {
+            <tr>
+                <td>
+                    @race.DateTimeOfRace
+                </td>
+                <td>
+                    @race.NumberRaceInDay
+                </td>
+                <td>
+                    @Html.ActionLink("Просмотреть детальнее", "Details", "Race", new { id = race.RaceId }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

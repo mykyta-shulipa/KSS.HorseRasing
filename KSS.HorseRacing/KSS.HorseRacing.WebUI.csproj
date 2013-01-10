@@ -265,6 +265,10 @@
     <Content Include="Views\Race\Edit.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ParticipantViewModel.cshtml" />
     <Content Include="Views\Race\Delete.cshtml" />
+    <Content Include="Views\Home\SelectParticipants.cshtml" />
+    <Content Include="Views\Home\PartialParticipantsForRace.cshtml" />
+    <Content Include="Views\Home\SelectRaces.cshtml" />
+    <Content Include="Views\Home\PartialRacesList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

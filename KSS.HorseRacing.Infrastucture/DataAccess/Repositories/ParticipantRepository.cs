@@ -48,7 +48,7 @@
                     queryable = queryable.Include(x => x.Racer.Horse);
                 }
             }
-            
+
             var list = queryable.ToList();
             return list;
         }
@@ -56,29 +56,16 @@
         public int GetCountWinnerRaces(int participantId)
         {
             var count = getContext().Participants
-                .Count(x => x.Id == participantId && isWinnerPlace(x.PlaceInRace));
+                .Count(x => x.Id == participantId && (x.PlaceInRace == 1 || x.PlaceInRace == 2 || x.PlaceInRace == 3));
             return count;
         }
 
-        public IEnumerable<Participant> GetWinnersForYear(int year)
+        public List<Participant> GetWinnersForYear(int year)
         {
             var participants = getContext().Participants
-                .Where(x => x.Race.DateTimeOfRace.Year == year 
-                    && isWinnerPlace(x.PlaceInRace));
-            return participants;
-        }
-
-        private bool isWinnerPlace(int placeInRace)
-        {
-            switch (placeInRace)
-            {
-                case 1:
-                case 2:
-                case 3:
-                    return true;
-                default:
-                    return false;
-            }
+                .Where(x => x.Race.DateTimeOfRace.Year == year
+                    && (x.PlaceInRace == 1 || x.PlaceInRace == 2 || x.PlaceInRace == 3));
+            return participants.ToList();
         }
     }
 }
